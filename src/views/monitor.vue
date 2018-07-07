@@ -19,7 +19,7 @@
             <h3>附件</h3>
             <div>
               <swiper :options="swiperOption" ref="swiper">
-                <swiper-slide v-for="(item,index) in panelData.attachment">
+                <swiper-slide v-for="(item,index) in panelData.attachmentthumb">
                   <img :src="resourceUrl+item" @mouseenter="imageEnter(index)" @mouseleave="imageLeave()"/>
                 </swiper-slide>
                 <div class="swiper-button-next swiper-button" slot="button-next"></div>
@@ -42,7 +42,7 @@
   import dayjs from 'dayjs';
   import commonService from "@/service/commonService"
   var getData = async (params) => {
-    var query={"q":"*"/*"periods:"+commonService.formatMonthDate(dayjs().subtract(10, 'day').toDate())*/,wt:"json","index":true,start:0,rows:26};//暂时写死
+    var query={"q":"periods:"+commonService.formatMonthDate(dayjs().subtract(10, 'day').toDate()),wt:"json","index":true,start:0,rows:26};//暂时写死
     var url=config.solorUrl+"cmcropconditioninfo/select";
     var res = await axios.get(url,{params:query});
     return res.data.response.docs;
@@ -83,7 +83,7 @@
           _self.overlays=new mapService.OverlayCollection({
             map:_self.map,
             render:function(data){
-              return '<img src="'+resourceUrl+data.attachment[data.attachment.length-1]+'"/>';//'<img src="'+resourceUrl+data.attachmentthumb[data.attachmentthumb.length-1]+'"/>';
+              return '<img src="'+resourceUrl+data.attachment[data.attachmentthumb.length-1]+'"/>';//'<img src="'+resourceUrl+data.attachmentthumb[data.attachmentthumb.length-1]+'"/>';
             },
             click:function(overlay){
               _self.showPanel(overlay);

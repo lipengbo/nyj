@@ -407,7 +407,7 @@
           _this.imageVo = res.data.reverse();
           _this.imageVo.forEach(function (e) {
             e.original = config.resourceUrl+"images/" + e.url;
-            e.thumbnail = config.resourceUrl+"/images/" + e.thumbnailurl;
+            e.thumbnail = config.resourceUrl+"images/" + e.thumbnailurl;
             e.desc = e.mark;
           });
           console.log(_this.imageVo)
