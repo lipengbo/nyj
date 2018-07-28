@@ -1,0 +1,551 @@
+[
+    {
+        "type": "title",
+        "dataType": "text",
+        "data": "2017年10月广州市气候影响评价",
+        "font": "华文行楷",
+        "fontSize": 32,
+        "fontColor": "#FF0000",
+        "bold": false
+    },
+    {
+        "type": "summary",
+        "dataType": "text",
+        "data": "【内容提要】综合评价广州市10月气候条件属偏好年景。全市月平均气温24.7℃,较常年同期偏高0.3℃；月雨量46.6毫米，较常年同期偏少22%；日照时数231.9小时，较常年同期偏多21%；灰霾日数0.4天，为近十年最少。月内天气变化明显，上旬高温突出伴局地雷雨，月中台风“卡努”带来明显大风影响，下旬冷高压控制下晴朗干燥火险等级高。",
+        "font": "宋体",
+        "fontSize": 18,
+        "fontColor": "#000000",
+        "bold": true
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "一、基本气候概况",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "1.气温偏高",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "10月全市平均气温24.7℃，较常年同期偏高0.3℃。各区平均气温在23.6～25.7℃之间，空间分布呈现西南部高而东北部低的特征（图1，表1）。与常年同期相比，从化持平，其余各区偏高0.3～0.8℃（图2，表1）。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "picture",
+        "picList": [
+            {
+                "url": "static/images/climaticevaluation/2017/201710t.png",
+                "picTitle": "图1  广州市10月平均气温（℃）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            },
+            {
+                "url": "static/images/climaticevaluation/2017/201710tAnomaly.png",
+                "picTitle": "图2  广州市10月平均气温距平（℃）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            }
+        ]
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "各区月极端最高气温在35.0～36.2℃之间，主要出现在3日或10日。（图3，表1）",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "picture",
+        "picList": [
+            {
+                "url": "static/images/climaticevaluation/2017/201710.png",
+                "picTitle": "图1  广州市10月平均气温（℃）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 600,
+                "picHeight": 300
+            }
+        ]
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "2.雨量偏少",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "全市平均月雨量46.6毫米，较常年同期偏少22%。各区为24.2～63.6毫米，空间分布呈现西多东少的特点。与常年同期相比，从化偏多7%，其余各区偏少4～54%（图4、图5）。各区月雨日介于5～7天之间，与常年同期相比，增城偏少1天，番禺偏少0.1天，其他各区偏多0.4～1天（表1）。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "picture",
+        "picList": [
+            {
+                "url": "static/images/climaticevaluation/2017/201710r.png",
+                "picTitle": "图4  广州市10月雨量（毫米）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            },
+            {
+                "url": "static/images/climaticevaluation/2017/201710rAnomaly.png",
+                "picTitle": "图5  广州市10月雨量距平百分率（%）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            }
+        ]
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "3.日照时数偏多",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "全市平均月日照时数231.9小时，较常年同期偏多21%。各区日照时数为209.5～244.4小时。与常年同期相比，各区偏多14～27%（表1）。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "dataTable",
+        "climaticElementTableVo": {
+            "title": "表1 2017年10月广州市气象要素一览表",
+            "titleFont": "宋体",
+            "titleFontSize": 12.0,
+            "titleFontbold": true,
+            "dataList": [
+                {
+                    "staname": "花都",
+                    "t": 25,
+                    "tAnomaly": 0.3,
+                    "r": 63.6,
+                    "rAnomaly": -4,
+                    "rainDays": 6,
+                    "rainDaysAnomaly": 0.6,
+                    "s": 244.4,
+                    "sAnomaly":17,
+                    "tMax": 36.2,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "从化",
+                    "t": 23.6,
+                    "tAnomaly": 0,
+                    "r": 52.3,
+                    "rAnomaly": 7,
+                    "rainDays": 6,
+                    "rainDaysAnomaly": 0.9,
+                    "s": 233.4,
+                    "sAnomaly": 27,
+                    "tMax": 35.4,
+                    "tMaxDate": "10日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "天河",
+                    "t": 25,
+                    "tAnomaly": 0.3,
+                    "r": 43.8,
+                    "rAnomaly": -36,
+                    "rainDays": 7,
+                    "rainDaysAnomaly": 1,
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 35,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "增城",
+                    "t": 24.4,
+                    "tAnomaly": 0.7,
+                    "r": 24.2,
+                    "rAnomaly": -54,
+                    "rainDays": 5,
+                    "rainDaysAnomaly": -1,
+                    "s": 236.6,
+                    "sAnomaly": 14,
+                    "tMax": 35.6,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "番禺",
+                    "t": 25.7,
+                    "tAnomaly": 0.8,
+                    "r": 49.3,
+                    "rAnomaly": -21,
+                    "rainDays": 6,
+                    "rainDaysAnomaly": -0.1,
+                    "s": 209.5,
+                    "sAnomaly": 16,
+                    "tMax": 35.6,
+                    "tMaxDate": "10日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },{
+                    "staname": "黄埔",
+                    "t": 23.6,
+                    "tAnomaly": "",
+                    "r": 63.6,
+                    "rAnomaly": "",
+                    "rainDays": 5,
+                    "rainDaysAnomaly": "",
+                    "s": 235.4,
+                    "sAnomaly": "",
+                    "tMax": 34.3,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "南沙",
+                    "t": 25.9,
+                    "tAnomaly": "",
+                    "r": 52.3,
+                    "rAnomaly": "",
+                    "rainDays": 6,
+                    "rainDaysAnomaly": "",
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 34.8,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "白云",
+                    "t": 25.5,
+                    "tAnomaly": "",
+                    "r": 43.8,
+                    "rAnomaly": "",
+                    "rainDays": 7,
+                    "rainDaysAnomaly": "",
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 35.3,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "荔湾",
+                    "t": 26.5,
+                    "tAnomaly": "",
+                    "r": 24.2,
+                    "rAnomaly": "",
+                    "rainDays": 10,
+                    "rainDaysAnomaly": "",
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 37.5,
+                    "tMaxDate": "2日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "海珠",
+                    "t": 25.5,
+                    "tAnomaly": "",
+                    "r": 49.3,
+                    "rAnomaly": "",
+                    "rainDays": 7,
+                    "rainDaysAnomaly": "",
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 34.9,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "越秀",
+                    "t": 25.4,
+                    "tAnomaly": "",
+                    "r": 63.6,
+                    "rAnomaly": "",
+                    "rainDays": 8,
+                    "rainDaysAnomaly": "",
+                    "s": "",
+                    "sAnomaly": "",
+                    "tMax": 34.3,
+                    "tMaxDate": "3日",
+                    "tMin": "",
+                    "tMinDate": ""
+                }
+            ],
+            "description": "注:建站年限比较短的不计算距平值",
+            "descriptionFont": "宋体",
+            "descriptionFontSize": 10.5,
+            "descriptionFontbold": false
+        }
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "4.灰霾近十年最少",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "全市平均灰霾日数为0.4天，比去年同期少1.6天，较近十年同期平均偏少5.2天，为近十年最少。从化、黄埔出现1天灰霾，其余各区无灰霾（表2）。1～10月全市平均灰霾日数为30.2天，较去年同期偏少3.2天，较近十年同期平均偏少21.6天，为近十年第二少。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "10月全市平均空气质量等级为一和二级的日数分别是10.0天和15.4天，空气质量以优良为主；全市平均超标日数为5.6天，全市11个国控站出现2～10天空气质量超标。1～10月全市平均空气质量等级为一、二级的日数分别为69.1天和170.1天，空气质量以优良为主；全市平均超标日数64.8天。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "二、主要气候事件",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "1.上旬出现高温过程",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "本月上旬，受副热带高压影响，我市出现高温天气（日最高气温≥35℃，下同），主要出现在2～4日、10～11日。全市高温日数为2.6天，花都、从化、增城、番禺高温日数均破了该站10月高温日数历史极值。花都3日录得36.2℃的最高气温，番禺10日录得35.6℃的最高气温，均为该站历史上10月第2高最高气温。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "2.“卡努”带来明显大风影响",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "1720号台风 “卡努”（强台风级）于10月16日3时25分前后在徐闻东部沿海地区登录，登陆时中心附近最大风力10级（28米/秒），中心最低气压998百帕。“卡努”具有大风影响范围广、持续时间长的特点，受其和冷空气共同影响，14～16日全市有75%的测站录得6级以上强风（≥10.8米/秒），白云区太和镇帽峰山15日录得全市最大阵风25.6米/秒（10级），花都区花东镇录得陆地最大阵风24.2米/秒（9级）。期间全市出现中到大雨的降水过程，黄埔区九龙镇录得全市最大累积雨量54.5毫米。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "3.中下旬持续晴好干燥火险等级高",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "中旬后期到下旬末，我市在冷高压控制下，不时受弱冷空气影响，出现持续的晴好干燥天气，20～21日全市各区陆续发布森林火险黄色预警信号，26日升级为森林火险橙色预警信号。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "三、气候对行业的专题影响评价",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "1.气候与农业",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "10月我市气温与常年相比略偏高，日照时数偏多，降水偏少。上旬前期受冷空气影响，出现雷阵雨，其余时间以晴热天气为主，不利于叶菜生长和晚稻抽穗扬花。15-17日受冷空气和台风“卡努”叠加影响，出现大风和中到大雨天气，对在地作物有一定不利影响；中旬气温与常年相比显著偏低，光照充足，降水偏多，叶菜生长状况有所好转，总体气象条件对蔬菜、晚稻等的生长有利。下旬气温适宜、光照充足、无降水，总体气象条件一般。沙田柚、柑橘、夏植香蕉逐渐进入果实成熟期，春植香蕉处于营养生长期，甘蔗进入茎伸长期，荔枝处于秋梢生长期；晚稻在下旬进入成熟收获期；美丽异木棉、桂花、勒杜鹃、玫瑰花、向日葵等花卉处于盛花期。综合评价本月农业气象条件大部分地区为良好。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "2.气候与旅游",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "国庆黄金周广州以晴好天气为主，推动全市主要旅游接待总人次、旅游业总收入呈现两位数增长，创历史新高。根据假日广州旅游客情监测与分析报告显示，10月1～8日，广州市共接待游客1528.33万人次，同比增长（按7天可比口径）15.12%；旅游业总收入119.68亿元，同比增长（按7天可比口径）16.27%。纳入黄金周统计范围的全市32个主要旅游景区接待307.79万人次，同比增长15.33%；景区营业收入2.45亿元，同比增长33.15%。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "3.气候与交通",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "受台风“卡努”影响，15日6时至16日7时30分，广州市客轮公司所有水上巴士及营运船舶全部停航。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "四、气候展望和对策建议",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "预计，与常年同期相比，11月我市雨量偏少2～4成，平均气温偏高0.1～1.0℃，全市极端最低气温偏高0.5℃左右。期间有4次冷空气影响我市，大致发生在3～5日（弱）、7～9日（弱）、15～17日（弱）、21～24日（中等）。有2次降水过程，大致发生7～9日（小雨）和21～24日（小到中雨，局部大雨）。出现霜降风天气的可能性较小。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "据此，特提出以下建议：",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "1、11月冷空气开始活跃，各地要做好防寒的各项准备工作。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "1、11月冷空气开始活跃，各地要做好防寒的各项准备工作。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "2、进入秋季，气候干燥，易发生火灾，要增强防火意识，检查和消除火险隐患。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "3、11月开始进入季节性少雨时段，各地要做好山塘水库科学蓄水工作，节约用水。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    }
+]

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<config>
+ <serviceList>
+  <!--地图主题，默认为normal， midnight:午夜蓝,negative:反色,blackwhite:黑白,sepia:棕褐色,vintage:老式,crayon:蜡笔,cartoon:卡通,normal:正常色-->
+  <!--地图服务配置-->
+  <mapServeice>
+   <name>广东矢量</name>
+   <id>1</id>
+   <type>baseLayer</type>
+   <theme>blackwhite</theme>
+   <mapURL>TileService</mapURL>
+   <infoFile>config/guangdongsl.xml</infoFile>
+  </mapServeice>
+
+  <!-- <mapServeice>
+   <name>珠海矢量</name>
+   <id>3</id>
+   <type>baseLayer</type>
+   <mapURL>TileService</mapURL>
+   <infoFile>config/zhsljc.xml</infoFile>
+  </mapServeice> -->
+
+ </serviceList>
+</config>

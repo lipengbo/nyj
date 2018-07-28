@@ -1,0 +1,59 @@
+[{
+        "type": "title",
+        "dataType": "text",
+        "data": "春运期间气候概况",
+        "font": "华文行楷",
+        "fontSize": 32,
+        "fontColor": "#FF0000",
+        "bold": false
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "一、春运气候概况",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "春运时广州正值冬春交替之际，此时冷空气活动较频繁，同时暖湿空气开始活跃，冷暖空气常在华南交绥，我市易出现低温阴雨天气。由于每年春运时间都不同，春运期间的气候背景差异明显，近11年（2005-2015年）春运期间气象资料统计（表1）表明：",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "气温 春运期间平均气温最高为18.1℃，出现在xxxx年，最低为10.9℃，出现在2008年。期间录得的最高气温为xx℃，出现在xxxx年xx月xx日，录得的最低气温为为xx℃，出现在xxxx年xx月xx日。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "picture",
+        "picList": [{
+            "url": "static/images/SocialActivities/1.png",
+            "picTitle": "图1 近11年春运平均气温及气温距平变化",
+            "titleFont": "宋体",
+            "titleFontSize": 10.5,
+            "titleFontbold": false,
+            "picWidth": 730,
+            "picHeight": 376
+        }]
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "降水 春运期间总降水量最多为xx毫米，出现在xxxx年，最小为xx毫米，出现在xxxx年。降水日数最多为21天，出现在xxxx年，最少为21天，出现在xxxx年。期间录得的日最大降水量为xx毫米，出现在xxxx年xx月xx日。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    }
+]

@@ -1,0 +1,124 @@
+<!-- 基本组件 -->
+<!-- 条组件 -->
+<!-- 工具栏功能栏 -->
+<script id="toolbarTemplate" type="x-tmpl-mustache">
+  <i class="iconfont icon-toolbar"></i>
+</script>
+
+<!-- 工具栏－放大 -->
+<script id="toolbarTemplate2" type="x-tmpl-mustache">
+  <i class="iconfont icon-zoomin"></i>
+</script>
+
+<!-- 工具栏－缩小 -->
+<script id="toolbarTemplate3" type="x-tmpl-mustache">
+  <i class="iconfont icon-zoomout"></i>
+</script>
+
+<!-- 工具栏－全图 -->
+<script id="toolbarTemplate4" type="x-tmpl-mustache">
+  <i class="iconfont icon-fullextent"></i>
+</script>
+
+<!-- 工具栏－测量距离 -->
+<script id="toolbarTemplate5" type="x-tmpl-mustache">
+  <i class="iconfont icon-measurelength"></i>
+</script>
+
+<!-- 工具栏－测量面积 -->
+<script id="toolbarTemplate6" type="x-tmpl-mustache">
+  <i class="iconfont icon-measurearea"></i>
+</script>
+
+<!-- 工具栏－清除 -->
+<script id="toolbarTemplate7" type="x-tmpl-mustache">
+  <i class="iconfont icon-clear"></i>
+</script>
+
+<!-- 工具栏－全屏 -->
+<script id="toolbarTemplate8" type="x-tmpl-mustache">
+  <i class="iconfont icon-fullscreen"></i>
+</script>
+
+<!-- 工具栏－导出 -->
+<script id="toolbarTemplate9" type="x-tmpl-mustache">
+  <i class="iconfont icon-print"></i>
+</script>
+
+<!-- 工具栏－指北针 -->
+<script id="toolbarTemplate10" type="x-tmpl-mustache">
+  <i class="iconfont icon-jiantou"></i>
+</script>
+
+<!-- 工具栏－拾取网格 -->
+<script id="toolbarTemplate11" type="x-tmpl-mustache">
+  <i class="fa fa-info-circle"></i>
+</script>
+
+<!-- 快速定位 -->
+<!-- 快速定位功能栏 -->
+<script id="quickPositionTemplate" type="x-tmpl-mustache">
+  <i class="iconfont icon-location"></i>
+</script>
+
+<!-- 快速定位－UI -->
+<script id="quickPositionTemplate2" type="x-tmpl-mustache">
+  <div id="quickPositionOverlay">
+    <div class="well with-header" style="width: 300px; margin-bottom: 0px; padding-bottom:5px;">
+      <div class="header bg-blue" style="text-align: center;">
+        快速定位
+      </div>
+      <div class="qp-panel-doc">
+        <!--<header>当前省：<span class="tips">广东省</span> <span class="m-change f-fr">更换</span></header>-->
+        <ul>
+          {{#FirstData}}
+          <li onclick="com.leto.map.basecomps.QuickPosition.loadSubMenuData({upcode:'{{id}}'});com.leto.map.basecomps.QuickPosition.onPositioning({geo:'{{geo}}'});return false;"><span>{{name}}</span></li>
+          {{/FirstData}}
+        </ul>
+        <ul id="quickPositionSecondData" class="qp-panel-area" style="height: 100px; overflow: auto;"></ul>
+        <div class="qp-panel-do">
+          <div>经纬度定位</div>
+          <div class="action">
+            <span><label>经度：</label><input type="text" class="input-sm" id="xInput"></span>
+            <span> <label>纬度：</label><input type="text" class="input-sm" id="yInput"></span>
+          </div>
+          <div class="m-btn" style="cursor: pointer;" onclick="com.leto.map.basecomps.QuickPosition.onPositioningByCoordinate({coordinate: [$('#xInput').val(), $('#yInput').val()]});return false;">快速定位</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- 快速定位－UI -->
+<script id="quickPositionTemplate2-1" type="x-tmpl-mustache">
+  {{#SecondData}}
+  <li onclick="com.leto.map.basecomps.QuickPosition.onPositioning({geo:'{{geo}}'});return false;"><span>{{name}}</span></li>
+  {{/SecondData}}
+</script>
+
+<!-- 图层图例 -->
+<!-- 图层图例功能栏 -->
+<script id="legendTemplate" type="x-tmpl-mustache">
+  <i class="iconfont icon-legend"></i>
+</script>
+<!-- 图层图例UI -->
+<script id="legendTemplate2" type="x-tmpl-mustache">
+  <ul class="uk-tab" data-uk-tab="{connect:'#legend-tab-content'}">
+    <li class="uk-active"><a href="#">图层</a></li>
+    <li><a href="#">图例</a></li>
+  </ul>
+  <ul id="legend-tab-content" class="uk-switcher uk-margin">
+    <li class="uk-active">
+      <div class="layerSwitcher"></div>
+    </li>
+    <li>
+
+    </li>
+  </ul>
+</script>
+
+
+<!-- 业务组件 -->
+<!-- 基本组件 -->
+
+

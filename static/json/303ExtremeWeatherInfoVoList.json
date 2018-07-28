@@ -1,0 +1,157 @@
+[
+    {
+        "stacode": "59284",
+        "staname": "花都",
+        "maxValue": 39.3,
+        "maxDataDate": "2017-08-22",
+        "ranking": 1,
+        "annualMaximum": 39.3,
+        "annualMaximumDate": "2005-07-18",
+        "data": [
+            {
+                "name": "重现期",
+                "value": 39.0
+            },
+            {
+                "name": "15年一遇",
+                "value": 39.0
+            },
+            {
+                "name": "30年一遇",
+                "value": 39.3
+            },
+            {
+                "name": "50年一遇",
+                "value": 39.5
+            },
+            {
+                "name": "100年一遇",
+                "value": 39.7
+            }
+        ]
+    },
+    {
+        "stacode": "59287",
+        "staname": "广州",
+        "maxValue": 38.6,
+        "maxDataDate": "2017-08-22",
+        "ranking": 6,
+        "annualMaximum": 39.1,
+        "annualMaximumDate": "2004-07-01",
+        "data": [
+            {
+                "name": "重现期",
+                "value": 39.0
+            },
+            {
+                "name": "15年一遇",
+                "value": 39.0
+            },
+            {
+                "name": "30年一遇",
+                "value": 39.3
+            },
+            {
+                "name": "50年一遇",
+                "value": 39.5
+            },
+            {
+                "name": "100年一遇",
+                "value": 39.7
+            }
+        ]
+    },
+    {
+        "stacode": "59285",
+        "staname": "从化",
+        "maxValue": 38.0,
+        "maxDataDate": "2017-08-22",
+        "ranking": 5,
+        "annualMaximum": 39.0,
+        "annualMaximumDate": "2005-07-18",
+        "data": [
+            {
+                "name": "重现期",
+                "value": 39.0
+            },
+            {
+                "name": "15年一遇",
+                "value": 39.0
+            },
+            {
+                "name": "30年一遇",
+                "value": 39.3
+            },
+            {
+                "name": "50年一遇",
+                "value": 39.5
+            },
+            {
+                "name": "100年一遇",
+                "value": 39.7
+            }
+        ]
+    },
+    {
+        "stacode": "59294",
+        "staname": "增城",
+        "maxValue": 38.2,  
+        "maxDataDate": "2017-08-22",
+        "ranking": 3,
+        "annualMaximum": 38.6,
+        "annualMaximumDate": "2004-07-02",
+        "data": [
+            {
+                "name": "重现期",
+                "value": 39.0
+            },
+            {
+                "name": "15年一遇",
+                "value": 39.0
+            },
+            {
+                "name": "30年一遇",
+                "value": 39.3
+            },
+            {
+                "name": "50年一遇",
+                "value": 39.5
+            },
+            {
+                "name": "100年一遇",
+                "value": 39.7
+            }
+        ]
+    },
+    {
+        "stacode": "59481",
+        "staname": "番禺",
+        "maxValue": 39.7,  		 
+        "maxDataDate": "2017-08-22",
+        "ranking": 1,
+        "annualMaximum": 38.6,
+        "annualMaximumDate": "2005-07-18",
+        "data": [
+            {
+                "name": "重现期",
+                "value": 39.0
+            },
+            {
+                "name": "15年一遇",
+                "value": 39.0
+            },
+            {
+                "name": "30年一遇",
+                "value": 39.3
+            },
+            {
+                "name": "50年一遇",
+                "value": 39.5
+            },
+            {
+                "name": "100年一遇",
+                "value": 39.7
+            }
+        ]
+    }
+]

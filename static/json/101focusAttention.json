@@ -1,0 +1,80 @@
+{
+    "climaticSurvey": [
+        {
+            "text": "平均气温",
+            "value": "18.2℃",
+            "iconFont": "icon-temperature-average",
+            "color": "#ff7e16"
+        },
+        {
+            "text": "最高气温",
+            "value": "22.5℃",
+            "iconFont": "icon-temperature-average",
+            "color": "#ec0505"
+        },
+        {
+            "text": "最低气温",
+            "value": "14.2℃",
+            "iconFont": "icon-temperature-reduce",
+            "color": "#1068d5"
+        },
+        {
+            "text": "降雨量",
+            "value": "0mm",
+            "iconFont": "icon-moderate-rain",
+            "color": "#2e9af3"
+        },
+        {
+            "text": "最大风速",
+            "value": "6.5m/s",
+            "iconFont": "icon-typhoon",
+            "color": "#3986e9"
+        },
+        {
+            "text": "日照时数",
+            "value": "9.9h",
+            "iconFont": "icon-sun",
+            "color": "#ff7e16"
+        }
+    ],
+    "extremeWeather": [
+        {
+            "text": "高温",
+            "value": "无",
+            "iconFont": "icon-temperature-average",
+            "color": "#ec0505"
+        },
+        {
+            "text": "暴雨",
+            "value": "无",
+            "iconFont": "icon-torrential-rain",
+            "color": "#3986e9"
+        },
+        {
+            "text": "低温",
+            "value": "无",
+            "iconFont": "icon-temperature-reduce",
+            "color": "#1068d5"
+        },
+        {
+            "text": "台风",
+            "value": "无",
+            "iconFont": "icon-typhoon",
+            "color": "#3986e9"
+        }
+    ],
+    "climateProcess": [
+        {
+            "text": "霜降风",
+            "value": "无",
+            "iconFont": "icon-snow",
+            "color": "#3986e9"
+        },
+        {
+            "text": "四季监测",
+            "value": "秋季",
+            "iconFont": "icon-calendar",
+            "color": "#ff7e16"
+        }
+    ]
+}

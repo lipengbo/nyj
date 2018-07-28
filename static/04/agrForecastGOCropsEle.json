@@ -1,0 +1,38 @@
+[
+    {
+        "text": "早稻",
+        "value": "er",
+        "validstartdate": "03-01",
+        "validenddate": "07-31",
+        "defaultstartdate": "2016-03-01",
+        "defaultenddate": "2016-07-31",
+        "defaultflag": 0
+    },
+    {
+        "text": "春花生",
+        "value": "sp",
+        "validstartdate": "03-01",
+        "validenddate": "07-31",
+        "defaultstartdate": "2016-03-01",
+        "defaultenddate": "2016-07-31",
+        "defaultflag": 0
+    },
+    {
+        "text": "晚稻",
+        "value": "sr",
+        "validstartdate": "07-21",
+        "validenddate": "11-30",
+        "defaultstartdate": "2016-09-04",
+        "defaultenddate": "2016-09-14",
+        "defaultflag": 1
+    },
+    {
+        "text": "秋花生",
+        "value": "ap",
+        "validstartdate": "07-21",
+        "validenddate": "11-30",
+        "defaultstartdate": "2016-09-04",
+        "defaultenddate": "2016-09-14",
+        "defaultflag": 0
+    }
+]

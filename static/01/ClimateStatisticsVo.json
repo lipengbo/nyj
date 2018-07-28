@@ -1,0 +1,121 @@
+{
+  "climateList": [
+    {
+      "stacode": "59284",
+      "staname": "花都",
+      "x": 113.217,
+      "y": 3.383,
+      "elevalue": 28,
+      "pervalue": 28.4,
+      "departure": -0.4,
+      "rankdesc": 32,
+      "rankasc": 25,
+      "rankyears": "58(1959-2016)",
+      "maxvalueyear": 2009,
+      "minvalueyear": 1961
+    },
+    {
+      "stacode": "59285",
+      "staname": "从化",
+      "x": 113.6,
+      "y": 23.567,
+      "elevalue": 26.9,
+      "pervalue": 27.7,
+      "departure": -0.8,
+      "rankdesc": 45,
+      "rankasc": 10,
+      "rankyears": "58(1959-2016)",
+      "maxvalueyear": 1963,
+      "minvalueyear": 1961
+    },
+    {
+      "stacode": "59287",
+      "staname": "广州",
+      "x": 113.483,
+      "y": 17,
+      "elevalue": 27.1,
+      "pervalue": 28.3,
+      "departure": -1.2,
+      "rankdesc": 53,
+      "rankasc": 14,
+      "rankyears": "66(1951-2016)",
+      "maxvalueyear": 1990,
+      "minvalueyear": 1961
+    },
+    {
+      "stacode": "59294",
+      "staname": "增城",
+      "x": 113.833,
+      "y": 3,
+      "elevalue": 27.6,
+      "pervalue": 27.6,
+      "departure": 0,
+      "rankdesc": 25,
+      "rankasc": 31,
+      "rankyears": "58(1959-2016)",
+      "maxvalueyear": 1963,
+      "minvalueyear": 1961
+    },
+    {
+      "stacode": "59481",
+      "staname": "番禺",
+      "x": 113.317,
+      "y": 2.933,
+      "elevalue": 27.9,
+      "pervalue": 28.4,
+      "departure": -0.5,
+      "rankdesc": 32,
+      "rankasc": 25,
+      "rankyears": "58(1959-2016)",
+      "maxvalueyear": 2009,
+      "minvalueyear": 1973
+    }
+  ],
+  "statisticsList": [
+    {
+      "staname": "平均值",
+      "x": 0,
+      "y": 0,
+      "elevalue": 27.5,
+      "pervalue": 28.1,
+      "eledate": "-9999",
+      "perdate": "-9999",
+      "departure": -0.6,
+      "rankdesc": 43,
+      "rankasc": 23,
+      "rankyears": "66(1951-2016)",
+      "maxvalueyear": 2009,
+      "minvalueyear": 1961
+    },
+    {
+      "staname": "最大值",
+      "x": 0,
+      "y": 0,
+      "elevalue": 28,
+      "pervalue": 28.4,
+      "eledate": "-9999",
+      "perdate": "-9999",
+      "departure": 0,
+      "rankdesc": -9999,
+      "rankasc": -9999,
+      "rankyears": "-9999",
+      "maxvalueyear": -9999,
+      "minvalueyear": -9999
+    },
+    {
+      "staname": "最小值",
+      "x": 0,
+      "y": 0,
+      "elevalue": 26.9,
+      "pervalue": 27.6,
+      "eledate": "-9999",
+      "perdate": "-9999",
+      "departure": -1.2,
+      "rankdesc": -9999,
+      "rankasc": -9999,
+      "rankyears": "-9999",
+      "maxvalueyear": -9999,
+      "minvalueyear": -9999
+    }
+  ]
+}

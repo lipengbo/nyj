@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<TileInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MapBounds>
+   <Left>105.13916</Left>
+    <Bottom>27.9944</Bottom>
+    <Right>110.34668</Right>
+    <Top>32.30571</Top>
+  </MapBounds>
+  <TileSize>
+    <Width>256</Width>
+    <Height>256</Height>
+  </TileSize>
+  <CoordSys>EPSG:4326</CoordSys>
+  <Resolutions>
+    <double>1.4062500000002376</double>
+<double>0.70312500000011879</double>
+<double>0.3515625000000594</double>
+<double>0.1757812500000297</double>
+<double>0.087890625000014849</double>
+<double>0.043945312500007425</double>
+<double>0.021972656250003712</double>
+<double>0.010986328125001856</double>
+<double>0.0054931640625009281</double>
+<double>0.002746582031250464</double>
+<double>0.001373291015625232</double>
+<double>0.00068664550781261601</double>
+<double>0.000343322753906308</double>
+<double>0.000171661376953154</double>
+<double>8.5830688476577001e-005</double>
+<double>4.2915344238288501e-005</double>
+<double>2.145767211914425e-005</double>
+<double>1.0728836059572125e-005</double>
+<double>5.3644180297860626e-006</double>
+<double>2.6822090148930313e-006</double>
+<double>1.3411045074465156e-006</double>
+  </Resolutions>
+  <ImageFormat>png</ImageFormat>
+  <DefaultCenter>
+    <X>106.541680</X>
+    <Y>29.57734</Y>
+  </DefaultCenter>
+  <TileOrigin>
+    <X>-180</X>
+    <Y>90</Y>
+  </TileOrigin>
+  <DefaultZoom>11</DefaultZoom>
+  <TileType>PGIS_TDT</TileType>
+  <SingleFile>true</SingleFile>
+  <Unit>pixel</Unit>
+  <StartLevel>1</StartLevel>
+  <EndLevel>20</EndLevel>
+  <Offseted>false</Offseted>
+</TileInfo>

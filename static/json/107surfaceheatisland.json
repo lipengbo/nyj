@@ -1,0 +1,12 @@
+[
+    {
+        "imageUrl": "static/images/heatIsland/temperature20170605.png",
+        "description": "气温热岛",
+        "ddate": "2017-06-05"
+    },
+    {
+        "imageUrl": "static/images/heatIsland/temperature20170604.png",
+        "description": "气温热岛",
+        "ddate": "2017-06-04"
+    }
+]

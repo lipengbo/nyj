@@ -1,0 +1,61 @@
+{
+    "title": "各区最大小时雨量",
+    "data": [
+        {
+            "region": "广州市",
+            "stacode": "G3229",
+            "staname": "黄埔区九龙镇二小",
+            "rainfall": 97.7,
+            "ddatetime": "2017-05-07 06:00:00"
+        },
+        {
+            "region": "天河区",
+            "stacode": "G3221",
+            "staname": "天河区石牌街中山大道西（华师附中）",
+            "rainfall": 64.7,
+            "ddatetime": "2017-05-07 10:00:00"
+        },
+        {
+            "region": "黄埔区",
+            "stacode": "G3229",
+            "staname": "黄埔区九龙镇二小",
+            "rainfall": 97.7,
+            "ddatetime": "2017-05-07 06:00:00"
+        },
+        {
+            "region": "花都区",
+            "stacode": "G1024",
+            "staname": "花都区花东镇花都大道北（镇政府）",
+            "rainfall": 94.1,
+            "ddatetime": "2017-05-07 04:00:00"
+        },
+        {
+            "region": "番禺区",
+            "stacode": "G1071",
+            "staname": "番禺区南村镇梅山村（南村中学）",
+            "rainfall": 90.4,
+            "ddatetime": "2017-05-07 12:00:00"
+        },
+        {
+            "region": "城区",
+            "stacode": "G3401",
+            "staname": "白云区钟落潭马洞村（仲恺农学院）",
+            "rainfall": 81.6,
+            "ddatetime": "2017-05-07 06:00:00"
+        },
+        {
+            "region": "增城区",
+            "stacode": "G1022",
+            "staname": "增城中新镇（镇政府）",
+            "rainfall": 75.0,
+            "ddatetime": "2017-05-07 7:00:00"
+        },
+        {
+            "region": "海珠区",
+            "stacode": "G3442",
+            "staname": "海珠区琶洲街黄埔村（初级中学）",
+            "rainfall": 67.5,
+            "ddatetime": "2017-05-07 10:00:00"
+        }
+    ]
+}

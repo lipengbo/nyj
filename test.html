@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/js/ol3.20.1/ol.css" type="text/css" />
+    <script type="text/javascript" src="static/js/ol3.20.1/ol.js"></script>
+</head>
+<body>
+<div id="map" style="width:600px;height:300px;"></div>
+<script>
+/*  new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        title: "天地图路网",
+        source: new ol.source.XYZ({
+          url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
+        })
+      }),
+      new ol.layer.Tile({
+        title: "天地图文字标注",
+        source: new ol.source.XYZ({
+          url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
+        })
+      }),
+      /!*new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          tileGrid: tilegrid,
+          maxZoom: 5,
+          projection: projection,
+          tileSize: tileSize,
+          url: urlTemplate,
+          wrapX: true
+        })
+      })*!/
+    ],
+    view: new ol.View({
+      // center: ol.proj.transform([114.4, 23.3], 'EPSG:4326', 'EPSG:3857'),
+      // zoom: 7
+      center: [113.5, 23],//[13247163, 2615172],
+      projection: 'EPSG:4326',
+    })
+  });*/
+var projection=ol.proj.get('EPSG:4326');//设置坐标系;
+var view = new ol.View({
+  projection:projection,
+  center:[113.9672493,22.60450238],
+  zoom: 18,
+  minZoom:10
+  /*	extent:extent,*/
+  /*	rotation:-1.5707963*/
+});
+var map = new ol.Map({
+  layers: [
+    new ol.layer.Tile({
+      title: "天地图路网",
+      source: new ol.source.XYZ({
+        url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
+      })
+    }),
+    new ol.layer.Tile({
+      title: "天地图文字标注",
+      source: new ol.source.XYZ({
+        url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
+      })
+    }),
+  ],
+  target: 'map',
+  view: view
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+[{
+        "type": "title",
+        "dataType": "text",
+        "data": "2017年8月广州市气候影响评价",
+        "font": "华文行楷",
+        "fontSize": 32,
+        "fontColor": "#FF0000",
+        "bold": false
+    },
+    {
+        "type": "summary",
+        "dataType": "text",
+        "data": "【内容提要】  综合评价广州市x月气候条件属xx年景。全市月平均气温29.4℃,较常年同期偏高0.7℃，月降水269.9毫米，较常年同期偏多20%。",
+        "font": "宋体",
+        "fontSize": 18,
+        "fontColor": "#000000",
+        "bold": true
+    },
+    {
+        "type": "contentHeader",
+        "dataType": "text",
+        "data": "一、基本气候概况",
+        "font": "宋体",
+        "fontSize": 20,
+        "fontColor": "#FF00FF",
+        "bold": true
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "1.气温",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "8月全市平均气温29.4℃，较常年同期偏高0.7℃。各区平均气温在28.3℃（从化）～30.0℃（番禺）之间；除了从化较常年偏低0.1℃，其余地区较常年偏高0.8℃～1.1℃（若不好分类，可以把各站的情况列出来），增城平均气温为当地历史同期第3高（将出现历史前3名的情况点出来）（图1，图2，表1）。",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "picture",
+        "picList": [{
+                "url": "static/images/climaticevaluation/2017/201708t.png",
+                "picTitle": "图1  广州市8月平均气温（℃）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            },
+            {
+                "url": "static/images/climaticevaluation/2017/201708tAnomaly.png",
+                "picTitle": "图2  广州市8月平均气温距平（℃）",
+                "titleFont": "宋体",
+                "titleFontSize": 10.5,
+                "titleFontbold": false,
+                "picWidth": 330,
+                "picHeight": 376
+            }
+        ]
+    },
+    {
+        "type": "subContentHeader",
+        "dataType": "text",
+        "data": "3.日照",
+        "font": "仿宋_GB2312",
+        "fontSize": 16,
+        "fontColor": "#0000FF",
+        "bold": true
+    },
+    {
+        "type": "content",
+        "dataType": "text",
+        "data": "8月全市平均日照时数212.2小时，较常年同期偏多1成。各区日照时数为202.6（黄埔）～233.1（花都）小时。与常年同期相比，各区偏多1～2成（若不好分类，可以把各站的情况列出来）（表1）。（将出现历史前3名的情况点出来）",
+        "font": "宋体",
+        "fontSize": 16,
+        "fontColor": "#000000",
+        "bold": false
+    },
+    {
+        "type": "content",
+        "dataType": "dataTable",
+        "climaticElementTableVo": {
+            "title": "表1 2017年8月广州市气象要素一览表",
+            "titleFont": "宋体",
+            "titleFontSize": 12.0,
+            "titleFontbold": true,
+            "dataList": [{
+                    "staname": "花都",
+                    "t": 29.9,
+                    "tAnomaly": 0.9,
+                    "r": 258.5,
+                    "rAnomaly": 25.0,
+                    "rainDays": 17,
+                    "rainDaysAnomaly": 1.2,
+                    "s": 233.1,
+                    "sAnomaly": 10.0,
+                    "tMax": 39.3,
+                    "tMaxDate": "8月22日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "从化",
+                    "t": 28.3,
+                    "tAnomaly": -0.1,
+                    "r": 175.5,
+                    "rAnomaly": -19.0,
+                    "rainDays": 16.0,
+                    "rainDaysAnomaly": -1.2,
+                    "s": 204.6,
+                    "sAnomaly": 15.0,
+                    "tMax": 38.0,
+                    "tMaxDate": "8月21日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "天河",
+                    "t": 29.7,
+                    "tAnomaly": 0.9,
+                    "r": 431.4,
+                    "rAnomaly": 85.0,
+                    "rainDays": 14.0,
+                    "rainDaysAnomaly": -2,
+                    "s": "--",
+                    "sAnomaly": "--",
+                    "tMax": 38.6,
+                    "tMaxDate": "8月21日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "增城",
+                    "t": 29.0,
+                    "tAnomaly": 0.8,
+                    "r": 193.1,
+                    "rAnomaly": -24.0,
+                    "rainDays": 17.0,
+                    "rainDaysAnomaly": -0.5,
+                    "s": 204.7,
+                    "sAnomaly": 6.0,
+                    "tMax": 38.2,
+                    "tMaxDate": "8月21日",
+                    "tMin": "",
+                    "tMinDate": ""
+                },
+                {
+                    "staname": "番禺",
+                    "t": 30.0,
+                    "tAnomaly": 1.1,
+                    "r": 290.5,
+                    "rAnomaly": 33.0,
+                    "rainDays": 15.0,
+                    "rainDaysAnomaly": -1.6,
+                    "s": 206.5,
+                    "sAnomaly": 14.0,
+                    "tMax": 39.7,
+                    "tMaxDate": "8月22日",
+                    "tMin": "",
+                    "tMinDate": ""
+                }
+            ],
+            "description": "注:建站年限比较短的不计算距平值",
+            "descriptionFont": "宋体",
+            "descriptionFontSize": 10.5,
+            "descriptionFontbold": false
+        }
+    }
+]

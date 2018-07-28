@@ -1,0 +1,25 @@
+{
+    "items": [
+        {
+            "name": "春节",
+            "code": "SpringFestival"
+        },
+        {
+            "name": "元宵",
+            "code": "theLanternFestival"
+        },
+        {
+            "name": "国际气象日",
+            "code": "InternationalMeteorologicalDay"
+        },
+        {
+            "name": "清明",
+            "code": "PureBrightness"
+        },
+        {
+            "name": "五一",
+            "code": "theMayDay"
+        }
+    ],
+    "selectedCode": "SpringFestival"
+}
