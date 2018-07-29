@@ -43,10 +43,10 @@ export default new Vuex.Store({
             var promise=axios.all([getServicePath(), getKnowledgePath()]);
                 promise.then(axios.spread(function(serviceData, knowledgeData) {
                     serviceData.data.forEach(function(e) {
-                        childrenService.push({ title: e.text, name: e.code, path: "/service/" + e.code });
+                        childrenService.push({ title: e.text, name: e.code, path: "/service/" + e.code,meta:{title:e.text}});
                     });
                     knowledgeData.data.forEach(function(e) {
-                        childrenKnowledge.push({ title: e.text, name: e.code, path: "/knowledge/" + e.code });
+                        childrenKnowledge.push({ title: e.text, name: e.code, path: "/knowledge/" + e.code,meta:{title:e.text}});
                     });
                     menus["service"] = [{ title: "服务产品", path: "service", icon: "", children: childrenService }];
                     menus["knowledge"] = [{ title: "知识服务", path: "knowledge", icon: "", children: childrenKnowledge }];

@@ -151,7 +151,7 @@
     margin: 0 auto;
     padding: 0;
     width: 1200px;
-    overflow-x:hidden;
+    overflow:hidden;
     margin-bottom:8px;
     display:block;
     flex:none;

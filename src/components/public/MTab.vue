@@ -1,6 +1,6 @@
 <template>
   <div class="u-mtab" v-if="data">
-    <el-tabs v-model="activeName" @tab-click="handleClick" v-if="data&&data.length>0">
+    <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick" v-if="data&&data.length>0">
       <el-tab-pane :label="item.text" :name="item.value" v-for="item in data" class="m-tab-pane">
         <el-carousel v-if="item.url&&item.url.length>0" height="221px" trigger="click" :initial-index="item.defaultIndex" :autoplay="false"
                      indicator-position="none">
@@ -66,6 +66,17 @@
 </style>
 <style>
   .u-mtab .el-tabs__header{
-    margin-bottom:5px;
+    margin-bottom:0px;
+  }
+  .u-mtab .el-tabs__item{
+    font-size:12px;
+    font-weight:600;
+    padding:0 15px;
+  }
+  .u-mtab .el-tabs__item:nth-child(2){
+    padding-left:15px !important;
+  }
+  .u-mtab .el-tabs--border-card>.el-tabs__content{
+    padding:0;
   }
 </style>

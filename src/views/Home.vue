@@ -7,7 +7,8 @@
     <div class="m-map">
       <homemap :start="weekStartDate" :end="weekEndDate" @change="changeDate"></homemap>
     </div>
-    <div class="m-home-list">
+    <div class="m-home-list" style="background:white;">
+      <div class="m-home-list-title">农业气候条件概况</div>
       <el-row :gutter="20">
         <el-col :span="8">
           <div class="m-home-list-item" v-if="muleteJson">
@@ -156,5 +157,19 @@
   .m-map {
     width: 100%;
     height: 630px;
+  }
+  .m-home-list-title{
+    height: 40px;
+    margin-top: 10px;
+    color: #0E6BAE;
+    font-weight: bold;
+    border-bottom: 1px solid #dddddd;
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom:5px;
   }
 </style>

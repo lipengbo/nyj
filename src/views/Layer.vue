@@ -99,4 +99,7 @@
   .el-main {
     padding: 10px;
   }
+  .el-menu{
+    font-weight:700
+  }
 </style>

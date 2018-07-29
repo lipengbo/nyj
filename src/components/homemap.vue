@@ -1,7 +1,7 @@
 <template>
   <div style="width:100%;height:100%;position:relative;">
     <div class="homemap_select">
-      <cityselect></cityselect>
+      <cityselect style="width:80px;height:40px;" @change="bj"></cityselect>
       <div class="opt">
         <span class="lf" title="上一周" @click="preWeek"><i class="el-icon-arrow-left"></i></span>
         <span class="rt" title="下一周" @click="nextWeek"><i class="el-icon-arrow-right"></i></span>
@@ -16,6 +16,7 @@
   import HomeMapService from '@/service/HomeMap';
   import cityselect from './cityselect';
   import dayjs from 'dayjs';
+  import areaService from '@/service/areaService'
   export default {
     name: "homemap",
     props:['start','end'],
@@ -48,6 +49,12 @@
       },
       download:function(){
         this.mapService.download(dayjs(this.startDate).format('YYYY.MM.DD')+"-"+dayjs(this.startDate).format('YYYY.MM.DD'));
+      },
+      bj:function(area){
+        this.mapService.bjLayer.getSource().clear();
+        areaService.getBj(area).then(data=>{
+          this.mapService.drawArea(data[0].pgjson);
+        })
       }
     }
   }

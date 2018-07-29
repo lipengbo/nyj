@@ -61,7 +61,13 @@ class HomeMap {
     // 绘制好的标绘符号，添加到FeatureOverlay显示。
     var drawOverlay = this.drawOverlay;
     drawOverlay.setStyle(drawStyle);
-    drawOverlay.setMap(this.map);
+    this.bjLayer=new ol.layer.Vector({
+        source: new ol.source.Vector()
+      }
+    );
+    this.bjLayer.setStyle( new ol.style.Style({stroke:new ol.style.Stroke({color: '#409EFF', width: 3})}));
+    this.map.addLayer(this.bjLayer);
+    this.map.addLayer(drawOverlay);
   }
   _drawOverlay(solorJson) {
     var drawOverlay = this.drawOverlay;
@@ -135,6 +141,17 @@ class HomeMap {
       a.click();
       a.remove();
     })
+  }
+
+  drawArea(pgjson){
+    //this.bjLayer.getSource().clear();
+    var geojson =pgjson;
+    var geoObject = JSON.parse(geojson);
+    var features  = (new ol.format.GeoJSON()).readFeatures(geoObject);
+    var geometry = features[0].getGeometry();//.transform('EPSG:4326', 'EPSG:3857');
+    this.map.getView().fit(geometry.getExtent(), this.map.getSize());
+    this.bjLayer.getSource().addFeatures(features);
+    return features;
   }
 }
 
