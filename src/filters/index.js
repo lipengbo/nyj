@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 // value 可选 new Date、时间戳、"2016-08-05 14:22:09" 时间格式
 // fmt 可选 以下格式(以及位置调换)
 // yyyy-MM-dd hh:mm:ss
@@ -29,7 +30,9 @@ function formatDate(value, fmt) {
     }
     return fmt
 }
-
+function date(val,fmt){
+  return dayjs(val).format(fmt);
+}
 
 function getMtHeaderTitle(defaultActive, menus) {
     var arr = defaultActive.split("/");
@@ -48,6 +51,5 @@ function getMtHeaderTitle(defaultActive, menus) {
     });
     return str;
 }
-//面包屑导航
 
 export { getMtHeaderTitle, formatDate }

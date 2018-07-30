@@ -23,7 +23,7 @@
             province:{},
             citys:[],
             areas:[],
-            current:null,
+            current:{},
             isOpen:false,
           }
         },

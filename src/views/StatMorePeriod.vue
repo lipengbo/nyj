@@ -104,10 +104,10 @@
         var config = require('../lib/config.js');
         var baseUrl = config.baseUrl;
         import tool from '../lib/tool.js';
-        var numArr = [];
+        /*var numArr = [];
         for (var i = -9999; i < 9999; i++) {
                 numArr.push(i);
-        }
+        }*/
 
         var currentYear = new Date().getFullYear();
         var years = [];
@@ -123,7 +123,7 @@
                         selectedCondition: "35"
                 },
                 {
-                        data: numArr,
+                        data: [-9999],
                         selectedCondition: "-9999"
                 },
                 {

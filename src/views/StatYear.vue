@@ -5,7 +5,7 @@
         <ul v-if="eles" class="m-eles">
           <label class="u-label">要素 ：</label>
           <li v-for="item in eles" :data-value="item.value" :class="selectedEle==item.value?'f-active':''"
-              @click="changeEle">{{item.text}}
+              @click="changeEle(item.value)">{{item.text}}
           </li>
         </ul>
       </div>
@@ -49,7 +49,7 @@
               <el-option v-for="item in ups" :key="item" :label="item" :value="item">
               </el-option>
             </el-select>
-            &gt;=
+            -
             <el-select :disabled="!selectedCqFlag" v-model="selectedDown" placeholder="请选择" size="mini"
                        style="width:90px;" v-if="downs">
               <el-option v-for="item in downs" :key="item" :label="item" :value="item">
@@ -64,7 +64,7 @@
             </el-select>
             <el-button type="primary" size="mini" @click="showDialogTable">站点</el-button>
             <el-button type="primary" size="mini" @click="changeOptions">数据</el-button>
-            <el-button type="primary" size="mini">等值线图</el-button>
+            <el-button type="primary" size="mini" @click="showDzx">等值线图</el-button>
           </li>
         </ul>
       </div>
@@ -88,18 +88,20 @@
   const Qs = require('query-string');
   var config = require('../lib/config.js');
   var baseUrl = config.baseUrl;
-  var numArr = [];
+/*
+  var numArr = [-9999,];
   for (var i = -9999; i < 9999; i++) {
     numArr.push(i);
   }
+*/
 
   var currentYear = new Date().getFullYear();
   var syears = [],
     eyears = [];
-  for (var i = currentYear - 11; i > 1995; i--) {
+  for (var i = currentYear - 11+1; i > 1995; i--) {
     syears.push(i);
   }
-  for (var i = currentYear - 1; i > 1995; i--) {
+  for (var i = currentYear - 1+1; i > 1995; i--) {
     eyears.push(i);
   }
 
@@ -112,7 +114,7 @@
       selectedCondition: "35"
     },
     {
-      data: numArr,
+      data: [-9999],
       selectedCondition: "-9999"
     },
     {
@@ -382,8 +384,8 @@
           this.selectedDown = conditions[9].selectedCondition;
         }
       },
-      changeEle: function (e) {
-        this.selectedEle = e.target.dataset.value
+      changeEle: function (val) {
+        this.selectedEle =val;
         this.getStat();
       },
       changeSelectedDataType: function (e) {
@@ -396,6 +398,9 @@
       },
       hideDialogTable() {
         this.dialogTableVisible = false;
+      },
+      showDzx(){
+
       },
       handlerselectedStatistic(e) {
         var value = e.target.dataset.value;

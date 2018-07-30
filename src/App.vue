@@ -155,7 +155,7 @@
     margin-bottom:8px;
     display:block;
     flex:none;
-    min-height:calc(100vh - 95px - 55px)
+    min-height:calc(100vh - 95px - 68px)
   }
 
   .homefooter {

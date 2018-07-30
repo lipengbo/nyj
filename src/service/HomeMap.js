@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import config from '@/lib/config';
 import Qs from 'query-string';
 import html2canvas from 'html2canvas';
+import mapService from './mapService'
 class HomeMap {
   constructor(elm) {
     this.map = null;
@@ -12,52 +13,11 @@ class HomeMap {
     this.init(elm);
   }
   init(elm) {
-    var projection = ol.proj.get('EPSG:4326');
-    var tileSize = 256;
-    var urlTemplate = 'http://192.168.0.6:8399/arcgis/rest/services/gd/MapServer/tile/{z}/{y}/{x}';
-    var tilegrid = new ol.tilegrid.TileGrid({
-      resolutions: [0.010707574526236257, 0.0071383830174908385, 0.0035691915087454193, 0.0017845957543727096, 7.138383017490838E-4],
-      origin: [-400.0, 400],
-      extent: [105.309, 18.697, 122.822, 27.336]
-    });
-    this.map = new ol.Map({
-      target: elm,
-      layers: [
-        new ol.layer.Tile({
-          title: "天地图路网",
-          source: new ol.source.XYZ({
-            url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
-          })
-        }),
-        new ol.layer.Tile({
-          title: "天地图文字标注",
-          source: new ol.source.XYZ({
-            url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
-          })
-        }),
-        /*new ol.layer.Tile({
-          source: new ol.source.XYZ({
-            tileGrid: tilegrid,
-            maxZoom: 5,
-            projection: projection,
-            tileSize: tileSize,
-            url: urlTemplate,
-            wrapX: true
-          })
-        })*/
-      ],
-      view: new ol.View({
-        projection:projection,
-        center:[113.5,23],
-        zoom: 8,
-      })
-    });
-
+    this.map=mapService.createMap({target:elm});
     // 设置标绘符号显示的默认样式
     var stroke = new ol.style.Stroke({color: '#FF0000', width: 2});
     var fill = new ol.style.Fill({color: 'rgba(0,255,0,0.4)'});
     var drawStyle = new ol.style.Style({fill: fill, stroke: stroke});
-
     // 绘制好的标绘符号，添加到FeatureOverlay显示。
     var drawOverlay = this.drawOverlay;
     drawOverlay.setStyle(drawStyle);
