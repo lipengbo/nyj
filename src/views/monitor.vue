@@ -1,26 +1,31 @@
 <template>
   <div style="width:100%" class="monitor">
       <div id="mapf" style="height:100%;width:100%;"></div>
-    <div class="monitor_panel" v-show="isPanelShow">
-      <div class="panel_title">{{panelData.name}}</div>
-      <div class="panel_content">
-        <h3>气候条件概述</h3>
-        <p>{{panelData.climatesurvey}}</p>
-        <br/>
-        <h3>作物生长概述</h3>
-        <p>{{panelData.cropsurvey}}</p>
-        <br/>
-        <h3>农事活动建议</h3>
-        <p>{{panelData.farmingsurvey}}</p>
-        <br/>
-        <h3>附件</h3>
-        <p>
-          <img v-for="item in panelData.attachment" :src="item"/>
-        </p>
-      </div>
-      <div class="opt">
-        <i class="btn el-icon-arrow-left" @click="pre(panelData.id)"></i>
-        <i class="btn el-icon-arrow-right" @click="next(panelData.id)"></i>
+    <div class="monitor_panel" :class="{'close':!isPanelShow}">
+      <div style="position:relative;height:100%;">
+        <div class="closeBtn" @click="isPanelShow=!isPanelShow"><i :class="{'el-icon-arrow-right':isPanelShow,'el-icon-arrow-left':!isPanelShow}"></i></div>
+        <div class="panel_title">{{panelData.name}}</div>
+        <div class="panel_content" v-bar>
+          <div>
+            <h3>气候条件概述</h3>
+            <p>{{panelData.climatesurvey}}</p>
+            <br/>
+            <h3>作物生长概述</h3>
+            <p>{{panelData.cropsurvey}}</p>
+            <br/>
+            <h3>农事活动建议</h3>
+            <p>{{panelData.farmingsurvey}}</p>
+            <br/>
+            <h3>附件</h3>
+            <p>
+              <img v-for="item in panelData.attachment" :src="item"/>
+            </p>
+          </div>
+        </div>
+        <div class="opt">
+          <i class="btn el-icon-arrow-left" @click="pre(panelData.id)"></i>
+          <i class="btn el-icon-arrow-right" @click="next(panelData.id)"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -70,7 +75,10 @@
         }
         datas.forEach(function(data){
           _self.overlays.add(data);
-        })
+        });
+        if(_self.overlays.getArray()[0]){
+          this.panelData=_self.overlays.getArray()[0].get("clients");
+        }
       },
       showPanel(overlay){
         if(overlay){
@@ -104,6 +112,7 @@
     background:white;
     height:600px;
     position:relative;
+    overflow:hidden;
   }
   .monitor_panel{
     width:240px;
@@ -112,7 +121,11 @@
     top:0;
     z-index:3;
     position:absolute;
-    background:rgba(255,255,255,0.78)
+    background:rgba(255,255,255,0.78);
+    transition:right 0.75s
+  }
+  .monitor_panel.close{
+    right:-240px;
   }
   .panel_title{
     background:#186da3;
@@ -136,6 +149,7 @@
   }
   .panel_content p{
     font-size:13px;
+    line-height:150%;
   }
   .panel_content img{
     width:98px;
@@ -144,7 +158,6 @@
   .opt{
     bottom:0;
     text-align: center;
-    padding-bottom: 10px;
     color:#606266;
     font-size:22px;
     position:absolute;
@@ -155,10 +168,22 @@
   .btn{
     padding:8px 15px;
     cursor:pointer;
-    margin:10px;
+    margin:2px 10px;
   }
   .btn:hover{
     color:#409EFF;
+  }
+  .closeBtn{
+    position:absolute;
+    right:100%;
+    top:50%;
+    height:40px;
+    margin-top:-20px;
+    background:white;
+    text-align: center;
+    line-height:40px;
+    font-weight: 700;
+    cursor: pointer;
   }
 </style>
 <style>

@@ -4,7 +4,8 @@ import 'es6-promise/auto'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import EasyBar from "easy-bar";
+Vue.use(EasyBar);
 Vue.config.productionTip = false
 
 import ElementUI from 'element-ui'

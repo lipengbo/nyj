@@ -4,9 +4,9 @@
 2. service 提供一些服务方法
 3. lib/config.js 配置信息,主要修改对接接口的地址
 4. lib/axios.js 以后拦截器等功能都在这里，对接接口时导入这个文件(另目前axios已经作为变量了，具体代码参考main.js)
-##注
-1.日期格式化工具引入了dayjs
-2.openlayer使用3.20.1版本(全局的方式引入)
+## 注
+1. 日期格式化工具引入了dayjs
+2. openlayer使用3.20.1版本(全局的方式引入)
 
 ## Build Setup
 

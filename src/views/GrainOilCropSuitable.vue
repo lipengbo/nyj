@@ -10,7 +10,7 @@
                         <div class="u-bar u-white f-bb1 ">
                                 <label for="m-element" class="u-label">日期 ：</label>
                                 <ul>
-        
+
                                         <li style="margin-right:0;">
                                                 <el-date-picker format="yyyy-MM-dd" size="mini" v-model="sDate" type="date" placeholder="选择日期" @change="sDateChange">
                                                 </el-date-picker>
@@ -34,8 +34,8 @@
                                                 <el-button type="success" size="mini" @click="showDialogTable">数据</el-button>
                                         </li>
                                 </ul>
-        
-        
+
+
                         </div>
                 </div>
                 <div class="m-list u-white" style="padding:5px;">
@@ -62,7 +62,7 @@
                                                                         <img :src="item.thumbnail" />
                                                                 </swiper-slide>
                                                         </swiper>
-        
+
                                                 </el-tab-pane>
                                                 <el-tab-pane label="矢量图" name="second">配置管理</el-tab-pane>
                                         </el-tabs>
@@ -234,6 +234,8 @@
                                 this.eDate = obj.defaultenddate;
                                 var _this = this;
                                 this.$nextTick(() => {
+
+
                                         _this.doQuery()
                                 });
                         },
@@ -257,7 +259,7 @@
                                         _this.$refs.swiperThumb.swiper.autoplay.stop();
                                         _this.$refs.swiperDesc.swiper.autoplay.stop();
                                 }
-        
+
                         },
                         getAgrForecastImageVosByQueryVo() {
                                 var axios = this.$axios,
@@ -273,7 +275,7 @@
                                                 e.thumbnail = "/static/images/" + e.thumbnailurl;
                                                 e.desc = e.mark;
                                         });
-        
+
                                 });
                         },
                         getAgrForecastInfoStatisticsVoByQueryVo() {
@@ -312,8 +314,8 @@
                                                         _this.tableColumns = tableColumns;
                                                 }
                                         });
-        
-        
+
+
                                         _this.statisticsVo.statisticsList.forEach(function(e, index) {
                                                 var obj = {
                                                         stacode: e.stacode,
@@ -321,10 +323,10 @@
                                                 };
                                                 e.values.forEach(function(v) {
                                                         obj[v.date] = v.value;
-        
+
                                                 });
                                                 tableList.push(obj);
-        
+
                                         });
                                         _this.tableList = tableList;
                                 });
@@ -348,17 +350,17 @@
         .el-select {
                 width: 100px;
         }
-        
+
         .m-image-tab {
                 width: 100%;
                 height: 700px;
         }
-        
+
         .m-image-tab .m-left {
                 display: inline-block;
                 width: 700px;
         }
-        
+
         .m-image-tab .m-right {
                 display: inline-block;
                 float: right;
@@ -367,21 +369,21 @@
                 height: 100%;
                 overflow: hidden;
         }
-        
+
         .m-image-tab .m-right ul li {
                 padding: 5px;
         }
-        
+
         .m-image-tab .m-right ul {
                 height: calc(100vh - 40px);
                 overflow-y: auto;
         }
-        
+
         .m-title {
                 height: 38px;
                 line-height: 38px;
         }
-        
+
         .m-title::before {
                 top: 13px;
         }

@@ -1,3 +1,4 @@
+import $ from 'jquery'
 var tileSize = 256;
 var urlTemplate = 'http://192.168.0.6:8399/arcgis/rest/services/gd/MapServer/tile/{z}/{y}/{x}';
 var tilegrid = new ol.tilegrid.TileGrid({
@@ -26,8 +27,8 @@ class OverlayCollection {
     };
     this.clickCall=opt.click;
     var overlaycontainer = this.map.getViewport().getElementsByClassName('ol-overlaycontainer-stopevent')[0];
-    jq(overlaycontainer).on("click","ol-popup",function(e){
-      var id=e.target.getAttribute("data-id");
+    $(overlaycontainer).on("click",".ol-popup",function(e){
+      var id=this.getAttribute("data-id");
       _self.clickCall&&_self.clickCall(_self.getById(id));
     })
   }
@@ -74,31 +75,6 @@ class OverlayCollection {
     }
   }
 }
-
-//事件委托
-function jq(dom) {
-  return {
-    on: function (eventType, element, callback) {
-      if (document.addEventListener) {
-        dom.addEventListener(eventType, function (e) {
-          var ev = e || window.event;
-          var target = ev.target || ev.srcElement;
-          if (target.className.toLowerCase() === element) {
-            callback.call(target, ev);
-          }
-        }, false);
-      } else {
-        document.attachEvent("on" + eventType, function (e) {
-          var ev = e || window.event;
-          var target = ev.target || ev.srcElement
-          if (target.className.toLowerCase() === element) {
-            callback.call(target, ev);
-          }
-        });
-      }
-    }
-  }
-};
 export default {
   createMap(opt) {
     opt = opt || {};
