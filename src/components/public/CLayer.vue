@@ -42,10 +42,6 @@
 </template>
 
 <script>
-        import {
-                mapState,
-                mapActions
-        } from 'vuex';
         import $ from 'jquery';
         import tool from '../../lib/tool.js';
         export default {
@@ -68,7 +64,7 @@
                                 selectedInterpolation: null,
                                 scinterval: null,
                                 selectedLayers: []
-        
+
                         };
                 },
                 methods: {
@@ -87,25 +83,25 @@
                                                 rgbvoUrl = rgbvoUrl + "?ele=" + arr[1]
                                         }
                                 });
-        
-        
+
+
                                 function getSurferChartVo() {
                                         return axios.get(remoteUrl + url);
                                 }
-        
+
                                 function getRgbVo() {
                                         return axios.get(remoteUrl + rgbvoUrl);
                                 }
-        
+
                                 axios.all([getSurferChartVo(), getRgbVo()])
                                         .then(axios.spread(function(surferChartVo, rgbVo) {
                                                 var data = surferChartVo.data;
                                                 _this.surferChartVo = data;
                                                 _this.rgbVo = rgbVo.data;
-        
+
                                                 _this.sclayers = data.layers;
                                                 var selectedLayers = [];
-        
+
                                                 _this.sclayers.forEach(element => {
                                                         if (element.checked) {
                                                                 selectedLayers.push(element.code);
@@ -121,8 +117,8 @@
                                                 _this.sctitle = data.title;
                                                 _this.scimgUrl = data.imgUrl;
                                         }))
-        
-        
+
+
                         },
                         handlerShowColor() {
                                 this.showColor = !this.showColor;
@@ -147,7 +143,7 @@
                                         var tempSecond = rgb.slice(0, (length - (rgbLength - tempIndex)));
                                         var symbols = tempFirst.concat(tempSecond);
                                         this.scsymbols = symbols
-        
+
                                 }
                                 this.showColor = false;
                         },
@@ -174,5 +170,5 @@
 </script>
 
 <style lang="css" scoped>
-        
+
 </style>

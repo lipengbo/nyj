@@ -100,8 +100,10 @@
 <script>
   import {mapState} from 'vuex';
   import config from '../lib/config.js';
-  import tool from '../lib/tool.js';
-  import Timer from '@/service/Timer'
+  import dayjs from 'dayjs';
+  import Timer from '@/service/Timer';
+  import commonService from '@/service/commonService';
+
   var baseUrl = config.baseUrl;
   export default {
     name: "grainoilcropsuitable", //粮油作物
@@ -286,8 +288,8 @@
       getAgrForecastImageVosByQueryVo() {
         var axios = this.$axios,
           _this = this;
-        _this.sDate = tool.formatTime(_this.sDate, "yyyy-MM-dd");
-        _this.eDate = tool.formatTime(_this.eDate, "yyyy-MM-dd");
+        _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
+        _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
         var url = baseUrl + "getAgrForecastImageVosByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
           "&queryVo.orgcode=" + _this.orgInfo.code + "&queryVo.startdate=" + _this.sDate + "&queryVo.stationtype=" + _this.selectedStationType + "&queryVo.type=GrainOilCropSuitable";
         axios.get(url).then(res => {
@@ -303,8 +305,8 @@
       getAgrForecastInfoStatisticsVoByQueryVo() {
         var axios = this.$axios,
           _this = this;
-        _this.sDate = tool.formatTime(_this.sDate, "yyyy-MM-dd");
-        _this.eDate = tool.formatTime(_this.eDate, "yyyy-MM-dd");
+        _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
+        _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
         var url = baseUrl + "/getAgrForecastInfoStatisticsVoByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
           "&queryVo.orgcode=" + _this.orgInfo.code + "&queryVo.startdate=" + _this.sDate + "&queryVo.stationtype=" + _this.selectedStationType + "&queryVo.type=GrainOilCropSuitable";
         var tableList = [],
@@ -368,19 +370,11 @@
       },
       downImages(){
         var _this=this;
-        _this.sDate = tool.formatTime(_this.sDate, "yyyy-MM-dd");
-        _this.eDate = tool.formatTime(_this.eDate, "yyyy-MM-dd");
+        _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
+        _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
         var url = baseUrl + "AgrForecastInfoQueryVo.do?eletype=" + _this.selectedEle + "&enddate=" + _this.eDate +
           "&orgcode=" + _this.orgInfo.code + "&startdate=" + _this.sDate + "&stationtype=" + _this.selectedStationType + "&type=gocrops";
-        let link = document.createElement('a');
-        link.style.display = 'none';
-        link.href = url;
-        //link.setAttribute('download', 'excel.xlsx');
-        document.body.appendChild(link);
-        link.click();
-        setTimeout(()=>{
-          link.remove();
-        },50);
+        commonService.download({url:url});
       }
     }
   }
