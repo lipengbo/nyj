@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jquery-colorramp test</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script id=jquery-colorramp-script src="jquery-colorramp/main.js"></script>
+<script>
+$(function(){
+
+  // the the default base path where you installed the code
+  // normally the path is disconvered from the script with id=jquery-colorramp-script
+  //$().colorramp('cfg').path = '/js/jquery-colorramp/';
+
+  // configure a div element as a color ramp
+  $('.colorramp').colorramp();
+
+  // when the user selects a color ramp, the change event is called with the colorArray
+  $('.colorramp').change(function(){
+    $(this).colorramp('getColors', reportColors);
+  });
+
+  // output colors used in selected ramp when user clicks the report colors button
+  $('.getcolorsbut').click(function(){
+    $(this).prev('.colorramp').colorramp('getColors', reportColors);
+  });
+
+  // function to make an array of colors, and print it to the screen nicely
+  function reportColors(colorArray) {
+    var buf = [];
+    $.each(colorArray, function(){
+      buf.push('<font color='+this+'>'+this+'</font>');
+    });
+    $('#selectedramp').html(buf.join(', '));
+  }
+});
+</script>
+</head>
+<body>
+<h1>jquery-colorramp Demo</h1>
+
+<div>
+<label>Example 1) Color Ramp in div container</label>
+<div class=colorramp></div>
+<button class=getcolorsbut>report colors</button>
+</div>
+
+<p>
+
+<div>
+<label>Example 2) Color Ramp in div container</label>
+<div class=colorramp></div>
+<button class=getcolorsbut>report colors</button>
+</div>
+
+<p>
+
+<div id=selectedramp>
+</div>
+
+</body>
+</html>

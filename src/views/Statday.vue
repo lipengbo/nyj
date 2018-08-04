@@ -10,6 +10,7 @@
             </el-date-picker>
 
           </li>
+
           <label class="u-label">站点：</label>
 
           <li v-for="item in stationtypeData" :class="item.value==selectedStationType?'f-active':''"
@@ -49,8 +50,8 @@
       </el-table>
     </div>
     <div class="m-no-data" v-else>暂无数据</div>
-    <el-dialog title="绘图窗口" :visible.sync="isLayerShow" width="90%" close-on-click-modal="true" top="25px">
-      <clayer style="height:82vh"></clayer>
+    <el-dialog title="绘图窗口" :visible.sync="isLayerShow" width="90%" :close-on-click-modal="true" top="25px">
+      <clayer style="height:80vh"></clayer>
     </el-dialog>
   </div>
 </template>
@@ -118,6 +119,7 @@
       download(item) {
         var _self = this;
         commonService.download({url: config.resourceUrl + item.url}).then(function () {
+
         }).catch(function () {
           _self.$message({
             message: "下载失败!",

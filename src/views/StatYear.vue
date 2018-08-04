@@ -403,6 +403,7 @@
 
       },
       handlerselectedStatistic(e) {
+        if(e.target.dataset.disabled)return;
         var value = e.target.dataset.value;
         this.selectedStatistic = value;
       },

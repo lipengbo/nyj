@@ -1,0 +1,41 @@
+/* https://github.com/collinsp/jquery-colorramp */
+#jq-colorramp-ColorRampPicker {
+  position: relative;
+  overflow: visible;
+  height: 0;
+  width: 0;
+}
+#jq-colorramp-ColorRampPickerOpts {
+  width: 147px;
+  height: 15em;
+  overflow: scroll;
+  overflow-x: hidden;
+  cursor: pointer;
+  border: 1px outset #ccc;
+  position: absolute;
+  left: -134px;
+  top: 2px;
+  background-color: white;
+  z-index: 99999;
+}
+.jq-colorramp-ColorRampPickerOpt:hover {
+  opacity: .8;
+}
+.jq-colorramp-ColorRampPickerOpt {
+  width: 138px;
+  height: 1.2em;
+  margin: 2px 0;
+  padding: 1px;
+}
+.jq-colorramp-ColorRampPickerOpt.selected {
+  outline: 1px dotted #ccc;
+}
+.jq-colorramp-SelectedColorRamp {
+  width: 132px;
+  height: 1.2em;
+  vertical-align: bottom;
+  background: url(ramps/01.png) repeat-y;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+/* END - https://github.com/collinsp/jquery-colorramp */
