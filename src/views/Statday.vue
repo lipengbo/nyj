@@ -62,8 +62,7 @@
     mapState,
   } from 'vuex';
   import dayjs from 'dayjs';
-
-  var config = require('../lib/config.js');
+  import config from '@/lib/config'
   var baseUrl = config.baseUrl;
   import commonService from '@/service/commonService'
   import Clayer from "../components/public/CLayer";

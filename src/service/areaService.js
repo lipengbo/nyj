@@ -3,7 +3,7 @@ import config from '@/lib/config';
 import axios from '@/lib/axios'
 class AreaService{
   constructor(){
-    this.data=/*(localStorage&&localStorage.getItem("areaData"))?JSON.parse(localStorage.getItem("areaData")):*/{code:null,id:null,name:'全国',children:null};
+    this.data=(localStorage&&localStorage.getItem("areaData"))?JSON.parse(localStorage.getItem("areaData")):{code:null,id:null,name:'全国',children:null};
     this.get();
   }
   /**
@@ -68,7 +68,7 @@ class AreaService{
    */
   async getBj(area){
     var url=config.solorUrl+'border/select';
-    var query={wt:'json', index:true, q:'code:'+area.code, table:'border', start:'0', rows:'50', sort:'code asc', fl:'pgjson,code,id,name'}
+    var query={wt:'json', index:true, q:'code:'+area.code, table:'border', start:'0', rows:'50', sort:'code asc', fl:'pgjson,code,id,name'};
     var res=await axios.get(url,{params:query});
     return res.data.response.docs;
   }

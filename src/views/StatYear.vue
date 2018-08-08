@@ -85,8 +85,7 @@
   import ccalendar from '@/components/public/CCalendar.vue'
   import cstacodeselect from '@/components/public/CStacodeSelect.vue'
   //极端天气
-  const Qs = require('query-string');
-  var config = require('../lib/config.js');
+  import config from '@/lib/config'
   var baseUrl = config.baseUrl;
 /*
   var numArr = [-9999,];

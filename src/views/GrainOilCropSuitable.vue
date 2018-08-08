@@ -74,7 +74,9 @@
               </swiper>
 
             </el-tab-pane>
-            <el-tab-pane label="矢量图" name="second">配置管理</el-tab-pane>
+            <el-tab-pane label="矢量图" name="second">
+              <div></div>
+            </el-tab-pane>
           </el-tabs>
         </div>
         <div class="m-right">
