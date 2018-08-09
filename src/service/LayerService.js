@@ -13,7 +13,7 @@ class LayerEntity{
   }
 }
 function createLayers(){
-  const layers= {
+  var layers= {
     hnLayer:new LayerEntity({
       id:"hnLayer",
       visible:true,
@@ -129,7 +129,7 @@ function createLayers(){
           });
           feature.setStyle(cityLabelStyle);
           layer.getSource().addFeature(feature);
-        })
+        });
       }
     }),
     countyLabelLayer:new LayerEntity({
@@ -166,7 +166,7 @@ function createLayers(){
               })
             }),
             text: new ol.style.Text({
-              text: stationPoint.staname + '',
+              text: stationPoint.staname + "",
               font: layerItem.fontsize + " " + layerItem.font,
               offsetY: -10,
               offsetX: 15,
