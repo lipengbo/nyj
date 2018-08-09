@@ -1,5 +1,6 @@
 import qs from "query-string";
 import axios from '@/lib/axios'
+import config from "@/lib/config"
 export default {
   download:async function(opt){
       var res=await axios({
@@ -21,5 +22,17 @@ export default {
       setTimeout(()=>{
         link.remove();
       },50);
+  },
+  async getClientOrgInfo(){
+    var info=sessionStorage.getItem("clientOrgInfo");
+    if(info){
+      return JSON.parse(info);
+    }
+    var url = config.baseUrl + "getClientOrgInfo.do";
+    var response=await  axios.get(url);
+    if(response.data){
+      sessionStorage.setItem("clientOrgInfo",JSON.stringify(response.data));
+    }
+    return response.data;
   }
 }

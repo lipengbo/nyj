@@ -4,7 +4,9 @@ var config = require("../lib/config");
 import axios from 'axios';
 Vue.use(Vuex);
 const objectAssign = require('object-assign');
-import menus from '../../config/menus.js'
+import menus from '../../config/menus.js';
+import commonService from '@/service/commonService';
+
 export default new Vuex.Store({
     state: {
         orgInfo: null,
@@ -17,11 +19,10 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        getCodeInfo: function({ dispatch, commit, state }) {
-            var url = config.baseUrl + "getClientOrgInfo.do";
-            var promise=axios.get(url);
-            promise.then(response => {
-              var params = { orgInfo: response.data };
+        getCodeInfo:function({ dispatch, commit, state }) {
+            var promise=commonService.getClientOrgInfo();
+            promise.then((info)=>{
+              var params = { orgInfo:info };
               commit('init', params);
             });
             return promise;

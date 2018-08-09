@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%">
+  <div style="width:100%" class="nq">
     <div class="m-stat-header">
       <div class="u-bar u-white f-bb1 " style="height:60px;line-height:60px;">
         <ul v-if="eles" class="m-eles">
@@ -75,7 +75,7 @@
 
             </el-tab-pane>
             <el-tab-pane label="矢量图" name="second">
-              <div></div>
+              <div id="gmap" style="height:610px"></div>
             </el-tab-pane>
           </el-tabs>
         </div>
@@ -105,7 +105,8 @@
   import dayjs from 'dayjs';
   import Timer from '@/service/Timer';
   import commonService from '@/service/commonService';
-
+  import mapService from '@/service/mapService';
+  import LayerService from '@/service/LayerService';
   var baseUrl = config.baseUrl;
   export default {
     name: "grainoilcropsuitable", //粮油作物
@@ -211,6 +212,10 @@
           }
 
         })
+        //矢量图层
+        this.map=mapService.createMap({target:"gmap"});
+        this.layerService=new LayerService({map:this.map});
+        this.layerService.get2Render();
       });
     },
     methods: {
@@ -229,7 +234,11 @@
         });
       },
       handleClick(tab, event) {
-        console.log(tab, event);
+        if(tab.name==="second"){
+          setTimeout(()=>{
+            this.map.updateSize();
+          },200)
+        }
       },
       sDateChange(value) {
         this.sDate = value;
@@ -436,5 +445,10 @@
 
   .m-title::before {
     top: 13px;
+  }
+</style>
+<style>
+  .nq .el-tabs__header{
+    margin-bottom:0;
   }
 </style>
