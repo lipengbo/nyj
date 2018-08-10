@@ -75,7 +75,14 @@
 
             </el-tab-pane>
             <el-tab-pane label="矢量图" name="second">
-              <div id="gmap" style="height:610px"></div>
+              <div style="height:610px;position:relative;">
+                <div id="gmap" style="width:100%;height:100%;"></div>
+                <div class="gmap_opt">
+                  <div><i class="el-icon-arrow-left"></i></div>
+                  <div><i class="el-icon-arrow-right"></i></div>
+                  <div>图层</div>
+                </div>
+              </div>
             </el-tab-pane>
           </el-tabs>
         </div>
@@ -267,8 +274,6 @@
         this.eDate = obj.defaultenddate;
         var _this = this;
         this.$nextTick(() => {
-
-
           _this.doQuery()
         });
       },
@@ -445,6 +450,21 @@
 
   .m-title::before {
     top: 13px;
+  }
+  .gmap_opt{
+    position:absolute;
+    z-index:9;
+    right:0;
+    top:0;
+    background:rgba(0,0,0,.75);
+    color:white;
+  }
+  .gmap_opt>div{
+    float:left;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    font-size:22px;
   }
 </style>
 <style>
