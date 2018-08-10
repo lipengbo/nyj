@@ -141,7 +141,8 @@ function createLayers(){
       id:"plLayer",
       visible:true,
       style:null,
-      render:function(res,plLayerItem){
+      render:function(res,plLayerItem,publishItem){
+        publishItem=publishItem||{};
         if(res.docs[0].pljson=='' || res.docs[0].pljson==null){
 
         }else{
@@ -151,15 +152,15 @@ function createLayers(){
           pls.forEach(function (pl) {
             plStyle = new ol.style.Style({
               stroke: new ol.style.Stroke({
-                color: (plLayerItem.linecolor ? plLayerItem.linecolor : '#696969'),//
-                width: (plLayerItem.linewidth ? plLayerItem.linewidth : 0.2)
+                color: (publishItem.linecolor ? publishItem.linecolor : '#696969'),//
+                width: (publishItem.linewidth ? publishItem.linewidth : 0.2)
               }),
               text: new ol.style.Text({
                 text: pl.getProperties().CONTOUR + "",
                 offsetY: -10,
                 offsetX: 15,
                 fill: new ol.style.Fill({
-                  color: plLayerItem.pgcolor ? publishItem.pgcolor : '#000000'
+                  color: plLayerItem.pgcolor ? plLayerItem.pgcolor : '#000000'
                 })
               })
             });
@@ -297,7 +298,9 @@ function createLayers(){
       id:"titleLayer",
       visible:true,
       style:null,
-      render:function(res,titleItem){
+      render:function(res,titleItem,dateItem,publishItem){
+        dateItem=dateItem||{};
+        publishItem=publishItem||{};
         var x = res.docs[0].titleX;
         var y = res.docs[0].titleY;
         var text = res.docs[0].title;
@@ -323,7 +326,7 @@ function createLayers(){
         x = res.docs[0].dateX;
         y = res.docs[0].dateY;
         text = res.docs[0].ddate + "";
-        var dateItem = stores.cgLayerinfo[1];
+//        var dateItem = stores.cgLayerinfo[1];
         square = new ol.style.Style({
           text: new ol.style.Text({
             text: text,
@@ -348,7 +351,7 @@ function createLayers(){
         x = res.docs[0].subtitleX;
         y = res.docs[0].subtitleY;
         text = res.docs[0].subtitle;
-        var publishItem = stores.cgLayerinfo[2];
+       // var publishItem = stores.cgLayerinfo[2];
         square = new ol.style.Style({
           text: new ol.style.Text({
             text: text,
@@ -384,7 +387,15 @@ class LayerService{
   async getLayerData(layerItem){
     var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true";
     var res=await axios.get(url);
+    this.layerData=res.data.response;
     return res.data.response;
+  }
+  getLayerItemByName(name){
+    for(var i=0;i<this.layerData;i++){
+      if(this.layerData.layerename===name){
+        return this.layerData.layerename;
+      }
+    }
   }
   async getMMapCgLayerinfo(orgcode,type){
     orgcode=orgcode||"440000";
@@ -393,19 +404,67 @@ class LayerService{
     var url=config.baseUrl+"getCgLayerinfo.do?orgcode="+orgcode+"&type="+type;//Mulele;
     var res=await axios.get(url);
     var data=res.data;
-    var layers={};
-    data.forEach(function(item){
-      layers[item.layerename]=item;
-    });
-    return layers;
+    return data;
   }
+
+  /**
+   * 初始化渲染静态数据，基本不变
+   * @param type
+   * @returns {Promise<void>}
+   */
   async get2Render(type){
     var clientInfo=await commonService.getClientOrgInfo();
     var layerItems=await this.getMMapCgLayerinfo(clientInfo.code,type);
-    this.layers["cityLayer"].render(await this.getLayerData(layerItems["cityLayer"]),layerItems["cityLayer"]);
-    this.layers["riverLayer"].render(await this.getLayerData(layerItems["riverLayer"]),layerItems["riverLayer"]);
-    this.layers["cityLabelLayer"].render(await this.getLayerData(layerItems["cityLabelLayer"]),layerItems["cityLabelLayer"]);
-    //this.layers["plLayer"].render(await this.getLayerData(layerItems["plLayer"]),layerItems["plLayer"]);
+    layerItems.forEach(async (item)=>{
+      if(item.layerename=='cityLayer'){
+        this.layers.cityLayer.render(await this.getLayerData(item),item);
+      }else if(item.layerename=='riverLayer'){
+        this.layers.riverLayer.render(await this.getLayerData(layerItems["riverLayer"]),layerItems["riverLayer"]);
+      }else if(item.layerename=='cityLabelLayer'){
+        this.layers.cityLabelLayer.render(await this.getLayerData(layerItems["cityLabelLayer"]),layerItems["cityLabelLayer"]);
+      }
+    });
+  }
+
+  /**
+   * 根据地图参数改变请求对应的地图数据
+   * @param table
+   * @param code
+   * @param selectDateMap
+   * @param datatype
+   * @param factorSelected
+   * @param stationtype
+   * @returns {Promise<*>}
+   */
+  async getMapData({table,code,selectDateMap,datatype,factorSelected,stationtype}){
+    var params={"table":table,wt:"json","index":true,q:"id:"+code+selectDateMap+datatype+factorSelected+stationtype};
+    var res=await axios.get(config.solorUrl+table+"/select",{params:params});
+    return res.data;
+  }
+  renderMapData(res){
+    var layerData=this.layerData;
+    var titleItem=layerData[0];
+    var dateItem=layerData[1];
+    var publishItem=layerData[2];
+
+    this.layers.surferLayer.render(res);
+    this.layers.titleLayer.render(res,titleItem,dateItem,publishItem);
+
+    var plLayerItem=this.getLayerItemByName("plLayer");
+    this.layers.plLayer.render(res,plLayerItem,publishItem);
+
+    var dataLayerItem=this.getLayerItemByName("dataLayer");
+    this.layers.dataLayer.render(res,dataLayerItem)
+  }
+
+  /**
+   *请求数据并且上图
+   * @param params {table,code,selectDateMap,datatype,factorSelected,stationtype}
+   * @returns {Promise<void>}
+   */
+  async get2RenderMapData(params){
+    var res=await this.getMapData(params);
+    this.renderMapData(res);
   }
 }
 export default LayerService;

@@ -223,12 +223,14 @@
         this.map=mapService.createMap({target:"gmap"});
         this.layerService=new LayerService({map:this.map});
         this.layerService.get2Render();
+
+
       });
     },
     methods: {
       getOptions() {
         var _this = this;
-        this.$axios.get(baseUrl + "/getAgrForecastEleVoListByType.do?type=GrainOilCropSuitable").then(res => {
+        axios.get(baseUrl + "/getAgrForecastEleVoListByType.do?type=GrainOilCropSuitable").then(res => {
           _this.eles = res.data;
           res.data.forEach(function (e) {
             if (e.defaultflag) {
@@ -302,8 +304,7 @@
 
       },
       getAgrForecastImageVosByQueryVo() {
-        var axios = this.$axios,
-          _this = this;
+        var _this = this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
         _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
         var url = baseUrl + "getAgrForecastImageVosByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
@@ -319,8 +320,7 @@
         });
       },
       getAgrForecastInfoStatisticsVoByQueryVo() {
-        var axios = this.$axios,
-          _this = this;
+       var _this = this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
         _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
         var url = baseUrl + "/getAgrForecastInfoStatisticsVoByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
@@ -384,6 +384,7 @@
         _this.getAgrForecastImageVosByQueryVo();
         _this.getAgrForecastInfoStatisticsVoByQueryVo();
       },
+
       downImages(){
         var _this=this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
