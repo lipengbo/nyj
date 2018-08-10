@@ -69,8 +69,29 @@ function createLayers(){
       id:"surferLayer",
       visible:true,
       style:null,
-      render:function(){
-
+      render:function(res){
+        var surferLayer=this.layer;
+        var geojson = res.docs[0].pgjson;
+        var curFeatures = format.readFeatures(geojson);
+        var stroke = new ol.style.Stroke({color: '#9C9C9C', width: 0.2});
+        var fill = new ol.style.Fill({color: '#FDE37D'});
+        var surferStyle = new ol.style.Style({fill: fill});
+        if(res.docs[0].symboljson!="") {
+          var symboljsons = JSON.parse(res.docs[0].symboljson);
+          parent.setState({"symboljsons": symboljsons});
+          //等值线分布图
+          curFeatures.forEach(function (feature) {
+            symboljsons.forEach(function (symboljson) {
+              if (feature.getProperties().CONTOUR == symboljson.fieldVaule) {
+                fill = new ol.style.Fill({color: symboljson.fillColor});
+                stroke = new ol.style.Stroke({color: symboljson.outLintColor, width: 0.1});
+                surferStyle = new ol.style.Style({fill: fill, stroke: stroke});
+                feature.setStyle(surferStyle);
+                surferLayer.getSource().addFeature(feature);
+              }
+            })
+          })
+        }
       }
     }),
     cityLayer:new LayerEntity({
