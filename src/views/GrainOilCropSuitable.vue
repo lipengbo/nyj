@@ -136,7 +136,7 @@
 
   var baseUrl = config.baseUrl;
   var dataName = "GrainOilCropSuitable";
-  const slideInterval = 1000;
+  const slideInterval = 0;
   export default {
     name: "grainoilcropsuitable", //粮油作物
     components: {
@@ -201,6 +201,7 @@
         timer: new Timer({interval: 500}),
         isPlay: false,
         swiperOptionTop: {
+          speed:slideInterval,
           spaceBetween: 10,
           height: 500,
           navigation: {
@@ -214,6 +215,7 @@
           }
         },
         swiperOptionThumbs: {
+          speed:slideInterval,
           spaceBetween: 10,
           centeredSlides: true,
           slidesPerView: 'auto',
@@ -404,10 +406,11 @@
         return axios.get(url).then(res => {
           _this.imageVo = res.data.reverse();
           _this.imageVo.forEach(function (e) {
-            e.original = "/static/images/" + e.url;
-            e.thumbnail = "/static/images/" + e.thumbnailurl;
+            e.original = config.resourceUrl+"images/" + e.url;
+            e.thumbnail = config.resourceUrl+"/images/" + e.thumbnailurl;
             e.desc = e.mark;
           });
+          console.log(_this.imageVo)
         });
       },
       getAgrForecastInfoStatisticsVoByQueryVo() {
@@ -556,7 +559,7 @@
       },
       async renderStationLayer(stationType) {
         var stationLayerItem = this.layerService.getLayerItemByName("stationLayer");
-        this.layerService.layers.stationLayer.render(await this.layerService.getLayerData(stationLayerItem, {statype: stationType}), stationLayerItem)
+        this.layerService.layers.stationLayer.render(await this.layerService.getLayerData(stationLayerItem, {statype: stationType,rows:2500}), stationLayerItem)
       },
       changeLayerFlag(item) {
         this.setSysflag();

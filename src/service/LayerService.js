@@ -400,6 +400,9 @@ class LayerService{
       layerItem.querycondition=layerItem.querycondition.replace("{"+k+"}",params[k]);
     }
     var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true";
+    if(params.rows){
+      url+=("rows="+params.rows)
+    }
     var res=await axios.get(url);
     return res.data.response;
   }

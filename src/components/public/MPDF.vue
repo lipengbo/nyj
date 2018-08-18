@@ -14,7 +14,7 @@ export default {
   },
   computed:{
     filePath:function(){
-      return path.resolve(config.resourceUrl,this.file);
+      return config.resourceUrl+"images"+this.file;
     }
   }
 }

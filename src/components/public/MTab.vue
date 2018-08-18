@@ -2,10 +2,10 @@
   <div class="u-mtab" v-if="data">
     <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick" v-if="data&&data.length>0">
       <el-tab-pane :label="item.text" :name="item.value" v-for="item in data" class="m-tab-pane">
-        <el-carousel v-if="item.url&&item.url.length>0" height="221px" trigger="click" :initial-index="item.defaultIndex" :autoplay="false"
+        <el-carousel v-if="item.url&&item.url.length>0" height="266px" trigger="click" :initial-index="item.defaultIndex" :autoplay="false"
                      indicator-position="none">
           <el-carousel-item class="u-mtab-item" v-for="itemImg in item.url" :key="itemImg">
-            <img :src="'resourceUrl/'+itemImg"/>
+            <img :src="resourceUrl+'images/'+itemImg"/>
           </el-carousel-item>
         </el-carousel>
         <div v-else class="u-mtab-no" style="height:221px;">暂无数据</div>
@@ -49,9 +49,13 @@
     background: #fff;
     margin-bottom: 10px;
   }
+  .u-mtab-item img {
+    width:100%;
+    display:block;
+  }
 
   .u-mtab .el-tabs {
-    height: 266px;
+    height: 306px;
     width: 100%;
   }
 
@@ -79,4 +83,5 @@
   .u-mtab .el-tabs--border-card>.el-tabs__content{
     padding:0;
   }
+  
 </style>

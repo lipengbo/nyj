@@ -18,7 +18,7 @@
             <br/>
             <h3>附件</h3>
             <p>
-              <img v-for="item in panelData.attachment" :src="item"/>
+              <img v-for="item in panelData.attachmentthumb" :src="resourceUrl+item"/>
             </p>
           </div>
         </div>
@@ -34,8 +34,10 @@
 <script>
   import mapService from '@/service/mapService'
   var config = require('../lib/config.js');
+  import dayjs from 'dayjs';
+  
   var getData = async (params) => {
-    var query={"q":"*",wt:"json","index":true};
+    var query={"q":"periods:201806C",wt:"json","index":true,start:0,rows:26};//暂时写死
     var url=config.solorUrl+"cmcropconditioninfo/select";
     var res = await axios.get(url,{params:query});
     return res.data.response.docs;
@@ -44,6 +46,7 @@
     name: "monitor",
     data() {
       return {
+        resourceUrl:config.resourceUrl,
         isPanelShow:false,
         panelData:{}
       };
@@ -60,12 +63,12 @@
     methods: {
       renderData(datas){
         var _self=this;
-        var resourceUrl="";
+        var resourceUrl=this.resourceUrl;
         if(!_self.overlays){
           _self.overlays=new mapService.OverlayCollection({
             map:_self.map,
             render:function(data){
-              return '<img src="'+resourceUrl+data.attachment[data.attachment.length-1]+'"/>';
+              return '<img src="'+resourceUrl+data.attachmentthumb[data.attachmentthumb.length-1]+'"/>';
             },
             click:function(overlay){
               _self.showPanel(overlay);
@@ -189,13 +192,19 @@
 </style>
 <style>
   .monitor .ol-popup{
-    min-width:90px;
-    min-height:74px;
-    border-radius: 5px;
+    min-width:55px;
+    min-height:40px;
+    border-radius: 4px;
+    padding:2px;
+  }
+  .monitor .ol-popup:after{
+    border-width:6px;
   }
   .monitor .ol-popup img{
-    width:98px;
+    width:53px;
     border:solid 1px #dcdcdc;
+    display:block;
+    height:auto;
   }
 
 </style>

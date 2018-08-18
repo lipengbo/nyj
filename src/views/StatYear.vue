@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="m-list u-white" v-if="climateStatisticsVo">
-      <el-table :data="climateStatisticsVo.climateList" style="width: 100%" border>
+      <el-table :data="climateStatisticsVo.climateList" style="width: 100%" border height='500'>
         <el-table-column :prop="item.value" :label="item.text" v-for="item in tableColumns">
         </el-table-column>
       </el-table>

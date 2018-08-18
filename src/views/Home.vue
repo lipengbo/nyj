@@ -100,23 +100,23 @@
           weekEndDate: this.weekEndDate
         };
         function getMuleleJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=Mulele');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=Mulele');
         }
         function getCropPeriodJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=CropPeriod');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=CropPeriod');
         }
         function getCgsuitableJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=Cgsuitable');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=Cgsuitable');
         }
         function getFasuitableJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=Fasuitable');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=Fasuitable');
         }
         function getAmdisasterJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=Amdisaster');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=Amdisaster');
         }
 
         function getSoilmoistureJson() {
-          return axios.get(baseUrl + '/getAgroImageVoByType.do?code=' + orgInfo.code + '&type=Soilmoisture');
+          return axios.get(baseUrl + '/getAgroImageVoByType.do?orgcode=' + orgInfo.code + '&type=Soilmoisture');
         }
 
         Axios.all([getMuleleJson(), getCropPeriodJson(), getCgsuitableJson(), getFasuitableJson(), getAmdisasterJson(), getSoilmoistureJson()])

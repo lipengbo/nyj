@@ -14,7 +14,7 @@ Date.prototype.Format = function(fmt) { //author: meizz
     return fmt;
 }
 module.exports = {
-    baseUrl: "http://192.168.0.8:8080/agros/qhzxsp/",
-    solorUrl: "http://192.168.0.8:8983/solr/",
-    resourceUrl:'http://192.168.0.8:8080/agros/qhzxsp/'
+    baseUrl: "http://10.148.15.113:8080/agros/qhzxsp/",
+    solorUrl: "http://10.148.15.114:8983/solr/",
+    resourceUrl:'http://10.148.15.113:8000/'
 };

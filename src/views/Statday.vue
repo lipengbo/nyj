@@ -34,7 +34,7 @@
 
     <ul class="m-list-img" v-if="voImages">
       <li v-for="item in voImages">
-        <img :src="resourceUrl+item.url"/>
+        <img :src="resourceUrl+'images/'+item.url"/>
         <div class="m-list-img-shadow">
           <div class="m-btn">
             <el-button size="mini" type="primary" @click="showDraw(item)">绘图</el-button>
