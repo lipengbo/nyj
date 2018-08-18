@@ -2,7 +2,7 @@
   <div style="width:100%">
     <div class="m-stat-header">
       <div class="u-bar u-white f-bb1 ">
-        <label for="m-element" class="u-label">日期 ：</label>
+        <label class="u-label">日期 ：</label>
         <ul>
 
           <li style="margin-right:0;">
@@ -17,7 +17,7 @@
               :data-value="item.value" @click="changeStationType">
             {{item.text}}
           </li>
-          <label for="m-element" class="u-label">区域：</label>
+          <label class="u-label">区域：</label>
           <li>
             <el-select v-model="selectedRegion" placeholder="请选择" size="mini" v-if="regionInfo" style="width:120px;">
               <el-option v-for="item in  regionInfo" :key="item.code" :label="item.name" :value="item.code">
@@ -51,7 +51,7 @@
     </div>
     <div class="m-no-data" v-else>暂无数据</div>
     <el-dialog title="绘图窗口" :visible.sync="isLayerShow" width="90%" :close-on-click-modal="true" top="25px">
-      <clayer style="height:80vh"></clayer>
+      <clayer2 style="height:80vh" :query="clayerQuery"></clayer2>
     </el-dialog>
   </div>
 </template>
@@ -65,15 +65,21 @@
   import config from '@/lib/config'
   var baseUrl = config.baseUrl;
   import commonService from '@/service/commonService'
-  import Clayer from "../components/public/CLayer";
-
+  import Clayer2 from "../components/public/CLayer2";
   export default {
     name: "statday",
-    components: {Clayer},
+    components: {Clayer2},
     computed: {
       ...mapState([
         'orgInfo',
-      ])
+      ]),
+      clayerQuery(){
+        return {
+          stationtype:this.selectedStationType,
+          regioncode:this.selectedRegion,
+
+        }
+      }
     },
     data() {
       return {

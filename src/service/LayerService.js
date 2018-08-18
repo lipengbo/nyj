@@ -71,6 +71,7 @@ function createLayers(){
       style:null,
       render:function(res){
         var surferLayer=this.layer;
+        surferLayer.getSource().clear();
         var geojson = res.docs[0].pgjson;
         var curFeatures = format.readFeatures(geojson);
         var stroke = new ol.style.Stroke({color: '#9C9C9C', width: 0.2});
@@ -78,7 +79,6 @@ function createLayers(){
         var surferStyle = new ol.style.Style({fill: fill});
         if(res.docs[0].symboljson!="") {
           var symboljsons = JSON.parse(res.docs[0].symboljson);
-          parent.setState({"symboljsons": symboljsons});
           //等值线分布图
           curFeatures.forEach(function (feature) {
             symboljsons.forEach(function (symboljson) {
@@ -111,6 +111,7 @@ function createLayers(){
           fill = new ol.style.Fill({color: layerItem.pgcolor});
           cityStyle = new ol.style.Style({stroke: stroke, fill: fill});
         }
+        this.layer.getSource().clear();
         this.layer.setStyle(cityStyle);
         this.layer.getSource().addFeatures(curFeatures);
       }
@@ -125,6 +126,7 @@ function createLayers(){
         var stroke = new ol.style.Stroke({color: layerItem.linecolor, width: layerItem.linewidth});
         var fill = new ol.style.Fill({color: layerItem.pgcolor});
         var riverStyle = new ol.style.Style({stroke: stroke, fill: fill});
+        this.layer.getSource().clear();
         this.layer.setStyle(riverStyle);
         this.layer.getSource().addFeatures(curFeatures);
       }
@@ -178,6 +180,7 @@ function createLayers(){
       style:null,
       render:function(res,layerItem){
         var layer=this.layer;
+        layer.getSource().clear();
         var geojson = res.docs[0].pgjson;
         var curFeatures = format.readFeatures(geojson);
         var cityLabelStyle = null;
@@ -203,7 +206,7 @@ function createLayers(){
             })
           });
           feature.setStyle(cityLabelStyle);
-          layer.getSource().addFeature(featurecountyLabelLayer);
+          layer.getSource().addFeature(feature);
         });
       }
     }),
@@ -221,7 +224,8 @@ function createLayers(){
       style:null,
       render:function(res,layerItem){
         var layer=this.layer;
-        var stationPoints = res.response.docs;
+        layer.getSource().clear();
+        var stationPoints = res.docs;
         var stationPointStyle = null;
         var stationPointFeature = null;
         var stationPt = null;
@@ -290,6 +294,7 @@ function createLayers(){
             })
           });
           dataPointFeature.setStyle(dataPointStyle);
+          this.layer.getSource().clear();
           this.layer.getSource().addFeature(dataPointFeature);
         });
       }
@@ -299,6 +304,7 @@ function createLayers(){
       visible:true,
       style:null,
       render:function(res,titleItem,dateItem,publishItem){
+        this.layer.getSource().clear();
         dateItem=dateItem||{};
         publishItem=publishItem||{};
         var x = res.docs[0].titleX;
@@ -321,6 +327,7 @@ function createLayers(){
         });
         titlePt.setId('titlePt');
         titlePt.setStyle(square);
+        titlePt.set("text",text);
         this.layer.getSource().addFeature(titlePt);
 
         x = res.docs[0].dateX;
@@ -344,6 +351,7 @@ function createLayers(){
         });
         datePt.setId('datePt');
         datePt.setStyle(square);
+        datePt.set("text",text);
         this.layer.getSource().addFeature(datePt);
 
 
@@ -369,6 +377,7 @@ function createLayers(){
         });
         subTitlePt.setId('subtitlePt');
         subTitlePt.setStyle(square);
+        subTitlePt.set("text",text);
         this.layer.getSource().addFeature(subTitlePt);
 
       }
@@ -380,20 +389,31 @@ class LayerService{
   constructor(opt){
     this.map=opt.map;
     this.layers=createLayers();
+    this.layerData=[];
     for(let k in this.layers){
       this.map.addLayer(this.layers[k].layer)
     }
   }
-  async getLayerData(layerItem){
+  async getLayerData(layerItem,params){
+    params=params||{};
+    for(var k in params){
+      layerItem.querycondition=layerItem.querycondition.replace("{"+k+"}",params[k]);
+    }
     var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true";
     var res=await axios.get(url);
-    this.layerData=res.data.response;
     return res.data.response;
   }
   getLayerItemByName(name){
-    for(var i=0;i<this.layerData;i++){
-      if(this.layerData.layerename===name){
-        return this.layerData.layerename;
+    for(var i=0;i<this.layerData.length;i++){
+      if(this.layerData[i].layerename===name){
+        return this.layerData[i];
+      }
+    }
+  }
+  getLayerItemByCode(code){
+    for(var i=0;i<this.layerData.length;i++){
+      if(this.layerData[i].code===code){
+        return this.layerData[i];
       }
     }
   }
@@ -404,6 +424,7 @@ class LayerService{
     var url=config.baseUrl+"getCgLayerinfo.do?orgcode="+orgcode+"&type="+type;//Mulele;
     var res=await axios.get(url);
     var data=res.data;
+    this.layerData=data;
     return data;
   }
 
@@ -419,9 +440,9 @@ class LayerService{
       if(item.layerename=='cityLayer'){
         this.layers.cityLayer.render(await this.getLayerData(item),item);
       }else if(item.layerename=='riverLayer'){
-        this.layers.riverLayer.render(await this.getLayerData(layerItems["riverLayer"]),layerItems["riverLayer"]);
+        this.layers.riverLayer.render(await this.getLayerData(item),item);
       }else if(item.layerename=='cityLabelLayer'){
-        this.layers.cityLabelLayer.render(await this.getLayerData(layerItems["cityLabelLayer"]),layerItems["cityLabelLayer"]);
+        this.layers.cityLabelLayer.render(await this.getLayerData(item),item);
       }
     });
   }
@@ -433,13 +454,13 @@ class LayerService{
    * @param selectDateMap
    * @param datatype
    * @param factorSelected
-   * @param stationtype
+   * @param stationtype 站点类型
    * @returns {Promise<*>}
    */
   async getMapData({table,code,selectDateMap,datatype,factorSelected,stationtype}){
     var params={"table":table,wt:"json","index":true,q:"id:"+code+selectDateMap+datatype+factorSelected+stationtype};
     var res=await axios.get(config.solorUrl+table+"/select",{params:params});
-    return res.data;
+    return res.data.response;
   }
   renderMapData(res){
     var layerData=this.layerData;
@@ -465,6 +486,7 @@ class LayerService{
   async get2RenderMapData(params){
     var res=await this.getMapData(params);
     this.renderMapData(res);
+    return res;
   }
 }
 export default LayerService;

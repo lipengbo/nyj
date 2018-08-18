@@ -83,8 +83,8 @@
       getOptions(data) {
         var _this = this,
           keyTable = this.keyTable,
-          queryStr = this.queryStr,
-          paramStr = this.queryStr.split("&");
+          queryStr = this.query,
+          paramStr = this.query.split("&");
         let url = "/" + keyTable + "/get" + keyTable.firstUpperCase() + "SurferChartVo.do?" + queryStr;
         let rgbvoUrl = "/" + keyTable + "/getRgbVo.do";
         paramStr.forEach(function (e) {

@@ -78,12 +78,16 @@
     <el-dialog title="站点选择" :visible.sync="dialogTableVisible">
       <cstacodeselect @hide="hideDialogTable" @changeStacodes="changeStacodes"></cstacodeselect>
     </el-dialog>
+    <el-dialog title="绘图窗口" :visible.sync="isDzxShow">
+      <!--<slayer :query="queryStr" :keyTable=""></slayer>-->
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import ccalendar from '@/components/public/CCalendar.vue'
-  import cstacodeselect from '@/components/public/CStacodeSelect.vue'
+  import ccalendar from '@/components/public/CCalendar'
+  import cstacodeselect from '@/components/public/CStacodeSelect'
+  import slayer from '@/components/public/SLayer'
   //极端天气
   import config from '@/lib/config'
   var baseUrl = config.baseUrl;
@@ -243,7 +247,8 @@
     name: "statyear",
     components: {
       ccalendar,
-      cstacodeselect
+      cstacodeselect,
+      slayer
     },
     data() {
       return {
@@ -399,7 +404,7 @@
         this.dialogTableVisible = false;
       },
       showDzx(){
-
+        this.isDzxShow=true;
       },
       handlerselectedStatistic(e) {
         if(e.target.dataset.disabled)return;
@@ -515,7 +520,7 @@
           "&climateYearsQueryVo.eyear=" + _this.eyear + "&climateYearsQueryVo.sdate=" + _this.sdate +
           "&climateYearsQueryVo.stacodes=" + _this.stacodes + "&climateYearsQueryVo.statistic=" + _this.selectedStatistic +
           "&climateYearsQueryVo.statype=" + _this.statype + "&climateYearsQueryVo.syear=" + _this.syear;
-
+        this.queryStr=queryStr;
         // console.log(query);
         var url = baseUrl + "getClimateYearsStatisticsVoJson.do?";
         url = url + queryStr;

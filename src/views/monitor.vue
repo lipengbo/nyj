@@ -60,11 +60,12 @@
     methods: {
       renderData(datas){
         var _self=this;
+        var resourceUrl="";
         if(!_self.overlays){
           _self.overlays=new mapService.OverlayCollection({
             map:_self.map,
             render:function(data){
-              return '<img src="'+data.attachment[data.attachment.length-1]+'"/>';
+              return '<img src="'+resourceUrl+data.attachment[data.attachment.length-1]+'"/>';
             },
             click:function(overlay){
               _self.showPanel(overlay);

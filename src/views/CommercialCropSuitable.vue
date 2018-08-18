@@ -236,6 +236,7 @@
         this.selectedEle = obj.value;
         this.sDate = obj.defaultstartdate;
         this.eDate = obj.defaultenddate;
+        this.legendData=[];
         var _this = this;
         this.$nextTick(() => {
           _this.doQuery()
@@ -285,7 +286,7 @@
           _this = this;
         _this.sDate = tool.formatTime(_this.sDate, "yyyy-MM-dd");
         _this.eDate = tool.formatTime(_this.eDate, "yyyy-MM-dd");
-        var url = baseUrl + "/getAgrForecastInfoStatisticsVoByQueryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
+        var url = baseUrl + "getAgrForecastInfoStatisticsVoByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
           "&queryVo.orgcode=" + _this.orgInfo.code + "&queryVo.startdate=" + _this.sDate + "&queryVo.stationtype=" + _this.selectedStationType + "&queryVo.type=CommercialCropSuitable";
         var tableList = [],
           tableColumns = [{

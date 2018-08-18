@@ -33,7 +33,15 @@ function formatDate(value, fmt) {
 function date(val,fmt){
   return dayjs(val).format(fmt);
 }
-
+function reverse(val){
+  var arr=[];
+  if(val&&val.length>0){
+    for(var i=0;i<val.length;i++){
+      arr.unshift(val[i])
+    }
+  }
+  return arr;
+}
 function getMtHeaderTitle(defaultActive, menus) {
     var arr = defaultActive.split("/");
     var parent = arr[1];
@@ -52,4 +60,5 @@ function getMtHeaderTitle(defaultActive, menus) {
     return str;
 }
 
-export { getMtHeaderTitle, formatDate }
+
+export { getMtHeaderTitle, formatDate,date,reverse}

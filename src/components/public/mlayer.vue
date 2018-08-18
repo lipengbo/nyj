@@ -15,7 +15,6 @@
         },
         mounted:function(){
           this.map=mapService.createMap({target:"mmap"});
-
         }
     }
 </script>
