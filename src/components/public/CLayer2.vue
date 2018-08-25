@@ -15,15 +15,22 @@
                 style="margin:10px 10px 10px 0;width:200px;">
       </el-input>
       <div class="m-title" style="border-color:transparent;">图层设置</div>
-        <el-checkbox v-for="item in layerData" style="width:50%;margin-left:0;"  @change="changeLayerShow(item)" true-label="1" false-label="0" v-model="item.flag" :label="item.code" :checked="item.flag=='1'">
+        <!-- <el-checkbox v-for="item in layerData" style="width:50%;margin-left:0;"  @change="changeLayerShow(item)" true-label="1" false-label="0" v-model="item.flag" :checked="item.flag=='1'">
           {{item.layername}}
-        </el-checkbox>
+        </el-checkbox> -->
+        <ul class="layers">
+          <li v-for="item in layerData">
+            <el-checkbox true-label="1" false-label="0" :checked="item.flag=='1'" v-model="item.flag"
+                          @change="changeLayerFlag">{{item.layername}}
+            </el-checkbox>
+          </li>
+        </ul>
       <div class="m-title" style="border-color:transparent;">色标设置</div>
       <div>
         最大值:
-        <el-input v-model="scmaxvalue" size="mini" style="width:28%"></el-input>
+        <el-input v-model="scmaxvalue" readonly size="mini" style="width:28%"></el-input>
         最小值:
-        <el-input v-model="scminvalue" size="mini" style="width:28%"></el-input>
+        <el-input v-model="scminvalue" readonly size="mini" style="width:28%"></el-input>
         阀&nbsp;&nbsp;值 :
         <el-input v-model="scinterval" size="mini" style="width:30%;margin-top:10px;"></el-input>
 
@@ -33,16 +40,17 @@
           <li v-for="(item,index) in rgbVo.rgb" :style="'background:#'+item" @click="changeSymbols"
               :data-index="index"></li>
         </ul>-->
-        色&nbsp;&nbsp;标 :<colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp>
+        色&nbsp;&nbsp;标 :
+        <!-- <colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp> -->
       </div>
       <div class="m-symbols">
         <ul v-if="scsymbols">
-          <li v-for="item in scsymbols" :style="'background:#'+item" @click="handlerShowColor"></li>
+          <li v-for="item in scsymbols" :style="'background:#'+item"></li>
         </ul>
       </div>
       <br/>
       <el-button type="primary" size="small" @click="getSuferChart">绘图</el-button>
-      <el-button type="success" size="small" @click="getDownload">下载</el-button>
+      <el-button type="success" size="small">下载</el-button>
     </el-aside>
   </el-container>
 </template>
@@ -55,9 +63,10 @@
   import mapService from '@/service/mapService'
   import statService from '@/service/statService'
   import maplegend from '@/components/public/maplegend';
+  const tableName="muldaypg";
   export default {
     name: "clayer2",
-    props: ['query', 'keyTable'],
+    props: ['query','params'],
     components:{colorramp,maplegend},
     computed:{
       ...mapState([
@@ -68,10 +77,27 @@
       //获取绘图算法
       statService.getInterpolationVo().then((data)=>{
         this.scinterpolation=data;
+        this.selectedInterpolation=this.scinterpolation[0];
       })
     },
+    watch:{
+      query(val){
+        this.scmaxvalue=val.maxvalue;
+        this.scminvalue=val.minvalue;
+        this.scinterval=val.scinterval;
+        this.scsymbols=[];
+        this.query.symbollist.forEach((item)=>{
+          this.scsymbols.push(item.fillColor);
+        })
+        setTimeout(()=>{
+          document.getElementById("cmap").innerHTML="";
+           this.init()
+        },200)
+      
+      },
+    },
     async mounted(){
-      this.init()
+      //this.init()
     },
     data() {
       return {
@@ -79,6 +105,10 @@
         isShowInterpolation:true,
         scinterpolation:[],
         sctitle:"",
+        scmaxvalue:null,
+        scminvalue:null,
+        scinterval:null,
+        scsymbols:[],
         selectedLayers:[],
         layerData:[],
         legendData:[],
@@ -89,13 +119,51 @@
       async init(){
         var map=mapService.createMap({target:"cmap"});
         this.layerService = new LayerService({map:map});
-        await this.layerService.get2Render();
-        this.layerData=this.layerService.layerData;
-        this.renderStationLayer(this.query.stationtype);
-        this.setSysflag();
+        this.layerService.get2Render(null,this.params.regioncode);
+        this.layerData=this.layerService.layerData;//图层控制
+        var data=await this.renderMap();
+        this.sctitle=data.title;
+        this.renderStationLayer(this.params.stationtype);
+      },
+      async getSuferChart(){
+        var queryStr=
+          'muldaySurferVo.ddate='+this.params.ddate+"&"+
+          'muldaySurferVo.ele='+this.query.value+"&"+
+          'muldaySurferVo.interval='+this.scinterval+"&"+
+          'muldaySurferVo.layers='+'titleLayer'+"&"+
+          'muldaySurferVo.layers='+'titleLayer'+"&"+
+          'muldaySurferVo.layers='+'titleLayer'+"&"+
+          'muldaySurferVo.layers='+'Overlays'+"&"+
+          'muldaySurferVo.layers='+'cityLayer'+"&"+
+          'muldaySurferVo.layers='+'surferLayer'+"&"+
+          'muldaySurferVo.layers='+'provinceLayer'+"&"+
+          'muldaySurferVo.layers='+'oceanLayer'+"&"+
+          'muldaySurferVo.layers='+'hnLayer'+"&"+
+          'muldaySurferVo.orgcode'+this.params.regioncode+"&"+
+          'muldaySurferVo.stationtype'+this.params.stationtype+"&"+
+          'muldaySurferVo.title'+this.sctitle+"&"+
+          'muldaySurferVo.type'+'Mulele';
+          this.symbollist.forEach((item)=>{
+            queryStr+="&"+'muldaySurferVo.rgb='+item
+          })
+        var res=axios.get(config.baseUrl+"meteMuldaySurfer.do?"+queryStr);
+        res={docs:[res]};
+        this.layerService.renderMapData(res);
+        return res.data;
+      },
+      async renderMap() {//初始进来的时候调用这个方法
+        var _this = this;
+          var res = await _this.layerService.get2RenderMapData({
+            table: tableName,
+            id:""+this.params.regioncode+this.params.ddate+this.query.value+this.params.stationtype
+          });
+          _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
+          _this.setSysflag();
+          return res;
+        }
       },
       //图层控制函数
-      changeLayerShow(selectedLayers){
+      changeLayerFlag(){
         this.setSysflag();
       },
       setSysflag() {
@@ -148,10 +216,18 @@
         var stationLayerItem = this.layerService.getLayerItemByName("stationLayer");
         this.layerService.layers.stationLayer.render(await this.layerService.getLayerData(stationLayerItem, {statype: stationType}), stationLayerItem)
       },
-    }
   }
+
 </script>
 
 <style lang="css" scoped>
-
+.layers li{
+  float:left;
+  width:125px;
+}
+.layers:after{
+  display:block;
+  content:"";
+  clear:both;
+}
 </style>

@@ -491,11 +491,7 @@
         if (_this.imageVo && _this.imageVo.length > 0) {
           var res = await _this.layerService.get2RenderMapData({
             table: "agmepg",
-            code: _this.orgInfo.code,
-            selectDateMap: ddate,
-            datatype: dataName,
-            factorSelected: _this.selectedEle,
-            stationtype: _this.selectedStationType
+            id: ""+_this.orgInfo.code+ddate+dataName+_this.selectedEle+ _this.selectedStationType
           });
           if (!_this.legendData || _this.legendData.length == 0) {//只有首次加载的时候
             _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);

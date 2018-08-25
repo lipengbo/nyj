@@ -268,7 +268,7 @@ function createLayers(){
         var dataPointStyle = null;
         var dataPointFeature = null;
         var dataPt = null;
-        dataPoints.forEach(function (dataPoint) {
+        dataPoints.forEach((dataPoint)=>{
 
           dataPt = new ol.geom.Point([dataPoint.x, dataPoint.y]);
           dataPointFeature = new ol.Feature({
@@ -436,8 +436,12 @@ class LayerService{
    * @param type
    * @returns {Promise<void>}
    */
-  async get2Render(type){
-    var clientInfo=await commonService.getClientOrgInfo();
+  async get2Render(type,code){
+    if(!code){
+      var clientInfo=await commonService.getClientOrgInfo();
+    }else{
+      clientInfo={code:code}
+    }
     var layerItems=await this.getMMapCgLayerinfo(clientInfo.code,type);
     layerItems.forEach(async (item)=>{
       if(item.layerename=='cityLayer'){
@@ -460,8 +464,8 @@ class LayerService{
    * @param stationtype 站点类型
    * @returns {Promise<*>}
    */
-  async getMapData({table,code,selectDateMap,datatype,factorSelected,stationtype}){
-    var params={"table":table,wt:"json","index":true,q:"id:"+code+selectDateMap+datatype+factorSelected+stationtype};
+  async getMapData({table,id}){
+    var params={"table":table,wt:"json","index":true,q:"id:"+id};
     var res=await axios.get(config.solorUrl+table+"/select",{params:params});
     return res.data.response;
   }
