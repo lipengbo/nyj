@@ -1,6 +1,7 @@
 import qs from "query-string";
 import axios from '@/lib/axios'
 import config from "@/lib/config"
+import dayjs from 'dayjs';
 export default {
   download:async function(opt){
       var res=await axios({
@@ -34,5 +35,18 @@ export default {
       sessionStorage.setItem("clientOrgInfo",JSON.stringify(response.data));
     }
     return response.data;
+  },
+  formatMonthDate(date){
+    var day=dayjs(date);
+    var xun=null;
+    var ri=parseInt(day.format("D"));
+    if(ri<=10){
+      xun="A"
+    }else if(ri<=20){
+      xun="B"
+    }else{
+      xun="C"
+    }
+    return day.format("YYYYMM")+xun;
   }
 }

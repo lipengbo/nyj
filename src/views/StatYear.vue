@@ -469,7 +469,7 @@
                   } else if (climateStatisticsVo.climateList[j].values[i].text == "平均值") {
                     obj.avg = climateStatisticsVo.climateList[j].values[i].value;
                   } else {
-                    obj[climateStatisticsVo.climateList[j].values[i].text] = climateStatisticsVo.climateList[j].values[i].value;
+                    obj[climateStatisticsVo.climateList[j].values[i].text.replace("年", "")] = climateStatisticsVo.climateList[j].values[i].value;
                   }
                 }
               }
@@ -526,7 +526,7 @@
         url = url + queryStr;
         var _this = this;
         // console.log("statyear list:" + url);
-        this.$axios.get(url).then(res => {
+        this.$axios.get(url).then(res => {//"http://localhost:8089/static/data.json"
           cb(res.data)
         });
       }

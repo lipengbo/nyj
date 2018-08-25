@@ -3,7 +3,7 @@
     <el-main style="padding:10px;position:relative;">
       <!--<img :src="scimgUrl" v-if="scimgUrl" style="height:750px;width:100%;" />-->
       <div id="cmap" style="height:100%;width:100%;"></div>
-      <maplegend name="" :data="legendData" v-show="legendShow"></maplegend>
+      <maplegend name="图例" :data="legendData" v-show="legendShow"></maplegend>
     </el-main>
     <el-aside width="250px" class="m-layer-aside">
       <div class="m-title" style="border-color:transparent;">绘图设置</div>
@@ -15,11 +15,9 @@
                 style="margin:10px 10px 10px 0;width:200px;">
       </el-input>
       <div class="m-title" style="border-color:transparent;">图层设置</div>
-      <el-checkbox-group v-model="selectedLayers" @change="changeLayerShow">
-        <el-checkbox v-for="item in sclayers" style="width:50%;margin-left:0;" :label="item.code" :checked="item.flag=='1'">
+        <el-checkbox v-for="item in layerData" style="width:50%;margin-left:0;"  @change="changeLayerShow(item)" true-label="1" false-label="0" v-model="item.flag" :label="item.code" :checked="item.flag=='1'">
           {{item.layername}}
         </el-checkbox>
-      </el-checkbox-group>
       <div class="m-title" style="border-color:transparent;">色标设置</div>
       <div>
         最大值:
@@ -73,14 +71,7 @@
       })
     },
     async mounted(){
-      var map=mapService.createMap({target:"cmap"});
-      this.layerService = new LayerService({map:map});
-      this.layerService.getMMapCgLayerinfo(this.orgInfo.code).then((data)=>{
-        this.sclayers=data;
-      });
-      await this.layerService.get2Render();
-      this.layerData = this.layerService.layerData;
-      this.renderStationLayer(this.query.selectedStationType);
+      this.init()
     },
     data() {
       return {
@@ -89,15 +80,23 @@
         scinterpolation:[],
         sctitle:"",
         selectedLayers:[],
-        sclayers:[],
+        layerData:[],
         legendData:[],
         legendShow:false,
       };
     },
     methods: {
+      async init(){
+        var map=mapService.createMap({target:"cmap"});
+        this.layerService = new LayerService({map:map});
+        await this.layerService.get2Render();
+        this.layerData=this.layerService.layerData;
+        this.renderStationLayer(this.query.stationtype);
+        this.setSysflag();
+      },
       //图层控制函数
       changeLayerShow(selectedLayers){
-        console.log(selectedLayers);
+        this.setSysflag();
       },
       setSysflag() {
         var titleLayer = this.layerService.layers["titleLayer"];

@@ -17,16 +17,21 @@
             <p>{{panelData.farmingsurvey}}</p>
             <br/>
             <h3>附件</h3>
-            <p>
-              <img v-for="item in panelData.attachmentthumb" :src="resourceUrl+item"/>
-            </p>
+            <div>
+              <swiper :options="swiperOption" ref="swiper">
+                <swiper-slide v-for="(item,index) in panelData.attachment">
+                  <img :src="resourceUrl+item" @mouseenter="imageEnter(index)" @mouseleave="imageLeave()"/>
+                </swiper-slide>
+                <div class="swiper-button-next swiper-button" slot="button-next"></div>
+                <div class="swiper-button-prev swiper-button" slot="button-prev"></div>
+              </swiper>
+            </div>
           </div>
         </div>
-        <div class="opt">
-          <i class="btn el-icon-arrow-left" @click="pre(panelData.id)"></i>
-          <i class="btn el-icon-arrow-right" @click="next(panelData.id)"></i>
-        </div>
       </div>
+    </div>
+    <div class="imageDetail" :class="{'active':currentImage}">
+      <img :src="currentImage"/>
     </div>
   </div>
 </template>
@@ -35,9 +40,9 @@
   import mapService from '@/service/mapService'
   var config = require('../lib/config.js');
   import dayjs from 'dayjs';
-  
+  import commonService from "@/service/commonService"
   var getData = async (params) => {
-    var query={"q":"periods:201806C",wt:"json","index":true,start:0,rows:26};//暂时写死
+    var query={"q":"*"/*"periods:"+commonService.formatMonthDate(dayjs().subtract(10, 'day').toDate())*/,wt:"json","index":true,start:0,rows:26};//暂时写死
     var url=config.solorUrl+"cmcropconditioninfo/select";
     var res = await axios.get(url,{params:query});
     return res.data.response.docs;
@@ -46,9 +51,19 @@
     name: "monitor",
     data() {
       return {
+        swiperOption:{
+          speed:600,
+          slidesPerView :2,
+          spaceBetween:3,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          },
+        },
         resourceUrl:config.resourceUrl,
         isPanelShow:false,
-        panelData:{}
+        panelData:{},
+        currentImage:null
       };
     },
     created() {
@@ -68,7 +83,7 @@
           _self.overlays=new mapService.OverlayCollection({
             map:_self.map,
             render:function(data){
-              return '<img src="'+resourceUrl+data.attachmentthumb[data.attachmentthumb.length-1]+'"/>';
+              return '<img src="'+resourceUrl+data.attachment[data.attachment.length-1]+'"/>';//'<img src="'+resourceUrl+data.attachmentthumb[data.attachmentthumb.length-1]+'"/>';
             },
             click:function(overlay){
               _self.showPanel(overlay);
@@ -90,21 +105,11 @@
         }
         this.isPanelShow=true;
       },
-      next(id){
-        var arr=this.overlays.getArray();
-        var index=this.overlays.getIndexById(id);
-        if(index<arr.length-1){
-          this.panelData =  arr[index+1].get("clients");
-          this.map.getView().setCenter(arr[index+1].getPosition());
-        }
+      imageEnter(index){
+        this.currentImage=this.resourceUrl+this.panelData.attachment[index];
       },
-      pre(id){
-        var arr=this.overlays.getArray();
-        var index=this.overlays.getIndexById(id);
-        if(index>0){
-          this.panelData =  arr[index-1].get("clients");
-          this.map.getView().setCenter(arr[index-1].getPosition())
-        }
+      imageLeave(){
+        this.currentImage=null;
       }
     }
   }
@@ -157,7 +162,8 @@
   }
   .panel_content img{
     width:98px;
-    margin:0 6px;
+    height:60px;
+    background:#ccc;
   }
   .opt{
     bottom:0;
@@ -189,6 +195,28 @@
     font-weight: 700;
     cursor: pointer;
   }
+  .imageDetail{
+    background:white;
+    padding:3px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
+    border-radius: 3px;
+    width:600px;
+    min-height:300px;
+    right:240px;
+    top:50%;
+    transform:translateY(-50%);
+    position:absolute;
+    z-index:9999;
+    display:none;
+  }
+  .imageDetail.active{
+    display:block;
+  }
+  .imageDetail img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
 </style>
 <style>
   .monitor .ol-popup{
@@ -205,6 +233,15 @@
     border:solid 1px #dcdcdc;
     display:block;
     height:auto;
+  }
+  .monitor .swiper-button{
+    width:16px;
+    height:25px;
+    margin-top:-12.5px;
+    background-size: 16px 30px;
+  }
+  .monitor .swiper-button-prev{
+    left:0;
   }
 
 </style>
