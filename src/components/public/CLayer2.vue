@@ -15,16 +15,16 @@
                 style="margin:10px 10px 10px 0;width:200px;">
       </el-input>
       <div class="m-title" style="border-color:transparent;">图层设置</div>
-        <!-- <el-checkbox v-for="item in layerData" style="width:50%;margin-left:0;"  @change="changeLayerShow(item)" true-label="1" false-label="0" v-model="item.flag" :checked="item.flag=='1'">
-          {{item.layername}}
-        </el-checkbox> -->
-        <ul class="layers">
-          <li v-for="item in layerData">
-            <el-checkbox true-label="1" false-label="0" :checked="item.flag=='1'" v-model="item.flag"
-                          @change="changeLayerFlag">{{item.layername}}
-            </el-checkbox>
-          </li>
-        </ul>
+      <!-- <el-checkbox v-for="item in layerData" style="width:50%;margin-left:0;"  @change="changeLayerShow(item)" true-label="1" false-label="0" v-model="item.flag" :checked="item.flag=='1'">
+        {{item.layername}}
+      </el-checkbox> -->
+      <ul class="layers">
+        <li v-for="item in layerData">
+          <el-checkbox true-label="1" false-label="0" :checked="item.flag=='1'" v-model="item.flag"
+                       @change="changeLayerFlag">{{item.layername}}
+          </el-checkbox>
+        </li>
+      </ul>
       <div class="m-title" style="border-color:transparent;">色标设置</div>
       <div>
         最大值:
@@ -36,16 +36,16 @@
 
       </div>
       <div class="m-symbols-color" style="padding-top:8px;"><!--v-if="showColor"-->
-        <!--<ul v-if="rgbVo">
+        <ul v-if="rgbVo">
           <li v-for="(item,index) in rgbVo.rgb" :style="'background:#'+item" @click="changeSymbols"
               :data-index="index"></li>
-        </ul>-->
+        </ul>
         色&nbsp;&nbsp;标 :
         <!-- <colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp> -->
       </div>
       <div class="m-symbols">
         <ul v-if="scsymbols">
-          <li v-for="item in scsymbols" :style="'background:#'+item"></li>
+          <li v-for="item in scsymbols" :style="'background:'+item"></li>
         </ul>
       </div>
       <br/>
@@ -58,113 +58,134 @@
 <script>
   import {mapState} from 'vuex';
   import config from '@/lib/config.js';
-  import colorramp from '@/components/public/colorRamp'
   import LayerService from '@/service/LayerService'
   import mapService from '@/service/mapService'
   import statService from '@/service/statService'
   import maplegend from '@/components/public/maplegend';
-  const tableName="muldaypg";
+
+  const tableName = "muldaypg";
   export default {
     name: "clayer2",
-    props: ['query','params'],
-    components:{colorramp,maplegend},
-    computed:{
+    props: ['query', 'params'],
+    components: {maplegend},
+    computed: {
       ...mapState([
         'orgInfo',
       ]),
     },
     created() {
       //获取绘图算法
-      statService.getInterpolationVo().then((data)=>{
-        this.scinterpolation=data;
-        this.selectedInterpolation=this.scinterpolation[0];
+      statService.getInterpolationVo().then((data) => {
+        this.scinterpolation = data;
+        this.selectedInterpolation = this.scinterpolation[0];
       })
     },
-    watch:{
-      query(val){
-        this.scmaxvalue=val.maxvalue;
-        this.scminvalue=val.minvalue;
-        this.scinterval=val.scinterval;
-        this.scsymbols=[];
-        this.query.symbollist.forEach((item)=>{
-          this.scsymbols.push(item.fillColor);
-        })
-        setTimeout(()=>{
-          document.getElementById("cmap").innerHTML="";
-           this.init()
-        },200)
-      
-      },
+    watch: {
+      /*query(val) {
+        this.$nextTick(()=>{
+          this.scmaxvalue = val.maxvalue;
+          this.scminvalue = val.minvalue;
+          this.scinterval = val.interval;
+          this.scsymbols = [];
+          this.query.symbollist.forEach((item) => {
+            this.scsymbols.push(item.fillColor);
+          });
+          document.getElementById("cmap").innerHTML = "";
+          this.init()
+        });
+      },*/
     },
-    async mounted(){
-      //this.init()
+    async mounted() {
+      this.$nextTick(()=>{
+        var val=this.query;
+        this.sctitle=val.title;
+        this.scmaxvalue = val.maxvalue;
+        this.scminvalue = val.minvalue;
+        this.scinterval = val.interval;
+        this.scsymbols = [];
+        this.query.symbollist.forEach((item) => {
+          this.scsymbols.push(item.fillColor);
+        });
+        document.getElementById("cmap").innerHTML = "";
+        this.init()
+      });
     },
     data() {
       return {
-        selectedInterpolation:null,
-        isShowInterpolation:true,
-        scinterpolation:[],
-        sctitle:"",
-        scmaxvalue:null,
-        scminvalue:null,
-        scinterval:null,
-        scsymbols:[],
-        selectedLayers:[],
-        layerData:[],
-        legendData:[],
-        legendShow:false,
+        selectedInterpolation: null,
+        isShowInterpolation: true,
+        scinterpolation: [],
+        sctitle: "",
+        scmaxvalue: null,
+        scminvalue: null,
+        scinterval: null,
+        scsymbols: [],
+        selectedLayers: [],
+        layerData: [],
+        legendData: [],
+        legendShow: false,
       };
     },
     methods: {
-      async init(){
-        var map=mapService.createMap({target:"cmap"});
-        this.layerService = new LayerService({map:map});
-        this.layerService.get2Render(null,this.params.regioncode);
-        this.layerData=this.layerService.layerData;//图层控制
-        var data=await this.renderMap();
-        this.sctitle=data.title;
+      async init() {
+        var map = mapService.createMap({target: "cmap"});
+        this.layerService = new LayerService({map: map});
+        await this.layerService.get2Render(null, this.params.regioncode);
+        this.layerData = this.layerService.layerData;//图层控制
+        var data = await this.renderMap();
+        this.sctitle = data.docs[0].title;
         this.renderStationLayer(this.params.stationtype);
       },
-      async getSuferChart(){
-        var queryStr=
-          'muldaySurferVo.ddate='+this.params.ddate+"&"+
-          'muldaySurferVo.ele='+this.query.value+"&"+
-          'muldaySurferVo.interval='+this.scinterval+"&"+
-          'muldaySurferVo.layers='+'titleLayer'+"&"+
-          'muldaySurferVo.layers='+'titleLayer'+"&"+
-          'muldaySurferVo.layers='+'titleLayer'+"&"+
-          'muldaySurferVo.layers='+'Overlays'+"&"+
-          'muldaySurferVo.layers='+'cityLayer'+"&"+
-          'muldaySurferVo.layers='+'surferLayer'+"&"+
-          'muldaySurferVo.layers='+'provinceLayer'+"&"+
-          'muldaySurferVo.layers='+'oceanLayer'+"&"+
-          'muldaySurferVo.layers='+'hnLayer'+"&"+
-          'muldaySurferVo.orgcode'+this.params.regioncode+"&"+
-          'muldaySurferVo.stationtype'+this.params.stationtype+"&"+
-          'muldaySurferVo.title'+this.sctitle+"&"+
-          'muldaySurferVo.type'+'Mulele';
-          this.symbollist.forEach((item)=>{
-            queryStr+="&"+'muldaySurferVo.rgb='+item
-          })
-        var res=axios.get(config.baseUrl+"meteMuldaySurfer.do?"+queryStr);
-        res={docs:[res]};
+      async getSuferChart() {
+/*        var queryStr =
+          'muldaySurferVo.ddate=' + this.params.ddate + "&" +
+          'muldaySurferVo.ele=' + this.query.value + "&" +
+          'muldaySurferVo.interval=' + this.scinterval + "&" +
+          'muldaySurferVo.layers=' + 'titleLayer' + "&" +
+          'muldaySurferVo.layers=' + 'titleLayer' + "&" +
+          'muldaySurferVo.layers=' + 'titleLayer' + "&" +
+          'muldaySurferVo.layers=' + 'Overlays' + "&" +
+          'muldaySurferVo.layers=' + 'cityLayer' + "&" +
+          'muldaySurferVo.layers=' + 'surferLayer' + "&" +
+          'muldaySurferVo.layers=' + 'provinceLayer' + "&" +
+          'muldaySurferVo.layers=' + 'oceanLayer' + "&" +
+          'muldaySurferVo.layers=' + 'hnLayer' + "&" +
+          'muldaySurferVo.orgcode=' + this.params.regioncode + "&" +
+          'muldaySurferVo.stationtype=' + this.params.stationtype + "&" +
+          'muldaySurferVo.title=' + this.sctitle + "&" +
+          'muldaySurferVo.type=' + 'Mulele';
+        this.scsymbols.forEach((item) => {
+          queryStr += "&" + 'muldaySurferVo.rgb=' + item
+        });*/
+        var queryjson={
+          'muldaySurferVo.ddate': this.params.ddate ,
+          'muldaySurferVo.ele' : this.query.value ,
+          'muldaySurferVo.interval': this.scinterval ,
+          'muldaySurferVo.layers' : ['titleLayer', 'titleLayer','titleLayer','Overlays','cityLayer','surferLayer','provinceLayer','oceanLayer','hnLayer'],
+          'muldaySurferVo.orgcode' : this.params.regioncode ,
+          'muldaySurferVo.stationtype' : this.params.stationtype ,
+          'muldaySurferVo.title' : this.sctitle,
+          'muldaySurferVo.type' :'Mulele',
+          "muldaySurferVo.rgb":this.scsymbols
+        };
+        var res = axios.post(config.baseUrl + "meteMuldaySurfer.do",queryjson,{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          },
+        });
+        res = {docs: [res]};
         this.layerService.renderMapData(res);
         return res.data;
       },
       async renderMap() {//初始进来的时候调用这个方法
         var _this = this;
-          var res = await _this.layerService.get2RenderMapData({
-            table: tableName,
-            id:""+this.params.regioncode+this.params.ddate+this.query.value+this.params.stationtype
-          });
-          _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
-          _this.setSysflag();
-          return res;
-        }
-      },
-      //图层控制函数
-      changeLayerFlag(){
-        this.setSysflag();
+        var res = await _this.layerService.get2RenderMapData({
+          table: tableName,
+          id: "" + this.params.regioncode + this.params.ddate + this.query.value + this.params.stationtype
+        });
+        _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
+        _this.setSysflag();
+        return res;
       },
       setSysflag() {
         var titleLayer = this.layerService.layers["titleLayer"];
@@ -212,22 +233,37 @@
           }
         })
       },
+      //图层控制函数
+      changeLayerFlag() {
+        this.setSysflag();
+      },
       async renderStationLayer(stationType) {
         var stationLayerItem = this.layerService.getLayerItemByName("stationLayer");
         this.layerService.layers.stationLayer.render(await this.layerService.getLayerData(stationLayerItem, {statype: stationType}), stationLayerItem)
-      },
+      }
+    }
   }
 
 </script>
 
 <style lang="css" scoped>
-.layers li{
-  float:left;
-  width:125px;
-}
-.layers:after{
-  display:block;
-  content:"";
-  clear:both;
-}
+  .layers li {
+    float: left;
+    width: 125px;
+  }
+
+  .layers:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  .m-symbols{
+
+  }
+  .m-symbols li{
+    width:20px;
+    height:20px;
+    float:left;
+  }
 </style>

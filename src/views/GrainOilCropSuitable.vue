@@ -486,27 +486,6 @@
           })
         }
       },
-      async renderMap(ddate) {
-        var _this = this;
-        if (_this.imageVo && _this.imageVo.length > 0) {
-          var res = await _this.layerService.get2RenderMapData({
-            table: "agmepg",
-            id: ""+_this.orgInfo.code+ddate+dataName+_this.selectedEle+ _this.selectedStationType
-          });
-          if (!_this.legendData || _this.legendData.length == 0) {//只有首次加载的时候
-            _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
-          }
-          _this.setSysflag();
-        }
-      },
-      downImages() {
-        var _this = this;
-        _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
-        _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
-        var url = baseUrl + "AgrForecastInfoQueryVo.do?eletype=" + _this.selectedEle + "&enddate=" + _this.eDate +
-          "&orgcode=" + _this.orgInfo.code + "&startdate=" + _this.sDate + "&stationtype=" + _this.selectedStationType + "&type=gocrops";
-        commonService.download({url: url});
-      },
       setSysflag() {
         var titleLayer = this.layerService.layers["titleLayer"];
         this.layerData.forEach((e) => {
@@ -552,6 +531,27 @@
             }
           }
         })
+      },
+      async renderMap(ddate) {
+        var _this = this;
+        if (_this.imageVo && _this.imageVo.length > 0) {
+          var res = await _this.layerService.get2RenderMapData({
+            table: "agmepg",
+            id: ""+_this.orgInfo.code+ddate+dataName+_this.selectedEle+ _this.selectedStationType
+          });
+          if (!_this.legendData || _this.legendData.length == 0) {//只有首次加载的时候
+            _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
+          }
+          _this.setSysflag();
+        }
+      },
+      downImages() {
+        var _this = this;
+        _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
+        _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
+        var url = baseUrl + "AgrForecastInfoQueryVo.do?eletype=" + _this.selectedEle + "&enddate=" + _this.eDate +
+          "&orgcode=" + _this.orgInfo.code + "&startdate=" + _this.sDate + "&stationtype=" + _this.selectedStationType + "&type=gocrops";
+        commonService.download({url: url});
       },
       async renderStationLayer(stationType) {
         var stationLayerItem = this.layerService.getLayerItemByName("stationLayer");

@@ -151,7 +151,7 @@ function createLayers(){
           this.layer.getSource().clear();
           var pls = format.readFeatures(res.docs[0].pljson);
           var plStyle = null;
-          pls.forEach(function (pl) {
+          pls.forEach((pl)=>{
             plStyle = new ol.style.Style({
               stroke: new ol.style.Stroke({
                 color: (publishItem.linecolor ? publishItem.linecolor : '#696969'),//

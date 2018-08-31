@@ -85,6 +85,7 @@ class HomeMap {
   };
   download(name){
     html2canvas(this.map.getViewport(), {
+        useCORS:true,
         allowTaint: true,
         taintTest: false
       }

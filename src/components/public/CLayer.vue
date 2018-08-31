@@ -34,7 +34,7 @@
           <li v-for="(item,index) in rgbVo.rgb" :style="'background:#'+item" @click="changeSymbols"
               :data-index="index"></li>
         </ul>-->
-        色&nbsp;&nbsp;标 :<colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp>
+        色&nbsp;&nbsp;标 :<!--<colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp>-->
       </div>
       <div class="m-symbols">
         <ul v-if="scsymbols">
@@ -50,12 +50,11 @@
 
 <script>
   import config from '@/lib/config.js';
-  import colorramp from '@/components/public/colorRamp'
   import ClayerService from '@/service/ClayerService'
   export default {
     name: "clayer",
     props: ['queryStr', 'keyTable'],
-    components:{colorramp},
+    components:{},
     created() {
       this.getOptions(this.surferChartVo);
     },
