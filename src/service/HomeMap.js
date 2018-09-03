@@ -87,7 +87,8 @@ class HomeMap {
     html2canvas(this.map.getViewport(), {
         useCORS:true,
         allowTaint: true,
-        taintTest: false
+        taintTest: false,
+        canvas:this.map.getViewPort().getElementsByTagName("canvas")[0]
       }
     ).then(function(canvas){
       canvas.id = "mycanvas";
@@ -95,6 +96,7 @@ class HomeMap {
       var a=document.getElementById('canvastomap');
       if(!a){
         a=document.createElement('a');
+        a.id="canvastomap";
         a.href=dataUrl;
         a.setAttribute('download', name+'.png');
         document.body.appendChild(a);
