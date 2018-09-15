@@ -79,7 +79,7 @@
       <cstacodeselect @hide="hideDialogTable" @changeStacodes="changeStacodes"></cstacodeselect>
     </el-dialog>
     <el-dialog title="绘图窗口" :visible.sync="isDzxShow">
-      <!--<slayer :query="queryStr" :keyTable=""></slayer>-->
+      <clayer v-if="isDzxShow" style="height:80vh" :query="clayerQuery" :params="clayerParams"></clayer>
     </el-dialog>
   </div>
 </template>
@@ -282,7 +282,8 @@
         surfstation: null,
         stationList: null,
         dialogTableVisible: false,
-        stacodes: ""
+        stacodes: "",
+        isDzxShow:false,
       };
     },
     created() {
@@ -404,6 +405,11 @@
         this.dialogTableVisible = false;
       },
       showDzx(){
+        this.clayerQuery={
+          title:"",
+          sdate:this.sdate,
+          edate:this.edate,
+        };
         this.isDzxShow=true;
       },
       handlerselectedStatistic(e) {

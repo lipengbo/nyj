@@ -83,29 +83,28 @@ class HomeMap {
       this._drawOverlay(res.data.response);
     });
   };
-  download(name){
+  download(name) {
     html2canvas(this.map.getViewport(), {
-        useCORS:true,
+        useCORS: true,
         allowTaint: true,
         taintTest: false,
-        canvas:this.map.getViewPort().getElementsByTagName("canvas")[0]
+        canvas: this.map.getViewport().getElementsByTagName("canvas")[0]
       }
-    ).then(function(canvas){
+    ).then(function (canvas) {
       canvas.id = "mycanvas";
       var dataUrl = canvas.toDataURL();
-      var a=document.getElementById('canvastomap');
-      if(!a){
-        a=document.createElement('a');
-        a.id="canvastomap";
-        a.href=dataUrl;
-        a.setAttribute('download', name+'.png');
+      var a = document.getElementById('canvastomap');
+      if (!a) {
+        a = document.createElement('a');
+        a.id = "canvastomap";
+        a.href = dataUrl;
+        a.setAttribute('download', name + '.png');
         document.body.appendChild(a);
       }
       a.click();
       a.remove();
     })
-  }
-
+  };
   drawArea(pgjson){
     //this.bjLayer.getSource().clear();
     var geojson =pgjson;

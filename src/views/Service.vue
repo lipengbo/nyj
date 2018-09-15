@@ -39,7 +39,7 @@
             </label>
           </div>
           <ul class="m-data">
-            <li v-for="(item,index) in voData" @click="changeImageIndex" :data-index="index">{{item.name}}</li>
+            <li v-for="(item,index) in voData" @click="changeImageIndex(index)" :data-index="index">{{item.name}}</li>
           </ul>
         </div>
       </div>
@@ -82,17 +82,18 @@
     },
     watch: {
       $route(to, from) {
-        this.knowledgeType = to.params.type;
-        if(this.knowledgeType==='everyType'){
+        this.serviceType = to.params.type;
+        if(this.serviceType==='everyType'){
           this.$router.replace(this.menus['service'][0].children[0].path);
           return;
         }
         this.currentIndex = 0;
         this.voData = null;
         this.getOptions();
+        this.getServicesproductinfoPeriodsVoByTypeAndYear();
       },
       selectedOrg: function (cur, old) {
-        this.doQuery();
+        this.getServicesproductinfoPeriodsVoByTypeAndYear();
       },
       selectedYear: function (cur, old) {
         this.getServicesproductinfoPeriodsVoByTypeAndYear();
@@ -122,7 +123,6 @@
     methods: {
       getOptions() {
         var _this = this;
-        _this.getOrgInfo();
         var startYear = new Date("1950", "01", "01").getFullYear();
         var endYear = new Date().getFullYear();
         var years = [];
@@ -132,25 +132,26 @@
         }
         this.years = years;
         this.selectedYear = endYear;
-      },
-      getOrgInfo() {
-        var _this = this;
-        this.$axios.get(baseUrl + "/getOrginfo.do?orgcode=" + this.orgInfo.code).then(res => {
-          _this.orgInfos = res.data;
-          _this.selectedOrg = res.data[0].code;
-        });
+        _this.getOrgInfo();
 
+      },
+      async getOrgInfo() {
+        var _this = this;
+        var res= await axios.get(baseUrl + "/getOrginfo.do?orgcode=" + this.orgInfo.code);
+        _this.orgInfos = res.data;
+        _this.selectedOrg = res.data[0].code;
+        return res;
       },
       getServicesproductinfoPeriodsVoByTypeAndYear() {
         var _this = this;
-        _this.$axios.get(baseUrl + "/getServicesproductinfoPeriodsVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
+        axios.get(baseUrl + "/getServicesproductinfoPeriodsVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
           _this.periods = res.data;
           if (res.data.length > 0) {
             _this.selectedPeriod = res.data[0].value;
+            _this.changeImageIndex(0)
           } else {
             _this.selectedPeriod = null;
           }
-
           this.doQuery();
         });
       },
@@ -160,10 +161,10 @@
           _this.voData = res.data;
         });
       },
-      changeImageIndex(e) {
+      changeImageIndex(index) {
         var _this = this,
           periods = this.periods;
-        var currentIndex = e.target.dataset.index;
+        var currentIndex =index;
         _this.currentIndex = currentIndex;
         _this.selectedPeriod = periods[currentIndex].value;
       }

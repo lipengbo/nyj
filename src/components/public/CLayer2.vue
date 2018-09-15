@@ -36,17 +36,11 @@
 
       </div>
       <div class="m-symbols-color" style="padding-top:8px;"><!--v-if="showColor"-->
-        <ul v-if="rgbVo">
-          <li v-for="(item,index) in rgbVo.rgb" :style="'background:#'+item" @click="changeSymbols"
-              :data-index="index"></li>
-        </ul>
         色&nbsp;&nbsp;标 :
         <!-- <colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp> -->
       </div>
-      <div class="m-symbols">
-        <ul v-if="scsymbols">
-          <li v-for="item in scsymbols" :style="'background:'+item"></li>
-        </ul>
+      <div>
+        <colorbar :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :colors="sccolors"></colorbar>
       </div>
       <br/>
       <el-button type="primary" size="small" @click="getSuferChart">绘图</el-button>
@@ -62,12 +56,13 @@
   import mapService from '@/service/mapService'
   import statService from '@/service/statService'
   import maplegend from '@/components/public/maplegend';
+  import colorbar from '@/components/public/colorbar';
 
   const tableName = "muldaypg";
   export default {
     name: "clayer2",
     props: ['query', 'params'],
-    components: {maplegend},
+    components: {maplegend,colorbar},
     computed: {
       ...mapState([
         'orgInfo',
@@ -77,7 +72,7 @@
       //获取绘图算法
       statService.getInterpolationVo().then((data) => {
         this.scinterpolation = data;
-        this.selectedInterpolation = this.scinterpolation[0];
+        this.selectedInterpolation = this.scinterpolation[0].code;
       })
     },
     watch: {
@@ -94,6 +89,15 @@
           this.init()
         });
       },*/
+      legendData(val){
+        if(val){
+          var arr=[];
+          val.forEach((item)=>{
+            arr.push(item.fillColor);
+          });
+          this.sccolors=arr;
+        }
+      }
     },
     async mounted() {
       this.$nextTick(()=>{
@@ -119,7 +123,7 @@
         scmaxvalue: null,
         scminvalue: null,
         scinterval: null,
-        scsymbols: [],
+        sccolors: [],
         selectedLayers: [],
         layerData: [],
         legendData: [],
@@ -166,7 +170,7 @@
           'muldaySurferVo.stationtype' : this.params.stationtype ,
           'muldaySurferVo.title' : this.sctitle,
           'muldaySurferVo.type' :'Mulele',
-          "muldaySurferVo.rgb":this.scsymbols
+          "muldaySurferVo.rgb":this.sccolors
         };
         var res = axios.post(config.baseUrl + "meteMuldaySurfer.do",queryjson,{
           headers: {
@@ -217,7 +221,6 @@
             } else {
               if (this.layerService.layers[e.layerename]) {
                 if (e.flag == "1") {
-
                   this.layerService.layers[e.layerename].layer.setVisible(true)
                 } else {
                   this.layerService.layers[e.layerename].layer.setVisible(false)

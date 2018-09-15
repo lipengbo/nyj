@@ -8,13 +8,15 @@ import path from 'path';
 export default {
   name: "mpdf",
   props:["file"],
+  components:{
+  },
   data () {
     return {
     };
   },
   computed:{
     filePath:function(){
-      return config.resourceUrl+"images"+this.file;
+      return config.resourceUrl+"images/"+this.file
     }
   }
 }

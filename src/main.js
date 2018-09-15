@@ -25,10 +25,10 @@ var VueCookie = require('vue-cookie');
 Vue.use(VueCookie);
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+//Vue.use(VuePdfReader);
 // require styles
 import 'swiper/dist/css/swiper.css'
-
-Vue.use(VueAwesomeSwiper, /* { default global options } */ )
+Vue.use(VueAwesomeSwiper, /* { default global options } */ );
 
 Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key])
@@ -43,7 +43,6 @@ router.afterEach(route => {
     // console.log(route);
     document.title = route.meta.title
 });
-
 sync(store, router);
 
 /* eslint-disable no-new */

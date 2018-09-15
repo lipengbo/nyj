@@ -452,6 +452,7 @@ class LayerService{
         this.layers.cityLabelLayer.render(await this.getLayerData(item),item);
       }
     });
+    this.layers['oceanLayer'].layer=this.map.getLayers().getArray()[0];
   }
 
   /**

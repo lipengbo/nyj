@@ -82,24 +82,24 @@ export default {
     return new ol.Map({
       target: opt.target || "map",
       layers: [
-        // new ol.layer.Tile({
-        //   title: "天地图路网",
-        //   source: new ol.source.XYZ({
-        //     url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
-        //   })
-        // }),
-        // new ol.layer.Tile({
-        //   title: "天地图文字标注",
-        //   source: new ol.source.XYZ({
-        //     url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
-        //   })
-        // })
-        tilelayer
+        new ol.layer.Tile({
+          title: "天地图路网",
+          source: new ol.source.XYZ({
+            url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
+          })
+        }),
+        new ol.layer.Tile({
+          title: "天地图文字标注",
+          source: new ol.source.XYZ({
+            url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
+          })
+        })
+        //tilelayer
       ],
       view: new ol.View({
         projection:ol.proj.get('EPSG:4326'),
         center: opt.center || [113.5, 23],
-        zoom: opt.zoom || 8,
+        zoom: opt.zoom ||7,
       })
     });
   },

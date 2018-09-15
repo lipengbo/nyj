@@ -1740,9 +1740,9 @@ var validateFileURL;
         return;
       }
       var fileOrigin = new URL(file, window.location.href).origin;
-      if (fileOrigin !== viewerOrigin) {
+     /* if (fileOrigin !== viewerOrigin) {
         throw new Error('file origin does not match viewer\'s');
-      }
+      }*/
     } catch (e) {
       var message = e && e.message;
       PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (loadingErrorMessage) {

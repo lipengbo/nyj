@@ -13,7 +13,7 @@
 
 <style scoped>
   .map-symboljson-div{
-    width:100px;
+    width:112px;
     min-height: 80px;
     background:#8FCCF0 ;
     position:absolute;

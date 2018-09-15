@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <div v-show="showColorBar" @blur="showColorBar=0">
-      <div>{{type==0?"冷色 / 暖色":"暖色 / 冷色"}}</div>
+  <div style="position:relative">
+    <div v-show="showColorBar" @blur="showColorBar=0" class="showColorBar">
+      <div @click="changeType()">{{type==0?"冷色 / 暖色":"暖色 / 冷色"}}</div>
       <div>
-        <ul v-if="scsymbols" class="colorBars">
-          <li v-for="(item,index) in scsymbols" :style="'background:'+item" @click="current=index"></li>
+        <ul class="colorBars colors">
+          <li v-for="(item,index) in colorBars" :style="'background:'+item" @click="selectColor(index)"></li>
         </ul>
       </div>
     </div>
-    <ul v-if="scsymbols" class="colors" @click="showColorBar=1">
-      <li v-for="item in scsymbols" :style="'background:'+item"></li>
+    <ul class="colors" @click="showColorBar=1">
+      <li v-for="item in colors" :style="'background:'+item"></li>
     </ul>
   </div>
 </template>
@@ -25,44 +25,41 @@
         showColorBar:0
       }
     },
+    watch:{
+      colors(val){
+        console.log(val);
+      }
+    },
     created(){
-      this.init();
+      console.log(this.colors);
     },
     methods: {
-      init() {
-        var value = Number(interval);
-        var datas={
-          maxvalue:this.min,
-          minvalue:this.max
-        };
-        if(length>(symbolJson.length+index)){
-          var stopPosition=index+this.colorBars.length;
-          var newArr=[];
-          for(var i=index;i<stopPosition;i++){
-            newArr.push(colorBars[i]);
+      createColors(index) {
+        var interval = Number(this.interval);
+        var min=Number(this.min);
+        var max=Number(this.max);
+        var length=Math.ceil((max-min)/interval);
+        this.colors=[];
+        for(var i=0;i<length;i++){
+          var num=i+index;
+          if(num>this.colorBars.length-1){
+            num=num-this.colorBars.length;
           }
-        }else{
-          var newArr=[];
-          for(var i=index;i<length;i++){
-            newArr.push(colorBars[i]);
-          }
-          for(var j=0;j<(colorBars.length-(length-index));j++){
-            newArr.push(colorBars[j])
-          }
+          this.colors.push(this.colorBars[num])
         }
-        this.colors=newArr;
-        this.showColorBar=false;
       },
       changeType:function(){
-        if(this.type==0){
+        if(!this.type){
           this.type=1;
-        }
-        else {
+        }else {
           this.type=0;
         }
         this.colorBars.reverse();
-        this.init();
       },
+      selectColor:function(index){
+        this.createColors(index);
+        this.showColorBar=0;
+      }
     }
   }
 </script>
@@ -76,5 +73,16 @@
     width:20px;
     height:20px;
     float:left;
+  }
+  .showColorBar{
+    position:absolute;
+    bottom:100%;
+    left:0;
+    width:150px;
+    padding:5px;
+    background:rgba(0,0,0,.5);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
   }
 </style>
