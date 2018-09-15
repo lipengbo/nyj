@@ -3,7 +3,7 @@
     <div class="m-stat-header">
       <div class="u-bar u-white f-bb1 " style="height:60px;line-height:60px;">
         <ul v-if="eles" class="m-eles">
-          <label class="u-label">粮油作物 ：</label>
+          <label class="u-label">灾害监测预警 ：</label>
           <li v-for="(item,index) in eles" :data-index="index" :data-value="item.value"
               :class="selectedEle==item.value?'f-active':''" @click="changeEle">{{item.text}}
           </li>

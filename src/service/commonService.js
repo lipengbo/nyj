@@ -27,6 +27,7 @@ export default {
   async getClientOrgInfo(){
     var info=sessionStorage.getItem("clientOrgInfo");
     if(info){
+      console.log(info)
       return JSON.parse(info);
     }
     var url = config.baseUrl + "getClientOrgInfo.do";

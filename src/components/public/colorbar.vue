@@ -17,21 +17,30 @@
   const colorBars = ["#bb012d", "#e70000", "#f74f14", "#fa9200", "#fcc865", "#fde37d", "#f9fad5", "#9ee3d4", "#6eb0d4", "#3a91db", "#4d66d2", "#5440b6", "#330d80"];
   export default {
     name: "colorbar",
-    props: ["interval", "min", "max",'colors'],
+    props: ["interval", "min", "max",'inputcolors'],
     data(){
       return {
         type:0,//0：冷色/暖色  1：暖色/冷色,
         colorBars:colorBars,
-        showColorBar:0
+        showColorBar:0,
+        colors:[]
       }
     },
     watch:{
-      colors(val){
-        console.log(val);
+      inputcolors(val){
+        this.colors=[];
+        val&&val.forEach(item=>{
+        this.colors.push(item);
+      })
       }
     },
     created(){
-      console.log(this.colors);
+      //console.log(this.colors);
+      this.colors=[];
+      this.inputcolors&&this.inputcolors.forEach(item=>{
+        this.colors.push(item);
+      })
+    
     },
     methods: {
       createColors(index) {

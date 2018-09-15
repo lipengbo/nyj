@@ -7,10 +7,26 @@
     </el-main>
     <el-aside width="250px" class="m-layer-aside">
       <div class="m-title" style="border-color:transparent;">绘图设置</div>
-      <el-select v-model="selectedInterpolation" placeholder="请选择" size="small" v-if="scinterpolation">
-        <el-option v-for="item in scinterpolation" :key="item.code" :label="item.name" :value="item.code">
-        </el-option>
-      </el-select>
+      <div style="margin-bottom:10px;">
+        <el-select v-model="selectedYear" placeholder="请选择" size="small">
+          <el-option v-for="year in years" :key="year" :value="year" :label="year+'年'">
+          </el-option>
+        </el-select>
+      </div>
+      <div style="margin-bottom:10px;">
+        <el-select v-model="orgcode" placeholder="请选择" size="small">
+          <el-option key="440000" value="440000">广东省
+          </el-option>
+          <el-option v-for="city in citys" :key="city.code" :value="city.code" :label="city.name">
+          </el-option>
+        </el-select>
+      </div>
+      <div>
+        <el-select v-model="selectedInterpolation" placeholder="请选择" size="small" v-if="scinterpolation">
+          <el-option v-for="item in scinterpolation" :key="item.code" :label="item.name" :value="item.code">
+          </el-option>
+        </el-select>
+      </div>
       <el-input type="text" placeholder="标题" v-model="sctitle" size="small"
                 style="margin:10px 10px 10px 0;width:200px;">
       </el-input>
@@ -40,7 +56,7 @@
         <!-- <colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp> -->
       </div>
       <div>
-        <colorbar :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :colors="sccolors"></colorbar>
+        <colorbar ref="colorbar" :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :inputcolors="sccolors"></colorbar>
       </div>
       <br/>
       <el-button type="primary" size="small" @click="getSuferChart">绘图</el-button>
@@ -57,38 +73,18 @@
   import statService from '@/service/statService'
   import maplegend from '@/components/public/maplegend';
   import colorbar from '@/components/public/colorbar';
-
+  import areaService from '@/service/areaService';
+  import commService from '@/service/commonService'
   const tableName = "muldaypg";
   export default {
     name: "clayer",
     props: ['query', 'params'],
     components: {maplegend,colorbar},
     computed: {
-      ...mapState([
-        'orgInfo',
-      ]),
+      
     },
-    created() {
-      //获取绘图算法
-      statService.getInterpolationVo().then((data) => {
-        this.scinterpolation = data;
-        this.selectedInterpolation = this.scinterpolation[0].code;
-      })
-    },
+  
     watch: {
-      /*query(val) {
-        this.$nextTick(()=>{
-          this.scmaxvalue = val.maxvalue;
-          this.scminvalue = val.minvalue;
-          this.scinterval = val.interval;
-          this.scsymbols = [];
-          this.query.symbollist.forEach((item) => {
-            this.scsymbols.push(item.fillColor);
-          });
-          document.getElementById("cmap").innerHTML = "";
-          this.init()
-        });
-      },*/
       legendData(val){
         if(val){
           var arr=[];
@@ -97,10 +93,82 @@
           });
           this.sccolors=arr;
         }
+      },
+      selectedYear(val){
+        if(!val){
+          this.scminvalue=null;
+          this.scmaxvalue=null;
+        };
+        var stData=this.query.statYearData.statisticsList;
+        var minData=null;
+        var maxData=null;
+        for(let i=0;i<stData.length;i++){
+          if(stData[i].staname=="最小值"){
+            minData=stData[i].values;
+          }else if(stData[i].staname='最大值'){
+            maxData=stData[i].values;
+          }
+        }
+        for(let i=0;i<minData.length;i++){
+          if(minData[i].text.indexOf(this.selectedYear+"")!=-1){
+            this.scminvalue=minData[i].value;
+            break;
+          }
+        }
+        for(let i=0;i<maxData.length;i++){
+          if(maxData[i].text.indexOf(this.selectedYear+"")!=-1){
+            this.scmaxvalue=maxData[i].value;
+            break;
+          }
+        }
+        axios.get("agros/qhzxsp/getSymbolJson.do",{params:{'jsonInitVo.ele':this.query.ele,'jsonInitVo.max':this.scmaxvalue,'jsonInitVo.min':this.scminvalue}}).then(res=>{
+          var data=res.data;
+          this.scinterval=data.interval;
+          this.symbollist=data.symbollist;
+          this.symbollist.forEach((item) => {
+          this.scsymbols.push(item.fillColor);
+          });
+          this.legendData=this.symbollist;
+        })
       }
+      
+    },
+    created() {
+      this.years=[];
+      for(let i=this.query.syear;i<=this.query.eyear;i++){
+        this.years.push(i)
+      }
+      this.selectedYear=this.years[0];
+      //获取绘图算法
+      statService.getInterpolationVo().then((data) => {
+        this.scinterpolation = data;
+        this.selectedInterpolation = this.scinterpolation[0].code;
+        /* this.surferVo={
+          ele:this.years[0],
+          orgcode:"440000",
+          title:"",
+          interpolation:this.selectedInterpolation
+        } */
+      })
+      commService.getClientOrgInfo().then(data=>{
+        areaService.get(data.code).then(citys=>{
+          console.log(citys)
+          this.citys=citys.children;
+          setTimeout(()=>{
+            document.getElementById("cmap").innerHTML = "";
+            this.init()
+          })
+        });
+      })
+      
     },
     async mounted() {
-      this.$nextTick(()=>{
+        var val=this.query;
+        this.sctitle=val.title;
+        this.scsymbols = [];
+        
+        
+      /* this.$nextTick(()=>{
         var val=this.query;
         this.sctitle=val.title;
         this.scmaxvalue = val.maxvalue;
@@ -112,7 +180,7 @@
         });
         document.getElementById("cmap").innerHTML = "";
         this.init()
-      });
+      }); */
     },
     data() {
       return {
@@ -128,57 +196,49 @@
         layerData: [],
         legendData: [],
         legendShow: false,
+        citys:[],
+        selectedYear:null,
+        orgcode:"440000"
       };
     },
     methods: {
       async init() {
         var map = mapService.createMap({target: "cmap"});
         this.layerService = new LayerService({map: map});
-        await this.layerService.get2Render(null, this.params.regioncode);
+        await this.layerService.get2Render(null, this.orgcode.regioncode);
+        this.renderStationLayer(this.query.statype);
         this.layerData = this.layerService.layerData;//图层控制
         var data = await this.renderMap();
         this.sctitle = data.docs[0].title;
-        this.renderStationLayer(this.params.stationtype);
       },
       async getSuferChart() {
-        /*        var queryStr =
-                  'muldaySurferVo.ddate=' + this.params.ddate + "&" +
-                  'muldaySurferVo.ele=' + this.query.value + "&" +
-                  'muldaySurferVo.interval=' + this.scinterval + "&" +
-                  'muldaySurferVo.layers=' + 'titleLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'titleLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'titleLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'Overlays' + "&" +
-                  'muldaySurferVo.layers=' + 'cityLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'surferLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'provinceLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'oceanLayer' + "&" +
-                  'muldaySurferVo.layers=' + 'hnLayer' + "&" +
-                  'muldaySurferVo.orgcode=' + this.params.regioncode + "&" +
-                  'muldaySurferVo.stationtype=' + this.params.stationtype + "&" +
-                  'muldaySurferVo.title=' + this.sctitle + "&" +
-                  'muldaySurferVo.type=' + 'Mulele';
-                this.scsymbols.forEach((item) => {
-                  queryStr += "&" + 'muldaySurferVo.rgb=' + item
-                });*/
-        var queryjson={
-          'muldaySurferVo.ddate': this.params.ddate ,
-          'muldaySurferVo.ele' : this.query.value ,
-          'muldaySurferVo.interval': this.scinterval ,
-          'muldaySurferVo.layers' : ['titleLayer', 'titleLayer','titleLayer','Overlays','cityLayer','surferLayer','provinceLayer','oceanLayer','hnLayer'],
-          'muldaySurferVo.orgcode' : this.params.regioncode ,
-          'muldaySurferVo.stationtype' : this.params.stationtype ,
-          'muldaySurferVo.title' : this.sctitle,
-          'muldaySurferVo.type' :'Mulele',
-          "muldaySurferVo.rgb":this.sccolors
-        };
-        var res = axios.post(config.baseUrl + "meteMuldaySurfer.do",queryjson,{
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-          },
-        });
-        res = {docs: [res]};
+       var queryStr =
+          'climateQueryVo.syear=' + this.query.syear + "&" +
+          'climateQueryVo.eyear=' + this.query.eyear + "&" +
+          'climateQueryVo.sdate=' + this.query.sdate + "&" +
+          'climateQueryVo.edate=' + this.query.edate + "&" +
+          'climateQueryVo.ele=' + this.selectedYear + "&" +
+          'climateQueryVo.statistic=' + this.query.statistic + "&" +
+          'climateQueryVo.cqmin=' + this.query.cqmin + "&" +
+          'climateQueryVo.cqmax=' + this.query.cqmax + "&" +
+          'climateQueryVo.cqflag=' + this.query.cqflag + "&" +
+          'climateQueryVo.statype=' + this.query.statype + "&" +
+          'cclimateQueryVo.stacodes=' + this.query.stacodes + "&" +
+          'climateQueryVo.cqtype=' + this.query.cqtype+"&"+
+          'climateQueryVo.isLoading='+'false'+'&'+
+
+          'surferVo.stype='+'climate'+'&'+
+          'surferVo.layers='+'titleLayer,titleLayer,titleLayer,Overlays,cityLayer,surferLayer,provinceLayer,oceanLayer,hnLayer'+'&'+
+          'surferVo.orgcode='+this.orgcode+'&'+
+          'surferVo.ele='+this.selectedYear+'&'+
+          'surferVo.interpolation='+this.selectedInterpolation+'&'+
+          'surferVo.interval='+this.scinterval+'&'+
+          'surferVo.rgb='+this.$refs.colorbar.colors.join(",")
+
+        var res = await axios.get(config.baseUrl + "agros/qhzxsp/getSurferJson.do?"+queryStr);
+        res = {docs: [res.data]};
         this.layerService.renderMapData(res);
+        this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
         return res.data;
       },
       async renderMap() {//初始进来的时候调用这个方法

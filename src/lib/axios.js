@@ -16,4 +16,6 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+// instance.defaults.headers.post['Content-Type']='application/json;charse=UTF-8'
+// instance.defaults.headers.get['Content-Type']='application/json;charse=UTF-8'
 export default instance;

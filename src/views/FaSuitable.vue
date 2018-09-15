@@ -3,7 +3,7 @@
     <div class="m-stat-header">
       <div class="u-bar u-white f-bb1 " style="height:60px;line-height:60px;">
         <ul v-if="eles" class="m-eles">
-          <label class="u-label">粮油作物 ：</label>
+          <label class="u-label">农事活动适宜度 ：</label>
           <li v-for="(item,index) in eles" :data-index="index" :data-value="item.value"
               :class="selectedEle==item.value?'f-active':''" @click="changeEle">{{item.text}}
           </li>
@@ -138,7 +138,7 @@
   var dataName = "Fasuitable";
   const slideInterval = 0;
   export default {
-    name: "CommercialCropSuitable", //粮油作物
+    name: "Fasuitable", //粮油作物
     components: {
       maplegend
     },

@@ -40,7 +40,7 @@
         <!-- <colorramp style="display:inline-block;margin-left:10px;line-height:18px;"></colorramp> -->
       </div>
       <div>
-        <colorbar :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :colors="sccolors"></colorbar>
+        <colorbar ref="colorbar" :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :inputcolors="sccolors"></colorbar>
       </div>
       <br/>
       <el-button type="primary" size="small" @click="getSuferChart">绘图</el-button>
@@ -141,7 +141,7 @@
         this.renderStationLayer(this.params.stationtype);
       },
       async getSuferChart() {
-/*        var queryStr =
+       var queryStr =
           'muldaySurferVo.ddate=' + this.params.ddate + "&" +
           'muldaySurferVo.ele=' + this.query.value + "&" +
           'muldaySurferVo.interval=' + this.scinterval + "&" +
@@ -158,10 +158,10 @@
           'muldaySurferVo.stationtype=' + this.params.stationtype + "&" +
           'muldaySurferVo.title=' + this.sctitle + "&" +
           'muldaySurferVo.type=' + 'Mulele';
-        this.scsymbols.forEach((item) => {
-          queryStr += "&" + 'muldaySurferVo.rgb=' + item
-        });*/
-        var queryjson={
+        this.$refs.colorbar.colors.forEach((item) => {
+          queryStr += "&" + 'muldaySurferVo.rgb=' + encodeURIComponent(item)
+        });
+       /*  var queryjson={
           'muldaySurferVo.ddate': this.params.ddate ,
           'muldaySurferVo.ele' : this.query.value ,
           'muldaySurferVo.interval': this.scinterval ,
@@ -171,14 +171,11 @@
           'muldaySurferVo.title' : this.sctitle,
           'muldaySurferVo.type' :'Mulele',
           "muldaySurferVo.rgb":this.sccolors
-        };
-        var res = axios.post(config.baseUrl + "meteMuldaySurfer.do",queryjson,{
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-          },
-        });
-        res = {docs: [res]};
+        }; */
+        var res = await axios.get(config.baseUrl + "meteMuldaySurfer.do?"+queryStr);
+        res = {docs: [res.data]};
         this.layerService.renderMapData(res);
+        this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
         return res.data;
       },
       async renderMap() {//初始进来的时候调用这个方法

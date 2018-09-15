@@ -57,7 +57,6 @@
             </el-select>
           </li>
           <li style="margin-left:-6px;margin-right:0;">
-            <label class="u-label" style="float:none">日数：</label>
             <el-select v-model="selectedCqType" placeholder="请选择" size="mini" style="width:90px;" v-if="downs">
               <el-option v-for="item in  cqtypes" :key="item.value" :label="item.text" :value="item.value">
               </el-option>
@@ -79,7 +78,7 @@
       <cstacodeselect @hide="hideDialogTable" @changeStacodes="changeStacodes"></cstacodeselect>
     </el-dialog>
     <el-dialog title="绘图窗口" :visible.sync="isDzxShow">
-      <clayer v-if="isDzxShow" style="height:80vh" :query="clayerQuery" :params="clayerParams"></clayer>
+      <clayer v-if="isDzxShow" width="1200" style="height:80vh;" :query="clayerQuery" :params="clayerParams"></clayer>
     </el-dialog>
   </div>
 </template>
@@ -87,7 +86,7 @@
 <script>
   import ccalendar from '@/components/public/CCalendar'
   import cstacodeselect from '@/components/public/CStacodeSelect'
-  import slayer from '@/components/public/SLayer'
+  import clayer from '@/components/public/clayer'
   //极端天气
   import config from '@/lib/config'
   var baseUrl = config.baseUrl;
@@ -248,10 +247,11 @@
     components: {
       ccalendar,
       cstacodeselect,
-      slayer
+      clayer
     },
     data() {
       return {
+
         eles: null,
         sdate: new Date(new Date().getTime() - 10 * 24 * 3600 * 1000).Format("MM-dd"),
         edate: new Date(new Date().getTime()).Format("MM-dd"),
@@ -284,6 +284,8 @@
         dialogTableVisible: false,
         stacodes: "",
         isDzxShow:false,
+        clayerQuery:{},
+        clayerParams:{}
       };
     },
     created() {
@@ -409,6 +411,17 @@
           title:"",
           sdate:this.sdate,
           edate:this.edate,
+          ele:this.selectedEle,
+          cqflag:this.selectedCqFlag,
+          cqmax:this.selectedDown,
+          cqmin:this.selectedUp,
+          cqtype:this.selectedCqType,
+          eyear:this.eyear,
+          syear:this.syear,
+          stacodes:this.stacodes,
+          statistic:this.selectedStatistic,
+          statype:this.statype,
+          statYearData:this.statYearData
         };
         this.isDzxShow=true;
       },
@@ -483,8 +496,7 @@
 
             tempc.push(obj);
           }
-
-
+          _this.statYearData=climateStatisticsVo
           for (var j = 0; j < climateStatisticsVo.statisticsList.length; j++) {
             var obj = {};
             for (var p in climateStatisticsVo.statisticsList[j]) {

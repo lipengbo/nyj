@@ -399,7 +399,7 @@ class LayerService{
     for(var k in params){
       layerItem.querycondition=layerItem.querycondition.replace("{"+k+"}",params[k]);
     }
-    var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true";
+    var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true&rows=2500";
     if(params.rows){
       url+=("rows="+params.rows)
     }

@@ -82,7 +82,7 @@ export default {
     return new ol.Map({
       target: opt.target || "map",
       layers: [
-        new ol.layer.Tile({
+/*         new ol.layer.Tile({
           title: "天地图路网",
           source: new ol.source.XYZ({
             url: "http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}"
@@ -93,8 +93,8 @@ export default {
           source: new ol.source.XYZ({
             url: 'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'
           })
-        })
-        //tilelayer
+        }) */
+        tilelayer
       ],
       view: new ol.View({
         projection:ol.proj.get('EPSG:4326'),
