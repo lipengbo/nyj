@@ -190,7 +190,7 @@ export default new Router({
         {
             path: '/stat',
             name: 'stat',
-            redirect: "/stat/statyear",
+            redirect: "/stat/statday",
             meta: {
                 title: "气候资料"
             },

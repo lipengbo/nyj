@@ -15,8 +15,7 @@
       </div>
       <div style="margin-bottom:10px;">
         <el-select v-model="orgcode" placeholder="请选择" size="small">
-          <el-option key="440000" value="440000">广东省
-          </el-option>
+          <el-option key="440000" value="440000" label="广东省"></el-option>
           <el-option v-for="city in citys" :key="city.code" :value="city.code" :label="city.name">
           </el-option>
         </el-select>
@@ -59,7 +58,7 @@
         <colorbar ref="colorbar" :min="scminvalue" :max="scmaxvalue" :interval="scinterval" :inputcolors="sccolors"></colorbar>
       </div>
       <br/>
-      <el-button type="primary" size="small" @click="getSuferChart">绘图</el-button>
+      <el-button type="primary" size="small" @click="getSuferChart" style="width:61px"><span class="el-icon-loading" v-show="isDrawing"></span><span v-show="!isDrawing">绘图</span></el-button>
       <el-button type="success" size="small">下载</el-button>
     </el-aside>
   </el-container>
@@ -105,7 +104,7 @@
         for(let i=0;i<stData.length;i++){
           if(stData[i].staname=="最小值"){
             minData=stData[i].values;
-          }else if(stData[i].staname='最大值'){
+          }else if(stData[i].staname=='最大值'){
             maxData=stData[i].values;
           }
         }
@@ -186,6 +185,7 @@
       return {
         selectedInterpolation: null,
         isShowInterpolation: true,
+        isDrawing:false,
         scinterpolation: [],
         sctitle: "",
         scmaxvalue: null,
@@ -208,8 +208,7 @@
         await this.layerService.get2Render(null, this.orgcode.regioncode);
         this.renderStationLayer(this.query.statype);
         this.layerData = this.layerService.layerData;//图层控制
-        var data = await this.renderMap();
-        this.sctitle = data.docs[0].title;
+        this.setSysflag();
       },
       async getSuferChart() {
        var queryStr =
@@ -217,7 +216,7 @@
           'climateQueryVo.eyear=' + this.query.eyear + "&" +
           'climateQueryVo.sdate=' + this.query.sdate + "&" +
           'climateQueryVo.edate=' + this.query.edate + "&" +
-          'climateQueryVo.ele=' + this.selectedYear + "&" +
+          'climateQueryVo.ele=' + this.query.ele + "&" +
           'climateQueryVo.statistic=' + this.query.statistic + "&" +
           'climateQueryVo.cqmin=' + this.query.cqmin + "&" +
           'climateQueryVo.cqmax=' + this.query.cqmax + "&" +
@@ -233,23 +232,21 @@
           'surferVo.ele='+this.selectedYear+'&'+
           'surferVo.interpolation='+this.selectedInterpolation+'&'+
           'surferVo.interval='+this.scinterval+'&'+
-          'surferVo.rgb='+this.$refs.colorbar.colors.join(",")
-
-        var res = await axios.get(config.baseUrl + "agros/qhzxsp/getSurferJson.do?"+queryStr);
-        res = {docs: [res.data]};
-        this.layerService.renderMapData(res);
-        this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
+          'surferVo.rgb='+encodeURIComponent(this.$refs.colorbar.colors.join(","))
+        if(this.isDrawing){
+          return;
+        }
+        this.isDrawing=true;
+        try{
+          var res = await axios.get(config.baseUrl + "agros/qhzxsp/getSurferJson.do?"+queryStr);
+          res = {docs: [res.data]};
+          this.layerService.renderMapData(res);
+          this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
+        }finally{
+          this.isDrawing=false;
+        }
+        
         return res.data;
-      },
-      async renderMap() {//初始进来的时候调用这个方法
-        var _this = this;
-        var res = await _this.layerService.get2RenderMapData({
-          table: tableName,
-          id: "" + this.params.regioncode + this.params.ddate + this.query.value + this.params.stationtype
-        });
-        _this.legendData = res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
-        _this.setSysflag();
-        return res;
       },
       setSysflag() {
         var titleLayer = this.layerService.layers["titleLayer"];

@@ -77,7 +77,7 @@
     <el-dialog title="站点选择" :visible.sync="dialogTableVisible">
       <cstacodeselect @hide="hideDialogTable" @changeStacodes="changeStacodes"></cstacodeselect>
     </el-dialog>
-    <el-dialog title="绘图窗口" :visible.sync="isDzxShow"  width="90%"  top="25px" :close-on-click-modal="true" >
+    <el-dialog title="广东省农业气象综合平台--绘图" :visible.sync="isDzxShow"  width="90%"  top="25px" :close-on-click-modal="true" >
       <clayer v-if="isDzxShow" style="height:80vh" :query="clayerQuery" :params="clayerParams"></clayer>
     </el-dialog>
   </div>

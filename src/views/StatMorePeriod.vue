@@ -75,7 +75,7 @@
                                         <li>
                                                 <el-button type="primary" size="mini" @click="showDialogTable">站点</el-button>
                                                 <el-button type="primary" size="mini" @click="changeOptions">数据</el-button>
-                                                <el-button type="primary" size="mini">等值线图</el-button>
+                                                <el-button type="primary" size="mini" @click="showDzx">等值线图</el-button>
                                         </li>
                                 </ul>
                         </div>
@@ -89,12 +89,16 @@
                 <el-dialog title="站点选择" :visible.sync="dialogTableVisible">
                         <cstacodeselect @hide="hideDialogTable" @changeStacodes="changeStacodes"></cstacodeselect>
                 </el-dialog>
+                <el-dialog title="广东省农业气象综合平台--绘图" :visible.sync="isDzxShow"  width="90%"  top="25px" :close-on-click-modal="true" >
+                        <clayer3 v-if="isDzxShow" style="height:80vh" :query="clayerQuery" :params="clayerParams"></clayer3>
+                </el-dialog>
         </el-main>
 </template>
 
 <script>
         import ccalendar from '@/components/public/CCalendar.vue'
         import cstacodeselect from '@/components/public/CStacodeSelect.vue'
+        import clayer3 from '@/components/public/clayer3.vue'
         //极端天气
         import {
                 mapState,
@@ -253,11 +257,14 @@
                 name: "statmoreperiod",
                 components: {
                         ccalendar,
-                        cstacodeselect
+                        cstacodeselect,
+                        clayer3
                 },
                 data() {
                         return {
                                 dialogTableVisible: false,
+                                isDzxShow:false,
+                                periodData:null,
                                 eles: null,
                                 datetypes: [{
                                         value: 0,
@@ -677,7 +684,7 @@
 
                                                 tempc.push(obj);
                                         }
-
+                                        _this.periodData=climateStatisticsVo;
                                         _this.tableColumns = tableColumns;
                                         //此处得重新处理
                                         _this.climateStatisticsVo = {
@@ -766,7 +773,29 @@
                                         _this.climateStatisticsVo = res.data;
 
                                 });
-                        }
+                        },
+                        showDzx(){
+                                this.clayerQuery={
+                                title:"",
+                                sdate:this.sdate,
+                                edate:this.edate,
+                                ele:this.selectedEle,
+                                datetype:this.datetype,
+                                cqflag:this.selectedCqFlag,
+                                cqmax:this.selectedDown,
+                                cqmin:this.selectedUp,
+                                cqtype:this.selectedCqType,
+                                pertype:this.pertype,
+                                peryear:this.peryear,
+                                reyear:this.reyear,
+                                rsyear:this.rsyear,
+                                stacodes:this.stacodes,
+                                statistic:this.selectedStatistic,
+                                statype:this.statype,
+                                periodData:this.periodData
+                                };
+                                this.isDzxShow=true;
+                        },
                 }
 
         }

@@ -399,9 +399,10 @@ class LayerService{
     for(var k in params){
       layerItem.querycondition=layerItem.querycondition.replace("{"+k+"}",params[k]);
     }
-    var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true&rows=2500";
+    params.rows==undefined?2500:params.rows;
+    var url=config.solorUrl+layerItem.corename+"/select?q="+layerItem.querycondition+"&wt=json&indent=true";
     if(params.rows){
-      url+=("rows="+params.rows)
+      url+=("&rows="+params.rows)
     }
     var res=await axios.get(url);
     return res.data.response;
@@ -465,8 +466,8 @@ class LayerService{
    * @param stationtype 站点类型
    * @returns {Promise<*>}
    */
-  async getMapData({table,id}){
-    var params={"table":table,wt:"json","index":true,q:"id:"+id};
+  async getMapData({table,id,inputQuery}){
+    var params=inputQuery||{"table":table,wt:"json","index":true,q:"id:"+id};
     var res=await axios.get(config.solorUrl+table+"/select",{params:params});
     return res.data.response;
   }

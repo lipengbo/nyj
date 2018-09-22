@@ -49,7 +49,7 @@
       </el-table>
     </div>
     <div class="m-no-data" v-else>暂无数据</div>
-    <el-dialog title="绘图窗口" :visible.sync="isLayerShow" width="90%" :close-on-click-modal="true" top="25px">
+    <el-dialog title="广东省农业气象综合平台--绘图" :visible.sync="isLayerShow" width="90%" :close-on-click-modal="true" top="25px">
       <clayer2 v-if="isLayerShow" style="height:80vh" :query="clayerQuery" :params="clayerParams"></clayer2>
     </el-dialog>
   </div>
