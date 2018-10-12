@@ -7,6 +7,7 @@
 ## 注
 1. 日期格式化工具引入了dayjs
 2. openlayer使用3.20.1版本(全局的方式引入)
+3.全局引入了echart.js
 
 ## Build Setup
 
