@@ -15,7 +15,6 @@ module.exports = {
     {
       title: "发育监测预测",
       path: "prediction1",
-
       children: [{
         title: "农事活动适宜度",
         name: "fasuitable",
@@ -36,18 +35,50 @@ module.exports = {
           path: "/prediction/pestsuitable",
         }
       ]
+    },
+    {
+      title: "周光水温评价",
+      name: "zgswpj",
+      path: "/prediction/zgswpj",
     }
   ],
   "disaster": [{
-    title: "农气灾害",
-    path: "disaster",
-
-    children: [{
-      title: "灾害监测预警",
-      name: "am",
-      path: "/disaster/am",
-    }]
-  }],
+    title: "灾害监测预警",
+    name: "am",
+    path: "/disaster/am",
+  },
+  {
+    title: "干旱精细化监测预警",
+    path: "ghjxhjcyj",
+    children: [
+      {
+        title: "干旱监测",
+        name: "ghjc",
+        path: "/disaster/ghjc",
+      },
+      {
+        title: "干旱查询",
+        name: "ghcx",
+        path: "/disaster/ghcx",
+      }
+    ]
+  },
+  {
+    title: "水稻农业气象灾害影响评估",
+    name: "sdnyqx",
+    path: "/disaster/sdnyqx",
+  },
+  {
+    title: "农业气象灾害统计",
+    name: "nyqxzh",
+    path: "/disaster/nyqxzh",
+  },
+  {
+    title: "历史灾情",
+    name: "lszq",
+    path: "/disaster/lszq",
+  }
+  ],
   "monitor": [{
     title: "农情调查",
     name: "nqdc",
@@ -95,5 +126,11 @@ module.exports = {
         path: "/stat/statmoreperiod",
       }]
     }
+  ],
+  "statyearbook": [
+    {
+      title: "大宗作物统计资料",
+      path: "/statyearbook/dzzwtjzl"
+    }
   ]
-}
+};

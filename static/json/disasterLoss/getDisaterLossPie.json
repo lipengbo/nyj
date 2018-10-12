@@ -1,0 +1,297 @@
+{
+  "amountChart": {
+    "backgroundColor": "#104E8B",
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "受灾人口（万人次）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "暴雨洪涝",
+        "热带气旋",
+        "强对流",
+        "干旱",
+        "低温",
+        "雷击"
+      ],
+      "x": "left",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "series": [
+      {
+        "type": "pie",
+        "smooth": false,
+        "radius": "55%",
+        "center": [
+          "50%",
+          "60%"
+        ],
+        "data": [
+          {
+            "value": 3463.566,
+            "name": "暴雨洪涝"
+          },
+          {
+            "value": 12933.36,
+            "name": "热带气旋"
+          },
+          {
+            "value": 157.847,
+            "name": "强对流"
+          },
+          {
+            "value": 5778.04,
+            "name": "干旱"
+          },
+          {
+            "value": 728.168,
+            "name": "低温"
+          },
+          {
+            "value": 0.0,
+            "name": "雷击"
+          }
+        ]
+      }
+    ]
+  },
+  "deathChart": {
+    "backgroundColor": "#104E8B",
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "死亡人口（人）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "暴雨洪涝",
+        "热带气旋",
+        "强对流",
+        "干旱",
+        "低温",
+        "雷击"
+      ],
+      "x": "left",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "series": [
+      {
+        "type": "pie",
+        "smooth": false,
+        "radius": "55%",
+        "center": [
+          "50%",
+          "60%"
+        ],
+        "data": [
+          {
+            "value": 674.0,
+            "name": "暴雨洪涝"
+          },
+          {
+            "value": 741.0,
+            "name": "热带气旋"
+          },
+          {
+            "value": 144.0,
+            "name": "强对流"
+          },
+          {
+            "value": 0.0,
+            "name": "干旱"
+          },
+          {
+            "value": 0.0,
+            "name": "低温"
+          },
+          {
+            "value": 729.0,
+            "name": "雷击"
+          }
+        ]
+      }
+    ]
+  },
+  "areaChart": {
+    "backgroundColor": "#104E8B",
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "受灾面积统计（万公顷次）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "暴雨洪涝",
+        "热带气旋",
+        "强对流",
+        "干旱",
+        "低温",
+        "雷击"
+      ],
+      "x": "left",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "series": [
+      {
+        "type": "pie",
+        "smooth": false,
+        "radius": "55%",
+        "center": [
+          "50%",
+          "60%"
+        ],
+        "data": [
+          {
+            "value": 164.14,
+            "name": "暴雨洪涝"
+          },
+          {
+            "value": 570.847,
+            "name": "热带气旋"
+          },
+          {
+            "value": 33.554,
+            "name": "强对流"
+          },
+          {
+            "value": 449.515,
+            "name": "干旱"
+          },
+          {
+            "value": 180.648,
+            "name": "低温"
+          },
+          {
+            "value": 0.0,
+            "name": "雷击"
+          }
+        ]
+      }
+    ]
+  },
+  "lossChart": {
+    "backgroundColor": "#104E8B",
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "直接经济损失(亿元)",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "暴雨洪涝",
+        "热带气旋",
+        "强对流",
+        "干旱",
+        "低温",
+        "雷击"
+      ],
+      "x": "left",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "series": [
+      {
+        "type": "pie",
+        "smooth": false,
+        "radius": "55%",
+        "center": [
+          "50%",
+          "60%"
+        ],
+        "data": [
+          {
+            "value": 320.311,
+            "name": "暴雨洪涝"
+          },
+          {
+            "value": 638.358,
+            "name": "热带气旋"
+          },
+          {
+            "value": 25.024,
+            "name": "强对流"
+          },
+          {
+            "value": 66.661,
+            "name": "干旱"
+          },
+          {
+            "value": 165.976,
+            "name": "低温"
+          },
+          {
+            "value": 12.823,
+            "name": "雷击"
+          }
+        ]
+      }
+    ]
+  },
+  "collpaseBulidingsChart": {
+    "backgroundColor": "#104E8B",
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "倒塌房屋（万间）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "暴雨洪涝",
+        "热带气旋",
+        "强对流",
+        "干旱",
+        "低温",
+        "雷击"
+      ],
+      "x": "left",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "series": [
+      {
+        "type": "pie",
+        "smooth": false,
+        "radius": "55%",
+        "center": [
+          "50%",
+          "60%"
+        ],
+        "data": [
+          {
+            "value": 68.328,
+            "name": "暴雨洪涝"
+          },
+          {
+            "value": 68.865,
+            "name": "热带气旋"
+          },
+          {
+            "value": 5.269,
+            "name": "强对流"
+          },
+          {
+            "value": 0.0,
+            "name": "干旱"
+          },
+          {
+            "value": 0.0,
+            "name": "低温"
+          },
+          {
+            "value": 0.0,
+            "name": "雷击"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "total": 23,
+  "page": 1,
+  "rows": [
+    {
+      "id": 73,
+      "amount": 424,
+      "title": "94.6西北江特大洪涝",
+      "isTypical": 0,
+      "area": 26,
+      "loss": 102,
+      "days": "8～17日",
+      "death": 145,
+      "collapseBulidings": 11,
+      "month": 6,
+      "year": 1994,
+      "className": "暴雨洪涝"
+    },
+    {
+      "id": 74,
+      "amount": 257.49,
+      "title": "7月末至8月初暴雨洪涝",
+      "isTypical": 0,
+      "area": 9.85,
+      "loss": 4.85,
+      "days": "7月31日至8月4日",
+      "death": 11,
+      "collapseBulidings": 1.7,
+      "month": 7,
+      "year": 1995,
+      "className": "暴雨洪涝"
+    },
+    {
+      "id": 75,
+      "amount": 5.64,
+      "title": "6月中旬暴雨洪涝",
+      "isTypical": 0,
+      "area": 5.85,
+      "loss": 2.81,
+      "days": "14～18日",
+      "death": 15,
+      "collapseBulidings": 0.7,
+      "month": 6,
+      "year": 1995,
+      "className": "暴雨洪涝"
+    }
+  ]
+}

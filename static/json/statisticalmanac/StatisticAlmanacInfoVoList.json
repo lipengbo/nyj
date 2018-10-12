@@ -1,0 +1,37 @@
+[
+  {
+    "divisionName": "广州市",
+    "typeName": "早稻",
+    "year": 2016,
+    "acreage": 1000.0,
+    "yield": 1000000.0,
+    "perYield": 100.0,
+    "subList": [
+      {
+        "divisionName": "荔湾区",
+        "typeName": "早稻",
+        "year": 2016,
+        "acreage": 10.0,
+        "yield": 1000.0,
+        "perYield": 100.0
+      },
+      {
+        "divisionName": "越秀区",
+        "typeName": "早稻",
+        "year": 2016,
+        "acreage": 0,
+        "yield": 0,
+        "perYield": 0
+      }
+    ]
+  },
+  {
+    "divisionName": "韶关市",
+    "typeName": "早稻",
+    "year": 2016,
+    "acreage": 1500.0,
+    "yield": 1500000.0,
+    "perYield": 100.0,
+    "subList": []
+  }
+]

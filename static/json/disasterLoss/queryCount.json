@@ -1,0 +1,75 @@
+[
+  {
+    "data": [
+      {
+        "id": 2,
+        "amount": 1820.95,
+        "area": 80.87,
+        "loss": 185.69,
+        "death": 284,
+        "collapseBulidings": 59.257,
+        "isTypical": 0,
+        "className": "暴雨洪涝",
+        "disasterClassId": 0,
+        "year": 0,
+        "month": 0
+      },
+      {
+        "id": 3,
+        "amount": 5905.2,
+        "area": 275.3,
+        "loss": 371.113,
+        "death": 461,
+        "collapseBulidings": 54.901,
+        "isTypical": 0,
+        "className": "热带气旋",
+        "disasterClassId": 0,
+        "year": 0,
+        "month": 0
+      }
+    ]
+  },
+  {
+    "statistics": [
+      {
+        "id": 0,
+        "amount": 7726.15,
+        "area": 356.17,
+        "loss": 556.803,
+        "death": 745,
+        "collapseBulidings": 114.158,
+        "isTypical": 0,
+        "className": "合计",
+        "disasterClassId": 0,
+        "year": 0,
+        "month": 0
+      },
+      {
+        "id": 0,
+        "amount": 2575.383,
+        "area": 118.723,
+        "loss": 185.601,
+        "death": 248,
+        "collapseBulidings": 38.053,
+        "isTypical": 0,
+        "className": "年平均",
+        "disasterClassId": 0,
+        "year": 0,
+        "month": 0
+      },
+      {
+        "id": 0,
+        "amount": 5905.2,
+        "area": 275.3,
+        "loss": 371.113,
+        "death": 461,
+        "collapseBulidings": 59.257,
+        "isTypical": 0,
+        "className": "最大值",
+        "disasterClassId": 0,
+        "year": 0,
+        "month": 0
+      }
+    ]
+  }
+]

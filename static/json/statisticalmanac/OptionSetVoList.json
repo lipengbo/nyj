@@ -1,0 +1,40 @@
+[
+  {
+    "code": "ST00000001",
+    "name": "粮油作物",
+    "items": [
+      {
+        "name": "早稻",
+        "code": "ST00000005"
+      },
+      {
+        "name": "晚稻",
+        "code": "ST00000006"
+      }
+    ],
+    "selectedItemCode": "ST00000005"
+  },
+  {
+    "code": "ST00000002",
+    "name": "水果",
+    "items": [
+      {
+        "name": "荔枝",
+        "code": "ST00000007"
+      },
+      {
+        "name": "龙眼",
+        "code": "ST00000008"
+      },
+      {
+        "name": "香蕉",
+        "code": "ST0000009"
+      },
+      {
+        "name": "甘蔗",
+        "code": "ST00000010"
+      }
+    ],
+    "selectedItemCode": ""
+  }
+]

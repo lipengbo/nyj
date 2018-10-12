@@ -1,0 +1,323 @@
+{
+  "amountChart": {
+    "backgroundColor": "#104E8B",
+    "color": [
+      "rgba(255, 165, 0, 1)",
+      "rgba(0, 255, 255, 0.8)"
+    ],
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "受灾人口（万人次）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "受灾人口"
+      ],
+      "x": "left",
+      "y": "bottom",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "xAxis": [
+      {
+        "type": "category",
+        "data": [
+          "1994",
+          "1995",
+          "1996",
+          "1997",
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004"
+        ]
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "受灾人口",
+        "type": "line",
+        "smooth": false,
+        "data": [
+          3588.162,
+          3815.58,
+          1596.917,
+          2032.956,
+          1230.106,
+          1848.222,
+          1035.661,
+          1750.456,
+          2435.092,
+          2272.753,
+          1455.076
+        ],
+        "yAxisIndex": 0,
+        "barWidth": 100
+      }
+    ]
+  },
+  "deathChart": {
+    "backgroundColor": "#104E8B",
+    "color": [
+      "rgba(255, 165, 0, 1)",
+      "rgba(0, 255, 255, 0.8)"
+    ],
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "死亡人口（人）",
+      "x": "center",
+      "y": 0
+    },
+    "calculable": false,
+    "xAxis": [
+      {
+        "type": "category",
+        "data": [
+          "1994",
+          "1995",
+          "1996",
+          "1997",
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004"
+        ]
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "死亡人口",
+        "type": "line",
+        "smooth": false,
+        "data": [
+          353.0,
+          199.0,
+          335.0,
+          373.0,
+          206.0,
+          132.0,
+          148.0,
+          147.0,
+          141.0,
+          138.0,
+          116.0
+        ],
+        "yAxisIndex": 0,
+        "barWidth": 100
+      }
+    ]
+  },
+  "areaChart": {
+    "backgroundColor": "#104E8B",
+    "color": [
+      "rgba(255, 165, 0, 1)",
+      "rgba(0, 255, 255, 0.8)"
+    ],
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "受灾面积（万公顷次）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "受灾面积"
+      ],
+      "x": "left",
+      "y": "bottom",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "xAxis": [
+      {
+        "type": "category",
+        "data": [
+          "1994",
+          "1995",
+          "1996",
+          "1997",
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004"
+        ]
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "受灾面积",
+        "type": "line",
+        "smooth": false,
+        "data": [
+          191.219,
+          205.15,
+          141.842,
+          92.42,
+          49.272,
+          146.546,
+          45.806,
+          95.245,
+          180.177,
+          166.923,
+          84.104
+        ],
+        "yAxisIndex": 0,
+        "barWidth": 100
+      }
+    ]
+  },
+  "lossChart": {
+    "backgroundColor": "#104E8B",
+    "color": [
+      "rgba(255, 165, 0, 1)",
+      "rgba(0, 255, 255, 0.8)"
+    ],
+    "legend": {
+      "data": [
+        "直接经济损失(万元)"
+      ],
+      "x": "left",
+      "y": "bottom",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "xAxis": [
+      {
+        "type": "category",
+        "data": [
+          "1994",
+          "1995",
+          "1996",
+          "1997",
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004"
+        ]
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "直接经济损失(万元)",
+        "type": "line",
+        "smooth": false,
+        "data": [
+          261.461,
+          120.478,
+          253.533,
+          100.478,
+          68.604,
+          145.886,
+          30.857,
+          87.84,
+          61.257,
+          71.64,
+          27.119
+        ],
+        "yAxisIndex": 0,
+        "barWidth": 100
+      }
+    ]
+  },
+  "collpaseBulidingsChart": {
+    "backgroundColor": "#104E8B",
+    "color": [
+      "rgba(255, 165, 0, 1)",
+      "rgba(0, 255, 255, 0.8)"
+    ],
+    "title": {
+      "text": "1994-2004年广东省各类气象灾情合计损失",
+      "subtext": "倒塌房屋（万间）",
+      "x": "center",
+      "y": 0
+    },
+    "legend": {
+      "data": [
+        "倒塌房屋"
+      ],
+      "x": "left",
+      "y": "bottom",
+      "orient": "vertical"
+    },
+    "calculable": false,
+    "xAxis": [
+      {
+        "type": "category",
+        "data": [
+          "1994",
+          "1995",
+          "1996",
+          "1997",
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004"
+        ]
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "倒塌房屋",
+        "type": "line",
+        "smooth": false,
+        "data": [
+          73.098,
+          13.04,
+          33.03,
+          8.115,
+          2.275,
+          1.37,
+          1.493,
+          4.575,
+          2.221,
+          2.873,
+          0.372
+        ],
+        "yAxisIndex": 0,
+        "barWidth": 100
+      }
+    ]
+  }
+}
