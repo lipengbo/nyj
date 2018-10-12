@@ -106,7 +106,7 @@
     methods: {
       getOptions(orgInfo) {
         var _this = this;
-        axios.get(baseUrl + "/getRegioninfo.do?orgcode=" + orgInfo.code).then(res => {
+        axios.get(baseUrl + "qhzxsp/getRegioninfo.do?orgcode=" + orgInfo.code).then(res => {
           _this.regionInfo = res.data;
           _this.selectedRegion = res.data[0].code;
           _this.doQuery();
@@ -145,7 +145,7 @@
           "meteEleMulDayQueryVo.regioncode": this.selectedRegion
         };
         // http: //192.168.31.20:8080/agros/qhzxsp/getMeteEleMulDayVosByQueryVo.do?meteEleMulDayQueryVo.ddate=2018-03-21&meteEleMulDayQueryVo.regioncode=440000&meteEleMulDayQueryVo.stationtype=1
-        var url = baseUrl + "getMeteEleMulDayVosByQueryVo.do";
+        var url = baseUrl + "qhzxsp/getMeteEleMulDayVosByQueryVo.do";
         var tableColumns = [{
           text: "站号",
           value: "stacode"
@@ -1049,7 +1049,7 @@
           "meteEleMulDayQueryVo.regioncode": _this.selectedRegion
         };
 
-        var url = baseUrl + "getMeteEleMulDayImageVosByQueryVo.do";
+        var url = baseUrl + "qhzxsp/getMeteEleMulDayImageVosByQueryVo.do";
 
         axios.get(url, {params: query}).then(res => {
           _this.voImages = res.data;

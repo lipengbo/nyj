@@ -11,7 +11,7 @@ export const getFasuitable=data=>({type:"HOMEFASUITABLEIMAGE",datas:data});
 export const getAmdisaster=data=>({type:"HOMEAMDISASTERIMAGE",datas:data});
 export const getSoilmoisture=data=>({type:"HOMESOILMOISTRUEIMAGE",datas:data});
 export const getImages = (params) => {
-  var url=config.baseUrl+"getAgroImageVoByType.do";
+  var url=config.baseUrl+"qhzxsp/getAgroImageVoByType.do";
   url= url+"?"+Qs.stringify(params);
   return dispatch => {
     axios.get(url)

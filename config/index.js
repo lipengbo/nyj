@@ -11,12 +11,10 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-/*          '/list': {
-            target: 'http://api.xxxxxxxx.com',
-            pathRewrite: {
-              '^/list': '/list'
-            }
-          }*/
+          'http://192.168.0.8:8080/agros/qhzxsp/disasterLoss/':{
+            target:"http://www.baidu.com/disasterLoss/",
+            changeOrigin: true,
+          }
         },
         // Various Dev Server settings
         host: 'localhost',

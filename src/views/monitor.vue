@@ -42,7 +42,7 @@
   import dayjs from 'dayjs';
   import commonService from "@/service/commonService"
   var getData = async (params) => {
-    var query={"q":"periods:"+commonService.formatMonthDate(dayjs().subtract(10, 'day').toDate()),wt:"json","index":true,start:0,rows:26};//暂时写死
+    var query={"q":"periods:"+commonService.formatMonthDate(dayjs().subtract(10, 'day').toDate()),wt:"json","index":true,start:0,rows:26};
     var url=config.solorUrl+"cmcropconditioninfo/select";
     var res = await axios.get(url,{params:query});
     return res.data.response.docs;

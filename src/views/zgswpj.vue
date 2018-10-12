@@ -1,3 +1,4 @@
+<!--周光水温评价-->
 <template>
   <div style="width:100%" class="nq">
     <div class="m-stat-header">
@@ -134,7 +135,7 @@
   import LayerService from '@/service/LayerService';
   import maplegend from '@/components/public/maplegend';
 
-  var baseUrl = config.baseUrl;
+  var baseUrl = config.baseUrl;baseUrl
   var dataName = "GrainOilCropSuitable";
   const slideInterval = 0;
   export default {

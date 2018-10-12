@@ -50,7 +50,7 @@ export default {
             var timeSlot = [yesterday.Format("yyyy-MM-dd hh:mm:ss"), today.Format("yyyy-MM-dd hh:mm:ss")]
                 ///http://192.168.1.102:8080/agros/qhzxsp/getAgrForecastEleVoListByType.do?type=GrainOilCropSuitable
             function getElesVo() {
-                return axios.get(baseUrl + '/getAgrForecastEleVoListByType.do?type=GrainOilCropSuitable');
+                return axios.get(baseUrl + 'qhzxsp/getAgrForecastEleVoListByType.do?type=GrainOilCropSuitable');
             }
             var params = state;
 

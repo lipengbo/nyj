@@ -82,7 +82,7 @@
       },
       doQuery() {
         var _this = this;
-        _this.$axios.get(baseUrl + "/getKdKnowledgebaseinfoVoByType.do?type=" + _this.knowledgeType).then(res => {
+        _this.$axios.get(baseUrl + "qhzxsp/getKdKnowledgebaseinfoVoByType.do?type=" + _this.knowledgeType).then(res => {
           _this.voData = res.data;
         });
       },

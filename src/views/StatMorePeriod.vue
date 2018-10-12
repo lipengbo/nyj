@@ -704,7 +704,7 @@
                                         "&climateQueryVo.rsyear=" + _this.rsyear + "&climateQueryVo.sdate=" + _this.sdate + "&climateQueryVo.stacodes" + _this.stacodes + "=&climateQueryVo.statistic=" + _this.selectedStatistic +
                                         "&climateQueryVo.statype=" + _this.statype;
                                 // console.log(query);
-                                var url = baseUrl + "getClimateStatisticsVoJson.do?";
+                                var url = baseUrl + "qhzxsp/getClimateStatisticsVoJson.do?";
                                 url = url + queryStr;
                                 this.$axios.get(url).then(res => {
                                         cb(res.data)

@@ -12,6 +12,7 @@
             <router-link to="/stat">资料统计</router-link>
             <router-link to="/weather">气候资源</router-link>
             <router-link :to="{path:serviceDefaultPath?serviceDefaultPath:'/service'}">服务产品</router-link>
+            <router-link to="/statyearbook/dzzwtjzl">统计年鉴</router-link>
             <router-link :to="{path:knowledgeDefaultPath?knowledgeDefaultPath:'/knowledge'}">知识产品</router-link>
           </div>
         </div>
@@ -89,7 +90,7 @@
   }
 
   .m-header-ct {
-    width: 1200px;
+    width: 1292px;
     height: 95px;
     line-height: 95px;
     margin: 0 auto;
@@ -125,7 +126,7 @@
 
   .m-header-link {
     float: right;
-    width: 800px;
+    width:892px; /*800px;*/
     height: 70px;
   }
 

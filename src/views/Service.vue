@@ -137,14 +137,14 @@
       },
       async getOrgInfo() {
         var _this = this;
-        var res= await axios.get(baseUrl + "/getOrginfo.do?orgcode=" + this.orgInfo.code);
+        var res= await axios.get(baseUrl + "qhzxsp/getOrginfo.do?orgcode=" + this.orgInfo.code);
         _this.orgInfos = res.data;
         _this.selectedOrg = res.data[0].code;
         return res;
       },
       getServicesproductinfoPeriodsVoByTypeAndYear() {
         var _this = this;
-        axios.get(baseUrl + "/getServicesproductinfoPeriodsVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
+        axios.get(baseUrl + "qhzxsp/getServicesproductinfoPeriodsVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
           _this.periods = res.data;
           if (res.data.length > 0) {
             _this.selectedPeriod = res.data[0].value;
@@ -157,7 +157,7 @@
       },
       doQuery() {
         var _this = this;
-        _this.$axios.get(baseUrl + "/getServicesproductinfoVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
+        _this.$axios.get(baseUrl + "qhzxsp/getServicesproductinfoVoByTypeAndYear.do?type=" + _this.serviceType + "&year=" + _this.selectedYear + "&orgcode=" + _this.selectedOrg).then(res => {
           _this.voData = res.data;
         });
       },

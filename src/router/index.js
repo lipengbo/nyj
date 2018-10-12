@@ -1,22 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
 import Layer from '@/views/Layer'
-import StatMorePeriod from '@/views/StatMorePeriod'
-import StatDay from '@/views/StatDay'
-import StatYear from '@/views/StatYear'
-import CommercialCropSuitable from '@/views/CommercialCropSuitable'
-import GrainOilCropSuitable from '@/views/GrainOilCropSuitable'
-import Fasuitable from '@/views/Fasuitable'
-import AmDisaster from '@/views/AmDisaster'
-import Service from '@/views/service'
-import Knowledge from '@/views/Knowledge'
-import DiseaseSuitable from '@/views/DiseaseSuitable'
-import PestSuitable from '@/views/PestSuitable'
-import Monitor from '@/views/Monitor'
-import Weather from '@/views/Weather'
 Vue.use(Router);
-
 export default new Router({
     mode: "history",
     routes: [
@@ -27,7 +12,7 @@ export default new Router({
             meta: {
                 title: "城市气候服务平台"
             },
-            component: Home
+            component:(resolve)=>{require(['@/views/Home.vue'], resolve)}
         },
         {
             path: '/weather',
@@ -35,7 +20,7 @@ export default new Router({
             meta: {
                 title: "气候资源"
             },
-            component: Weather
+            component:(resolve)=>{require(['@/views/Weather.vue'], resolve)}
         },
         {
             path: '/service',
@@ -51,7 +36,7 @@ export default new Router({
                 meta: {
                     title: "服务产品"
                 },
-                component: Service
+                component: (resolve)=>{require(['@/views/service.vue'], resolve)}
             }]
         },
         {
@@ -68,8 +53,17 @@ export default new Router({
                 meta: {
                     title: "知识服务"
                 },
-                component: Knowledge
-            }]
+                component: (resolve)=>{require(['@/views/Knowledge.vue'], resolve)}
+            },
+              {
+                path: "/knowledge/custom/zjjck",
+                name: "zjjck",
+                meta: {
+                  title: "专家决策库"
+                },
+                component: (resolve)=>{require(['@/views/zjjck.vue'], resolve)}
+              }
+            ]
         },
         {
             path: '/monitor',
@@ -85,14 +79,14 @@ export default new Router({
               meta: {
                 title: "农情调查"
               },
-              component: Monitor
+              component: (resolve)=>{require(['@/views/monitor.vue'], resolve)}
             },{
                 path: "/monitor/ele",
                 name: "ele",
                 meta: {
                     title: "要素监测"
                 },
-                component: Monitor
+                component: (resolve)=>{require(['@/views/monitor.vue'], resolve)}
             },
               {
                 path: "/monitor/sjjc",
@@ -100,7 +94,7 @@ export default new Router({
                 meta: {
                   title: "实景监测"
                 },
-                component: Monitor
+                component:(resolve)=>{require(['@/views/sjjc.vue'], resolve)}
               },
               {
                 path: "/monitor/spjc",
@@ -108,7 +102,7 @@ export default new Router({
                 meta: {
                   title: "视频监测"
                 },
-                component: Monitor
+                component: (resolve)=>{require(['@/views/monitor.vue'], resolve)}
               },
               {
                 path: "/monitor/bchjc",
@@ -116,7 +110,7 @@ export default new Router({
                 meta: {
                   title: "病虫害监测"
                 },
-                component: Monitor
+                component: (resolve)=>{require(['@/views/monitor.vue'], resolve)}
               }]
         },
         {
@@ -133,7 +127,7 @@ export default new Router({
                     meta: {
                         title: "粮油作物"
                     },
-                    component: GrainOilCropSuitable
+                    component: (resolve)=>{require(['@/views/GrainOilCropSuitable.vue'], resolve)}
                 },
                 {
                     path: "/prediction/commercialcrop",
@@ -141,7 +135,7 @@ export default new Router({
                     meta: {
                         title: "特色作物"
                     },
-                    component: CommercialCropSuitable
+                    component: (resolve)=>{require(['@/views/CommercialCropSuitable.vue'], resolve)}
                 },
                 {
                     path: "/prediction/fasuitable",
@@ -149,7 +143,7 @@ export default new Router({
                     meta: {
                         title: "农事活动适宜度"
                     },
-                    component: Fasuitable
+                    component: (resolve)=>{require(['@/views/FaSuitable.vue'], resolve)}
                 },
                 {
                     path: "/prediction/diseasesuitable",
@@ -157,7 +151,7 @@ export default new Router({
                     meta: {
                         title: "病害"
                     },
-                    component: DiseaseSuitable
+                    component: (resolve)=>{require(['@/views/DiseaseSuitable.vue'], resolve)}
                 },
                 {
                     path: "/prediction/pestsuitable",
@@ -165,7 +159,15 @@ export default new Router({
                     meta: {
                         title: "虫害"
                     },
-                    component: PestSuitable
+                    component: (resolve)=>{require(['@/views/PestSuitable.vue'], resolve)}
+                },
+                {
+                  path: "/prediction/zgswpj",
+                  name: "zgswpj",
+                  meta: {
+                    title: "周光水温评价"
+                  },
+                  component: (resolve)=>{require(['@/views/zgswpj.vue'], resolve)}
                 }
             ]
         },
@@ -184,8 +186,49 @@ export default new Router({
                 meta: {
                     title: "灾害监测预警"
                 },
-                component: AmDisaster
-            }]
+                component: (resolve)=>{require(['@/views/AmDisaster.vue'], resolve)}
+            },
+            {
+              path: "/disaster/ghjc",
+              name: "ghjc",
+              meta: {
+                title: "干旱监测"
+              },
+              component: (resolve)=>{require(['@/views/ghjc.vue'], resolve)}
+            },
+            {
+              path: "/disaster/ghcx",
+              name: "ghcx",
+              meta: {
+                title: "干旱查询"
+              },
+              component: (resolve)=>{require(['@/views/ghcx.vue'], resolve)}
+            },
+            {
+              path: "/disaster/sdnyqx",
+              name: "sdnyqx",
+              meta: {
+                title: "水稻农业气象灾害影响评估"
+              },
+              component: (resolve)=>{require(['@/views/sdnyqx.vue'], resolve)}
+            },
+            {
+              path: "/disaster/nyqxzh",
+              name: "nyqxzh",
+              meta: {
+                title: "农业气象灾害统计"
+              },
+              component: (resolve)=>{require(['@/views/nyqxzh.vue'], resolve)}
+            },
+            {
+              path: "/disaster/lszq",
+              name: "lszq",
+              meta: {
+                title: "历史灾情"
+              },
+              component: (resolve)=>{require(['@/views/lszq.vue'], resolve)}
+            },
+            ]
         },
         {
             path: '/stat',
@@ -201,7 +244,7 @@ export default new Router({
                     meta: {
                         title: "逐日资料统计"
                     },
-                    component: StatDay
+                    component: (resolve)=>{require(['@/views/Statday.vue'], resolve)}
                 },
                 {
                     path: "statmoreperiod",
@@ -209,7 +252,7 @@ export default new Router({
                     meta: {
                         title: "任意时段查询"
                     },
-                    component: StatMorePeriod
+                    component: (resolve)=>{require(['@/views/StatMorePeriod.vue'], resolve)}
                 },
                 {
                     path: "statyear",
@@ -217,9 +260,27 @@ export default new Router({
                     meta: {
                         title: "任意时段逐年查询"
                     },
-                    component: StatYear
+                    component: (resolve)=>{require(['@/views/StatYear.vue'], resolve)}
                 }
             ]
+        },
+        {
+          path: '/statyearbook',
+          name: 'statyearbook',
+          redirect: "/statyearbook/dzzwtjzl",
+          meta: {
+            title: "统计年鉴"
+          },
+          component: Layer,
+          children: [{
+            path: "/statyearbook/dzzwtjzl",
+            name: "dzzwtjzl",
+            meta: {
+              title: "大宗作物统计资料"
+            },
+            component: (resolve)=>{require(['@/views/dzzwtjzl.vue'], resolve)}
+          },
+          ]
         }
     ]
 })

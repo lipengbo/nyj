@@ -3,6 +3,29 @@ import config from './config';
 const instance =axios.create({
   baseURL:config.baseUrl
 });
+instance.interceptors.request.use(
+  config => {
+    console.log(config);
+    var tests=[
+      /.+(disasterLoss\/\S+)\.do/g,
+      /.+(statisticalmanac\/\S+)\.do/g,
+      /.+(qhzxsp\/getServicesproductinfoTypes)/g,
+      /.+(qhzxsp\/getKdKnowledgebaseinfoVoTypes)/g,
+    ];
+    for(var i=0;i<tests.length;i++){
+      var ex=tests[i].exec(config.url);
+      if(ex){
+        config.baseURL="/";
+        config.url="/static/json/"+ex[1]+".json";
+        break;
+      }
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+)
 instance.interceptors.response.use(
   response => {
     // 对响应数据进行操作

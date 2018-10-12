@@ -1,3 +1,4 @@
+<!--实景监测-->
 <template>
   <div style="width:100%" class="monitor">
       <div id="mapf" style="height:100%;width:100%;"></div>
@@ -48,7 +49,7 @@
     return res.data.response.docs;
   };
   export default {
-    name: "monitor",
+    name: "sjjc",
     data() {
       return {
         swiperOption:{

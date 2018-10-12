@@ -97,6 +97,11 @@
                 <maplegend name="适宜度" :data="legendData" v-show="legendShow"></maplegend>
               </div>
             </el-tab-pane>
+            <el-tab-pane label="指数演变图" name="three">
+              <div style="height:610px;position:relative;">
+
+              </div>
+            </el-tab-pane>
           </el-tabs>
         </div>
         <div class="m-right">
@@ -134,7 +139,7 @@
   import LayerService from '@/service/LayerService';
   import maplegend from '@/components/public/maplegend';
   function capitalize(str){
-          return str.replace( /(^|\s)([a-z])/g , 
+          return str.replace( /(^|\s)([a-z])/g ,
                     function(m,p1,p2){ return p1+p2.toUpperCase();
           } );
 

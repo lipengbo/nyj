@@ -47,37 +47,37 @@ module.exports = {
     name: "am",
     path: "/disaster/am",
   },
-  {
-    title: "干旱精细化监测预警",
-    path: "ghjxhjcyj",
-    children: [
-      {
-        title: "干旱监测",
-        name: "ghjc",
-        path: "/disaster/ghjc",
-      },
-      {
-        title: "干旱查询",
-        name: "ghcx",
-        path: "/disaster/ghcx",
-      }
-    ]
-  },
-  {
-    title: "水稻农业气象灾害影响评估",
-    name: "sdnyqx",
-    path: "/disaster/sdnyqx",
-  },
-  {
-    title: "农业气象灾害统计",
-    name: "nyqxzh",
-    path: "/disaster/nyqxzh",
-  },
-  {
-    title: "历史灾情",
-    name: "lszq",
-    path: "/disaster/lszq",
-  }
+    {
+      title: "干旱精细化监测预警",
+      path: "ghjxhjcyj",
+      children: [
+        {
+          title: "干旱监测",
+          name: "ghjc",
+          path: "/disaster/ghjc",
+        },
+        {
+          title: "干旱查询",
+          name: "ghcx",
+          path: "/disaster/ghcx",
+        }
+      ]
+    },
+    {
+      title: "水稻农业气象灾害影响评估",
+      name: "sdnyqx",
+      path: "/disaster/sdnyqx",
+    },
+    {
+      title: "农业气象灾害统计",
+      name: "nyqxzh",
+      path: "/disaster/nyqxzh",
+    },
+    {
+      title: "历史灾情",
+      name: "lszq",
+      path: "/disaster/lszq",
+    }
   ],
   "monitor": [{
     title: "农情调查",
@@ -130,6 +130,7 @@ module.exports = {
   "statyearbook": [
     {
       title: "大宗作物统计资料",
+      name: "dzzwtjzl",
       path: "/statyearbook/dzzwtjzl"
     }
   ]

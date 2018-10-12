@@ -540,7 +540,7 @@
           "&climateYearsQueryVo.statype=" + _this.statype + "&climateYearsQueryVo.syear=" + _this.syear;
         this.queryStr=queryStr;
         // console.log(query);
-        var url = baseUrl + "getClimateYearsStatisticsVoJson.do?";
+        var url = baseUrl + "qhzxsp/getClimateYearsStatisticsVoJson.do?";
         url = url + queryStr;
         var _this = this;
         // console.log("statyear list:" + url);
