@@ -84,8 +84,8 @@
           keyTable = this.keyTable,
           queryStr = this.query,
           paramStr = this.query.split("&");
-        let url = "/" + keyTable + "/get" + keyTable.firstUpperCase() + "SurferChartVo.do?" + queryStr;
-        let rgbvoUrl = "/" + keyTable + "/getRgbVo.do";
+        let url = "qhzxsp/" + keyTable + "/get" + keyTable.firstUpperCase() + "SurferChartVo.do?" + queryStr;
+        let rgbvoUrl = "qhzxsp/" + keyTable + "/getRgbVo.do";
         paramStr.forEach(function (e) {
           var arr = e.split("=");
           if (keyTable == "climateBackgroun" && arr[0] == "ele") {
@@ -164,7 +164,7 @@
           var arr = e.split("=");
           str += "chartInfoVo." + arr[0] + "=" + arr[1] + "&";
         });
-        axios.get(config.baseUrl + "/" + keyTable + "/executeSuferChart.do?" + str + "chartInfoVo.interpolation=" + _this.selectedInterpolation +
+        axios.get(config.baseUrl + "qhzxsp/" + keyTable + "/executeSuferChart.do?" + str + "chartInfoVo.interpolation=" + _this.selectedInterpolation +
           "&chartInfoVo.title=" + _this.sctitle + "chartInfoVo.layers=" + layers + "&chartInfoVo.maxValue=" + _this.scmaxvalue +
           "chartInfoVo.minValue=" + _this.scminvalue + "&chartInfoVo.interval=" + _this.scinterval + "&chartInfoVo.symbols=" + _this.scsymbols.join(",")).then((response) => {
           _this.scimgUrl = response.data.imgUrl;

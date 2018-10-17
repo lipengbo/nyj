@@ -30,7 +30,7 @@ export default {
       console.log(info)
       return JSON.parse(info);
     }
-    var url = config.baseUrl + "getClientOrgInfo.do";
+    var url = config.baseUrl + "qhzxsp/getClientOrgInfo.do";
     var response=await  axios.get(url);
     if(response.data){
       sessionStorage.setItem("clientOrgInfo",JSON.stringify(response.data));

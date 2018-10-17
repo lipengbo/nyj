@@ -425,7 +425,7 @@ class LayerService{
     orgcode=orgcode||"440000";
     type=type||"Mulele";
     if(!orgcode)orgcode='440000';
-    var url=config.baseUrl+"getCgLayerinfo.do?orgcode="+orgcode+"&type="+type;//Mulele;
+    var url=config.baseUrl+"qhzxsp/getCgLayerinfo.do?orgcode="+orgcode+"&type="+type;//Mulele;
     var res=await axios.get(url);
     var data=res.data;
     this.layerData=data;

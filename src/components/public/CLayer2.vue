@@ -178,7 +178,7 @@
         }
         this.isDrawing=true;
         try{
-          var res = await axios.get(config.baseUrl + "meteMuldaySurfer.do?"+queryStr);
+          var res = await axios.get(config.baseUrl + "qhzxsp/meteMuldaySurfer.do?"+queryStr);
           res = {docs: [res.data]};
           this.layerService.renderMapData(res);
           this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);

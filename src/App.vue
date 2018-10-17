@@ -170,4 +170,12 @@
     font-size:14px;
     color:#303133
   }
+  .imgBox{
+    overflow:hidden;
+  }
+  .imgBox img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
 </style>

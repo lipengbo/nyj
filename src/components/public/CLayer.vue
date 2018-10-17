@@ -80,9 +80,9 @@
     props: ['query', 'params'],
     components: {maplegend,colorbar},
     computed: {
-      
+
     },
-  
+
     watch: {
       legendData(val){
         if(val){
@@ -130,7 +130,7 @@
           this.legendData=this.symbollist;
         })
       }
-      
+
     },
     created() {
       this.years=[];
@@ -159,14 +159,14 @@
           })
         });
       })
-      
+
     },
     async mounted() {
         var val=this.query;
         this.sctitle=val.title;
         this.scsymbols = [];
-        
-        
+
+
       /* this.$nextTick(()=>{
         var val=this.query;
         this.sctitle=val.title;
@@ -238,14 +238,14 @@
         }
         this.isDrawing=true;
         try{
-          var res = await axios.get(config.baseUrl + "agros/qhzxsp/getSurferJson.do?"+queryStr);
+          var res = await axios.get(config.baseUrl + "qhzxsp/getSurferJson.do?"+queryStr);
           res = {docs: [res.data]};
           this.layerService.renderMapData(res);
           this.legendData=res.docs[0].symboljson && JSON.parse(res.docs[0].symboljson);
         }finally{
           this.isDrawing=false;
         }
-        
+
         return res.data;
       },
       setSysflag() {

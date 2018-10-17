@@ -542,9 +542,8 @@
         // console.log(query);
         var url = baseUrl + "qhzxsp/getClimateYearsStatisticsVoJson.do?";
         url = url + queryStr;
-        var _this = this;
         // console.log("statyear list:" + url);
-        this.$axios.get(url).then(res => {//"http://localhost:8089/static/data.json"
+        axios.get(url).then(res => {//"http://localhost:8089/static/data.json"
           cb(res.data)
         });
       }

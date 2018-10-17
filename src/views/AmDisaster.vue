@@ -134,7 +134,7 @@
   import LayerService from '@/service/LayerService';
   import maplegend from '@/components/public/maplegend';
   function capitalize(str){
-          return str.replace( /(^|\s)([a-z])/g , 
+          return str.replace( /(^|\s)([a-z])/g ,
                     function(m,p1,p2){ return p1+p2.toUpperCase();
           } );
 
@@ -282,7 +282,7 @@
     methods: {
       getOptions() {
         var _this = this;
-        axios.get(baseUrl + "/getAmDisasterEleVoList.do").then(res => {
+        axios.get(baseUrl + "qhzxsp/getAmDisasterEleVoList.do").then(res => {
           _this.eles = res.data;
           res.data.forEach(function (e) {
             if (e.defaultflag) {
@@ -406,7 +406,7 @@
         var _this = this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
         _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
-        var url = baseUrl + "getAmDisasterImageVosByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
+        var url = baseUrl + "qhzxsp/getAmDisasterImageVosByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
           "&queryVo.orgcode=" + _this.orgInfo.code + "&queryVo.startdate=" + _this.sDate + "&queryVo.stationtype=" + _this.selectedStationType + "&queryVo.type=" + dataName;
         return axios.get(url).then(res => {
           _this.imageVo = res.data.reverse();
@@ -422,7 +422,7 @@
         var _this = this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
         _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
-        var url = baseUrl + "/getAmDisasterInfoStatisticsVoByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
+        var url = baseUrl + "qhzxsp/getAmDisasterInfoStatisticsVoByQueryVo.do?queryVo.eletype=" + _this.selectedEle + "&queryVo.enddate=" + _this.eDate +
           "&queryVo.orgcode=" + _this.orgInfo.code + "&queryVo.startdate=" + _this.sDate + "&queryVo.stationtype=" + _this.selectedStationType + "&queryVo.type=" + dataName;
         var tableList = [],
           tableColumns = [{
@@ -555,7 +555,7 @@
         var _this = this;
         _this.sDate = dayjs(_this.sDate).format("YYYY-MM-DD");
         _this.eDate = dayjs(_this.eDate).format("YYYY-MM-DD");
-        var url = baseUrl + "AgrForecastInfoQueryVo.do?eletype=" + _this.selectedEle + "&enddate=" + _this.eDate +
+        var url = baseUrl + "qhzxsp/AgrForecastInfoQueryVo.do?eletype=" + _this.selectedEle + "&enddate=" + _this.eDate +
           "&orgcode=" + _this.orgInfo.code + "&startdate=" + _this.sDate + "&stationtype=" + _this.selectedStationType + "&type=gocrops";
         commonService.download({url: url});
       },

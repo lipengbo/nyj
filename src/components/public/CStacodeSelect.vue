@@ -102,7 +102,7 @@
                                 selectedStation: []
                         };
                 },
-        
+
                 methods: {
                         checkedCancel() {
                                 this.$emit("hide");
@@ -140,8 +140,8 @@
                                         });
                                         this.areaType = areaType;
                                 } else
-        
-        
+
+
                                 if (this.type == "Region") {
                                         var regionType = [];
                                         this.stationTypeInfo.regionList.forEach(function(e) {
@@ -149,7 +149,7 @@
                                         });
                                         this.regionType = regionType
                                 } else
-        
+
                                 if (this.type == "City") {
                                         var cityType = [];
                                         this.stationTypeInfo.cityList.forEach(function(e) {
@@ -158,7 +158,7 @@
                                         this.cityType = cityType
                                 }
                                 this.getGrmcStationInfosByTypeAndValues();
-        
+
                         },
                         handleCheckedReverse() {
                                 var that = this;
@@ -179,7 +179,7 @@
                                         });
                                         this.regionType = regionType
                                 } else
-        
+
                                 if (this.type == "City") {
                                         var cityType = [];
                                         this.stationTypeInfo.cityList.forEach(function(e) {
@@ -189,7 +189,7 @@
                                         });
                                         this.cityType = cityType
                                 }
-        
+
                                 this.getGrmcStationInfosByTypeAndValues();
                         },
                         handleCheckAllChange() {
@@ -199,7 +199,7 @@
                                         selectedStation.push(e.stacode);
                                 });
                                 _this.selectedStation = selectedStation;
-        
+
                         },
                         handleCheckedChange(value) {
                                 let checkedCount = value.length;
@@ -209,7 +209,7 @@
                         getGrmcStationInfosByTypeAndValues() {
                                 var _this = this;
                                 var values = "";
-        
+
                                 if (_this.type == "City") {
                                         _this.cityType.forEach(function(e) {
                                                 values += "&values=" + e;
@@ -224,7 +224,7 @@
                                         });
                                 }
                                 var queryStr = "statType=" + _this.statype + "&type=" + _this.type + "&values=" + values;
-                                _this.$axios.get(baseUrl + "/getGrmcStationInfosByTypeAndValues.do?" + queryStr).then(res => {
+                                _this.$axios.get(baseUrl + "qhzxsp/getGrmcStationInfosByTypeAndValues.do?" + queryStr).then(res => {
                                         _this.stationList = res.data;
                                         var selectedStation = [];
                                         res.data.forEach(function(e) {
@@ -237,7 +237,7 @@
                         getGrmcStationInfosByOrgcode() {
                                 //getGrmcStationInfosByOrgcode
                                 var _this = this;
-                                _this.$axios.get(baseUrl + "/getGrmcStationInfosByOrgcode.do?orgcode=" + _this.orgInfo.code).then(res => {
+                                _this.$axios.get(baseUrl + "qhzxsp/getGrmcStationInfosByOrgcode.do?orgcode=" + _this.orgInfo.code).then(res => {
                                         _this.stationList = res.data;
                                         var selectedStation = [];
                                         res.data.forEach(function(e) {
@@ -261,17 +261,17 @@
         .m-statype ul {
                 margin-top: 10px;
         }
-        
+
         .m-statype li {
                 display: inline-block;
                 width: 80px;
         }
-        
+
         .m-action {
                 width: 100%;
                 height: 30px;
         }
-        
+
         .m-action .m-action-btn {
                 width: 74%;
                 margin-top: 10px;
@@ -279,25 +279,25 @@
                 height: 100%;
                 float: right;
         }
-        
+
         .m-action-btn button {
                 float: left;
                 width: 80px;
         }
-        
+
         .m-station-list {
                 width: 100%;
         }
-        
+
         .m-station-list fieldset {
                 width: 100%;
         }
-        
+
         .m-station-list li {
                 display: inline-block;
                 min-width: 80px;
         }
-        
+
         .el-radio.is-bordered {
                 display: block;
                 margin-top: 59px;
@@ -305,11 +305,11 @@
                 width: 100px;
                 margin-left: 0px!important;
         }
-        
+
         .el-dialog .el-dialog__body {
                 padding: 20px!important;
         }
-        
+
         .el-checkbox+.el-checkbox {
                 margin: 0;
                 min-width: 80px;

@@ -5,7 +5,7 @@ class StatService{
   }
   //获取绘制窗口的算法选项
   async getInterpolationVo(){
-    var res=await axios.get(config.baseUrl+"getInterpolationVo.do");
+    var res=await axios.get(config.baseUrl+"qhzxsp/getInterpolationVo.do");
     return res.data;
   }
 
