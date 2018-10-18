@@ -11,7 +11,11 @@ instance.interceptors.request.use(
       /.+(statisticalmanac\/\S+)\.do/g,
       /.+(qhzxsp\/getServicesproductinfoTypes)/g,
       /.+(qhzxsp\/getKdKnowledgebaseinfoVoTypes)/g,
-      /.+(qhzxsp\/getClientOrgInfo)/g
+      /.+(qhzxsp\/getClientOrgInfo)/g,
+      /.+(cdCropInfo)/g,
+      /.+(cdSysdictionary)/g,
+      /.+(kdKnowledgeDictionary)/g,
+      /.+kdExpertDecisionInfo\/query.do/g
     ];
     for(var i=0;i<tests.length;i++){
       var ex=tests[i].exec(config.url);
